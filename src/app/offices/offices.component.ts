@@ -1,22 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { OfficeDetailsComponent } from '../office-details/office-details.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-offices',
-  standalone: true,
-  imports: [CommonModule,OfficeDetailsComponent],
-  templateUrl: './offices.component.html',
-  styleUrl: './offices.component.css'
+	selector: 'app-offices',
+	standalone: true,
+	imports: [CommonModule, OfficeDetailsComponent],
+	templateUrl: './offices.component.html',
+	styleUrl: './offices.component.css'
 })
-export class OfficesComponent implements OnInit{
-  @Input() officeData: any;
+export class OfficesComponent implements OnInit {
+	@Input() officeData: any;
 
 
 	selectedOfficeData: any;
-  selectedOfficeType: string | null = null;
-  isShow: boolean = false;
-  topPosToStartShowing = 100;
+	selectedOfficeType: string | null = null;
+	isShow: boolean = false;
+	topPosToStartShowing = 100;
 
 	regionalOffices = {
 		title: 'Regional Managers Offices',
@@ -434,7 +435,7 @@ export class OfficesComponent implements OnInit{
 				email: 'tiruvallurdepot@gmail.com',
 				phone: '044-27662123'
 			},
-			
+
 			// Salem Region
 			{
 				city: 'Vellore',
@@ -484,7 +485,7 @@ export class OfficesComponent implements OnInit{
 				email: 'depotakmtasmac@gmail.com',
 				phone: '04712-244608'
 			},
-	
+
 			// Trichy Region
 			{
 				city: 'Cuddalore',
@@ -540,7 +541,7 @@ export class OfficesComponent implements OnInit{
 				email: 'pblrdm@yahoo.com',
 				phone: '04328-290465'
 			},
-	
+
 			// Madurai Region
 			{
 				city: 'Madurai Urban (East)',
@@ -602,7 +603,7 @@ export class OfficesComponent implements OnInit{
 				email: 'tasmac_ngl@rediffmail.com',
 				phone: '04652-261281'
 			},
-	
+
 			// Coimbatore Region
 			{
 				city: 'Coimbatore South',
@@ -657,40 +658,56 @@ export class OfficesComponent implements OnInit{
 
 	@HostListener('window:scroll')
 	checkScroll() {
-	  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  
-	  this.isShow = scrollPosition >= this.topPosToStartShowing;
+		const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+		this.isShow = scrollPosition >= this.topPosToStartShowing;
 	}
-  
+
 	scrollToTop() {
-	  window.scroll({
-		top: 0,
-		left: 0,
-		behavior: 'smooth'
-	  });
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		});
+	}
+	constructor(private activeRoute: ActivatedRoute) { }
+	ngOnInit() {
+		this.selectedOfficeType = 'regional';
+		this.selectedOfficeData = this.regionalOffices;
+		this.activeRoute.queryParams.subscribe((res: any) => {
+			if (res && typeof res === 'object' && !Array.isArray(res) && Object.keys(res).length > 0) {
+				console.log(res)
+				this.selectedOfficeType = res.offices
+				if (res.offices === 'regional') {
+					this.selectedOfficeData = this.regionalOffices;
+					console.log('1')
+				} else if (res.offices === 'district') {
+					this.selectedOfficeData = this.districtOffices;
+					console.log('2')
+				} else {
+					this.selectedOfficeData = this.depotsData;
+					console.log('3')
+				}
+			}
+		})
 	}
 
-  ngOnInit() {
-    // Set the default tab to 'regional'
-    this.selectedOfficeType = 'regional';
-    this.selectedOfficeData = this.regionalOffices;
-  }
-
-  showDetails(type: string) {
+	showDetails(type: string) {
 		if (this.selectedOfficeType === type) {
-		  // If the same type is clicked again, clear the selection
-		  this.selectedOfficeData = null;
-		  this.selectedOfficeType = null;
+			this.selectedOfficeData = null;
+			this.selectedOfficeType = null;
 		} else {
-		  // Otherwise, update the data and type
-		  if (type === 'regional') {
-			this.selectedOfficeData = this.regionalOffices;
-		  } else if (type === 'district') {
-			this.selectedOfficeData = this.districtOffices;
-		  } else {
-			this.selectedOfficeData = this.depotsData;
-		  }
-		  this.selectedOfficeType = type;
+			if (type === 'regional') {
+				this.selectedOfficeData = this.regionalOffices;
+				console.log('1')
+			} else if (type === 'district') {
+				this.selectedOfficeData = this.districtOffices;
+				console.log('2')
+			} else {
+				this.selectedOfficeData = this.depotsData;
+				console.log('3')
+			}
+			this.selectedOfficeType = type;
 		}
-	  }
+	}
 }

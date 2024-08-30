@@ -84,9 +84,9 @@ export class ShopLocatorComponent implements OnInit {
       .then(response => response.json())
       .then((data: Shop[]) => {
         this.shops = data.filter(shop => this.isValidShop(shop));
-        this.districts = [...new Set(this.shops.map(shop => shop.district))];
-        this.taluks = [...new Set(this.shops.map(shop => shop.taluk))];
-        this.rvShopNos = [...new Set(this.shops.map(shop => shop.rvShopsNo.toString()))];
+        this.districts = [...new Set(this.shops.map(shop => shop.district))].sort();
+        this.taluks = [...new Set(this.shops.map(shop => shop.taluk))].sort();
+        this.rvShopNos = [...new Set(this.shops.map(shop => shop.rvShopsNo.toString()))].sort();
         this.filteredShops = this.shops;
         this.filterShops(); // Apply default filters
       })
@@ -115,9 +115,16 @@ export class ShopLocatorComponent implements OnInit {
     this.map.on('locationerror', this.onLocationError.bind(this));
   }
 
+
   addShopMarkers(shops: Shop[]): void {
     this.markers.clearLayers();
-
+  
+    // Create a custom icon
+    const customIcon = L.icon({
+      iconUrl: 'assets/images/location-png.png',
+      iconSize: [30, 30], 
+    });
+  
     shops.forEach(shop => {
       if (this.isValidShop(shop)) {
         const popupContent = `
@@ -128,32 +135,39 @@ export class ShopLocatorComponent implements OnInit {
             <i class="fa fa-directions"></i> Get Directions
           </a>
         `;
-
-        const marker = L.marker([shop.latitude, shop.longitude])
+  
+        // Create the marker with the custom icon
+        const marker = L.marker([shop.latitude, shop.longitude], { icon: customIcon })
           .bindPopup(popupContent);
-
+  
         marker.on('click', () => {
-          this.map.setView([shop.latitude, shop.longitude], 16); // Zoom in on click
+          this.map.setView([shop.latitude, shop.longitude], 16);
         });
-
+  
         this.markers.addLayer(marker);
       } else {
         console.warn(`Invalid location for shop ${shop.rvShopsNo}: (${shop.latitude}, ${shop.longitude})`);
       }
     });
-
+  
     if (this.markers.getLayers().length > 0) {
       this.map.fitBounds(this.markers.getBounds());
     }
   }
+  
+
 
   onLocationFound(e: L.LocationEvent): void {
+    const customIcon = L.icon({
+      iconUrl: 'assets/images/location-png.png',
+      iconSize: [30, 30], 
+    });
     console.log('User location found:', e.latlng);
     const radius = e.accuracy / 2;
-    L.marker(e.latlng).addTo(this.map)
+    L.marker(e.latlng, { icon: customIcon }).addTo(this.map)
       .bindPopup(`You are within ${radius} meters from this point`).openPopup();
     L.circle(e.latlng, radius).addTo(this.map);
-
+    this.map.setView(e.latlng, 20);
     this.findAndDisplayNearestShop(e.latlng);
   }
 
@@ -226,5 +240,36 @@ export class ShopLocatorComponent implements OnInit {
     this.addShopMarkers(this.filteredShops);
 
     this.map.locate({ setView: true, maxZoom: 16 });
+  }
+
+  filterTaluk(){
+    if(this.selectedDistrict == ""){
+     this.loadShopData() 
+    }
+    else{
+      fetch('assets/tasmac-shops.json')
+      .then(response => response.json())
+      .then((data: Shop[]) => {
+        this.shops = data.filter(shop => this.isValidShop(shop));
+        this.taluks = [...new Set(this.shops.filter(f=>f.district == this.selectedDistrict).map(shop => shop.taluk))].sort();
+        this.rvShopNos = [...new Set(this.shops.filter(f=>f.district == this.selectedDistrict).map(shop => shop.rvShopsNo.toString()))].sort();
+      })
+      .catch(error => console.error('Error loading shop data:', error));
+    }
+  }
+
+  filterShopByTaluk(){
+    if(this.selectedTaluk == ""){
+      this.rvShopNos = [...new Set(this.shops.filter(f=>f.district == this.selectedDistrict).map(shop => shop.rvShopsNo.toString()))].sort();
+    }
+    else{
+      fetch('assets/tasmac-shops.json')
+      .then(response => response.json())
+      .then((data: Shop[]) => {
+        this.shops = data.filter(shop => this.isValidShop(shop));
+        this.rvShopNos = [...new Set(this.shops.filter(f=>f.taluk == this.selectedTaluk).map(shop => shop.rvShopsNo.toString()))].sort();
+      })
+      .catch(error => console.error('Error loading shop data:', error));
+    }
   }
 }

@@ -3,7 +3,7 @@ import { Observable, throwError, catchError } from 'rxjs';
 import { ConfigService } from '../../shared/services/config.service';
 import { Header } from '../models/header.model';
 import { AsyncPipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { GalleryPageComponent } from "../../gallery/gallery-page/gallery-page.component";
 import { brandsPageComponent } from "../../brands/brands-page/brands-page.component";
 import { TickerComponent } from "../../ticker/ticker.component";
@@ -12,6 +12,7 @@ import { OfficeDetailsComponent } from "../../office-details/office-details.comp
 import { CommonModule } from '@angular/common';
 import { OrganizationComponent } from "../../organisation/organization.component";
 import { AboutComponent } from "../../abouts/about.component";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
 	selector: 'app-home-page',
@@ -19,62 +20,68 @@ import { AboutComponent } from "../../abouts/about.component";
 	standalone: true,
 	styleUrl: './home-page.component.css',
 	imports: [
-    RouterLink,
-    AsyncPipe,
-    GalleryPageComponent,
-    brandsPageComponent,
-    TickerComponent,
-    ServicesPageComponent,
-    OfficeDetailsComponent,
-    CommonModule,
-    OrganizationComponent,
-    AboutComponent,
-],
+		RouterLink,
+		AsyncPipe,
+		GalleryPageComponent,
+		brandsPageComponent,
+		TickerComponent,
+		ServicesPageComponent,
+		OfficeDetailsComponent,
+		CommonModule,
+		OrganizationComponent,
+		AboutComponent,
+	],
 })
 export class HomePageComponent implements OnInit {
+	private shopUrl = 'assets/tasmac-shops.json'
 	header$: Observable<Header>;
 	selectedOfficeData: any;
 	selectedOfficeType: string | null = null;
 	isShow: boolean = false;
 	topPosToStartShowing = 100;
 	progressValue: number = 0;
-  	targetValue: number = 48; // Set your target value here
-	constructor(private config: ConfigService) {}
-	
+	targetValue: number = 48; // Set your target value here
+	shopData: any
+	constructor(private config: ConfigService, private http: HttpClient, private router: Router) { }
+
 	@HostListener('window:scroll')
 	checkScroll() {
-	  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  
-	  this.isShow = scrollPosition >= this.topPosToStartShowing;
+		const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+		this.isShow = scrollPosition >= this.topPosToStartShowing;
 	}
-  
+
 	scrollToTop() {
-	  window.scroll({
-		top: 0,
-		left: 0,
-		behavior: 'smooth'
-	  });
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		});
 	}
-  
+
 	ngOnInit() {
 		this.getPageData('pages', 7);
 		setTimeout(() => {
 			const button = document.getElementById('prevButton');
 			if (button) {
-			  button.click();
+				button.click();
 			}
 		}, 2000);
 		// run porgess
 		this.runProgress();
+		this.http.get(this.shopUrl).subscribe((res: any) => {
+			this.shopData = res
+			console.log(this.shopData.length)
+		})
 	}
 
 	runProgress() {
 		const interval = setInterval(() => {
-		  if (this.progressValue < this.targetValue) {
-			this.progressValue++;
-		  } else {
-			clearInterval(interval);
-		  }
+			if (this.progressValue < this.targetValue) {
+				this.progressValue++;
+			} else {
+				clearInterval(interval);
+			}
 		}, 50);
 	}
 
@@ -83,7 +90,7 @@ export class HomePageComponent implements OnInit {
 			catchError(error => {
 				console.error('Error fetching feature data:', error);
 				return throwError(error);
-			}) 
+			})
 
 		);
 	}
@@ -504,7 +511,7 @@ export class HomePageComponent implements OnInit {
 				email: 'tiruvallurdepot@gmail.com',
 				phone: '044-27662123'
 			},
-			
+
 			// Salem Region
 			{
 				city: 'Vellore',
@@ -554,7 +561,7 @@ export class HomePageComponent implements OnInit {
 				email: 'depotakmtasmac@gmail.com',
 				phone: '04712-244608'
 			},
-	
+
 			// Trichy Region
 			{
 				city: 'Cuddalore',
@@ -610,7 +617,7 @@ export class HomePageComponent implements OnInit {
 				email: 'pblrdm@yahoo.com',
 				phone: '04328-290465'
 			},
-	
+
 			// Madurai Region
 			{
 				city: 'Madurai Urban (East)',
@@ -672,7 +679,7 @@ export class HomePageComponent implements OnInit {
 				email: 'tasmac_ngl@rediffmail.com',
 				phone: '04652-261281'
 			},
-	
+
 			// Coimbatore Region
 			{
 				city: 'Coimbatore South',
@@ -724,8 +731,8 @@ export class HomePageComponent implements OnInit {
 			}
 		]
 	};
-	
-	
+
+
 
 	// showDetails(type: string) {
 	// 	if (type === 'regional') {
@@ -736,25 +743,32 @@ export class HomePageComponent implements OnInit {
 	// 		// this.selectedOfficeType = 'district';
 	// 	}else{
 	// 		this.selectedOfficeData = this.depotsData;
-    // }
+	// }
 	// }
 
 	showDetails(type: string) {
 		if (this.selectedOfficeType === type) {
-		  // If the same type is clicked again, clear the selection
-		  this.selectedOfficeData = null;
-		  this.selectedOfficeType = null;
+			// If the same type is clicked again, clear the selection
+			this.selectedOfficeData = null;
+			this.selectedOfficeType = null;
 		} else {
-		  // Otherwise, update the data and type
-		  if (type === 'regional') {
-			this.selectedOfficeData = this.regionalOffices;
-		  } else if (type === 'district') {
-			this.selectedOfficeData = this.districtOffices;
-		  } else {
-			this.selectedOfficeData = this.depotsData;
-		  }
-		  this.selectedOfficeType = type;
+			// Otherwise, update the data and type
+			if (type === 'regional') {
+				this.selectedOfficeData = this.regionalOffices;
+			} else if (type === 'district') {
+				this.selectedOfficeData = this.districtOffices;
+			} else {
+				this.selectedOfficeData = this.depotsData;
+			}
+			this.selectedOfficeType = type;
 		}
-	  }
-	
+	}
+
+	routePrescense(offices: string) {
+		const queryParams = {
+			offices: offices
+		}
+		this.router.navigate([`/offices`], { queryParams: queryParams })
+	}
+
 }

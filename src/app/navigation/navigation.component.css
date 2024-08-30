@@ -4,5 +4,5 @@
   left: 0;
   width: 100%;
   z-index: 1000; /* Ensure it stays on top */
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }

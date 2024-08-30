@@ -13,13 +13,13 @@ import { AppModule } from '../app.module';
   templateUrl: './about.component.html',
   standalone: true,
   imports: [FeatureBlockComponent, AsyncPipe, CommonModule],
-  styleUrls:['./about.component.css']
+  styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
   intro$: Observable<Intro>;
   features$: Observable<Feature[]>;
 
-  constructor(private config: ConfigService) {}
+  constructor(private config: ConfigService) { }
 
   ngOnInit(): void {
     this.loadPageData('pages', 1);
@@ -44,5 +44,17 @@ export class AboutComponent implements OnInit {
         return throwError(() => new Error('Failed to load feature data'));
       })
     );
+  }
+  reports = [{ id: "tamil", name: 'Annual Report 2016-17 Tamil',file:"assets/images/files/tasmac-annual-report-2016-2017(tamil).pdf" }, { id: "english", name: 'Annual Report 2016-17 English',file:"assets/images/files/tasmac-annual-report-2016-2017(english).pdf" }]
+  forms(reportType: string) {
+    if (reportType == 'annual_report') {
+      this.reports = [{ id: "tamil", name: 'Annual Report 2016-17 Tamil',file:"assets/images/files/tasmac-annual-report-2016-2017(tamil).pdf" }, { id: "english", name: 'Annual Report 2016-17 English',file:"assets/images/files/tasmac-annual-report-2016-2017(english).pdf" }]
+    }
+    else {
+      this.reports = [{ id: "forms", name: "Trasfer Stock Form",file:"assets/images/files/transfer-stock-form-tasmac.doc" }]
+    }
+  }
+  downloadReport(file:any){
+
   }
 }

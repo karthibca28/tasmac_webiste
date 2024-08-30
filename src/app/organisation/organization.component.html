@@ -12,9 +12,9 @@
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" id="pills-ho-tab" data-bs-toggle="pill" data-bs-target="#pills-ho" type="button" role="tab" aria-controls="pills-ho" aria-selected="false">Head Office</button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <!-- <li class="nav-item" role="presentation">
                       <button class="nav-link" id="pills-how-tab" data-bs-toggle="pill" data-bs-target="#pills-how" type="button" role="tab" aria-controls="pills-how" aria-selected="false">Head Office Workflow</button>
-                    </li>
+                    </li> -->
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-srm-tab" data-bs-toggle="pill" data-bs-target="#pills-srm" type="button" role="tab" aria-controls="pills-srm" aria-selected="false">SRM Office</button>
                       </li>
@@ -23,8 +23,8 @@
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-4 col-lg-3" *ngFor="let director of boardDirectors">
-                                    <div class="card">
+                                <div class="col-md-4 col-lg-4 mt-2" *ngFor="let director of boardDirectors">
+                                    <div class="card h-100">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <img [src]="director.image" alt="{{ director.name }}" class="rounded-circle" height="100px" width="100px">
