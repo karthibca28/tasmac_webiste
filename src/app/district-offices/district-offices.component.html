@@ -1,0 +1,24 @@
+<div *ngIf="officeData">
+    <h2>{{ officeData.title }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>District Manager Office</th>
+          <th>Address & Email Id</th>
+          <th>Mobile No.</th>
+          <th>Tel. No.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let office of officeData.offices; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ office.city }}</td>
+          <td>{{ office.address }}<br>{{ office.email }}</td>
+          <td>{{ office.mobile }}</td>
+          <td>{{ office.tel }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

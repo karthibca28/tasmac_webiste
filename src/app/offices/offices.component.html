@@ -1,0 +1,37 @@
+<section class="our-offices">
+  <div class="container">
+    <h2 class="text-center" style="font-weight: bold;">Our Offices</h2>
+    <div class="row">
+      <div class="col">
+        <div class="office-details">
+          <div 
+            class="office-item" 
+            [ngClass]="{'active': selectedOfficeType === 'regional'}"
+            (click)="showDetails('regional')">
+            <div class="text">Regional Offices</div>
+          </div>
+          <div 
+            class="office-item" 
+            [ngClass]="{'active': selectedOfficeType === 'district'}"
+            (click)="showDetails('district')">
+            <div class="text">District Offices</div>
+          </div>
+          <div 
+            class="office-item" 
+            [ngClass]="{'active': selectedOfficeType === 'depots'}"
+            (click)="showDetails('depots')">
+            <div class="text">Depots</div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <app-office-details *ngIf="selectedOfficeData" [officeData]="selectedOfficeData"></app-office-details>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-to-top" [ngClass]="{'show': isShow}" (click)="scrollToTop()">
+    ↑
+  </div>
+</section>
+

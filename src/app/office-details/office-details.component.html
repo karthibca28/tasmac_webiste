@@ -1,0 +1,37 @@
+<div class="table-responsive" *ngIf="officeData">
+  <table class="table">
+    <thead>
+      <tr>
+        <th colspan="9" style="background-color: #004D98;">
+          <h4 class="mb-0 p-0 text-white">
+            {{ officeData.title }}
+          </h4>
+        </th>
+      </tr>
+      <tr>
+        <th>#</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Phone No.</th>
+        <th *ngIf="hasColumnData('mobile')">Mobile No.</th>
+        <th *ngIf="hasColumnData('fax')">Fax No.</th>
+        <th *ngIf="hasColumnData('email')">E-mail Id</th>
+        <th *ngIf="hasColumnData('paToSrm')">PA to SRM</th>
+        <th *ngIf="hasColumnData('flyingSquad')">Flying Squad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let office of officeData.offices; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ office.city }}</td>
+        <td>{{ office.address }}</td>
+        <td>{{ office.phone }}</td>
+        <td *ngIf="office.mobile">{{ office.mobile || 'N/A' }}</td>
+        <td *ngIf="office.fax">{{ office.fax || 'N/A' }}</td>
+        <td *ngIf="office.email">{{ office.email || 'N/A' }}</td>
+        <td *ngIf="office.paToSrm">{{ office.paToSrm || 'N/A' }}</td>
+        <td *ngIf="office.flyingSquad">{{ office.flyingSquad || 'N/A' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

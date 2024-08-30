@@ -1,0 +1,78 @@
+/* General Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0; /* Margin for spacing */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 14px 10px;
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: #e6dee4; /* gray background for header */
+    color: #131212; /* White text color for header */
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+tr:hover {
+    background-color: #eae6e0; /* Light green background on hover */
+}
+
+/* Enhancements for the table */
+table {
+    border-radius: 8px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensure rounded corners are applied */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* District Offices Styles */
+.region-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a5eab; /* Dark blue color */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #2a5eab; /* Adds a bottom border */
+}
+
+.office-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.office-card {
+    background-color: #ffffff; /* White background for cards */
+    border: 1px solid #ddd;
+    border-radius: 12px; /* More rounded corners for cards */
+    padding: 20px;
+    width: calc(50% - 20px); /* Responsive layout for two columns */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.office-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.office-city {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .office-card {
+        width: calc(100% - 20px); /* Full width on smaller screens */
+    }
+}

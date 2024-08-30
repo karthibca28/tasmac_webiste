@@ -1,0 +1,51 @@
+@if (intro$ | async; as intro) {
+<section id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-3">
+				<div class="section-heading">
+					<h3 style="color: #CD5C5C">{{ intro.tagline }}</h3>
+					<h2 class="section-title">
+						{{
+						intro.title
+						}}
+					</h2>
+					<p class="section-subtitle">
+						{{
+						intro.description
+						}}
+					</p>
+				</div>
+			</div>
+			@if (features$) {
+			<!-- <div class="col-2-3">
+						@for (feature of features$ | async; track feature; let i = $index) {
+							<div>
+								<app-feature-block [feature]="feature"></app-feature-block>
+							</div>
+						}
+					</div> -->
+			<div class="col-2-3" feature-container>
+				@for (feature of features$ | async; track feature; let i = $index) {
+				<div>
+					<a href="{{ feature.link }}" target="_blank" class="feature-link">
+						<div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.1s">
+						  <!--Icon-->
+						  <div class="icon">
+							<i class="fa fa-{{ feature.icon }} fa-2x"></i>
+						  </div>
+						  <!--Icon Block Description-->
+						  <div class="icon-block-description">
+							<h4>{{ feature.title }}</h4>
+							<p>{{ feature.description }}</p>
+						  </div>
+						</div>
+					  </a>
+				</div>
+				}
+			</div>
+			}
+		</div>
+	</div>
+</section>
+}

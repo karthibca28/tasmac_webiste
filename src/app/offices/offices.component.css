@@ -1,0 +1,165 @@
+/* General Styles for Home Page */
+main {
+  padding: 20px;
+  background-color: #f0f4f8; /* Light background color for the main content */
+}
+
+/* Our Offices Section */
+.our-offices {
+  background-color: #f0f4f8;
+  padding: 2rem;
+}
+
+.our-offices h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333; /* Dark color for better readability */
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%; /* Full width to center the heading */
+}
+
+/* Office Details Container */
+.office-details {
+  display: flex;
+  justify-content: flex-start; /* Align items to the start for a sidebar-like layout */
+  gap: 1rem; /* Space between items */
+  margin-bottom: 1rem;
+  padding-bottom: 10px; /* Space between tabs and the line */
+  border-bottom: 2px solid #004eff; /* Subtle line below the tabs */
+  position: relative;
+}
+
+/* Individual Office Item as Navbar Link */
+.office-item {
+  position: relative;
+  background-color: #fff;
+  border: 2px solid transparent; /* Transparent border initially */
+  border-radius: 4px; /* Slightly rounded corners for a button-like appearance */
+  padding: 1rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333; /* Default text color */
+  text-transform: uppercase;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  text-decoration: none; /* Remove underline */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+/* Underline Effect */
+.office-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%; /* Default: no underline */
+  height: 3px; /* Height of the underline */
+  background-color: #004eff; /* Color of the underline */
+  transition: width 0.3s ease; /* Transition for underline width */
+}
+
+/* Hover and Active Effects */
+.office-item:hover::after {
+  width: 100%; /* Underline expands on hover */
+}
+
+/* Highlight the Selected Tab */
+.office-item.active {
+  background-color: #4b80fa; /* Background color for the active tab */
+  color: #fff; /* Text color for the active tab */
+  /* border: 2px solid #004eff;  */
+}
+
+.office-item.active::after {
+  width: 100%; /* Ensure underline is full width for the active tab */
+  background-color: #fff; /* Color of the underline for the active tab */
+}
+
+/* Border Below Tabs */
+.office-details::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Thickness of the border line */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 100%); /* Gradient effect */
+  z-index: -1; /* Place the border line behind the tabs */
+}
+
+/* Content Area */
+.content-area {
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tables for Regional and District Offices */
+.office-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.office-table th, .office-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.office-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.office-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.office-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .office-details {
+    flex-direction: column;
+  }
+
+  .office-item {
+    width: 100%; /* Full width on smaller screens */
+    text-align: center;
+  }
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.scroll-to-top.show {
+  display: block; /* Show when needed */
+  opacity: 0.8;
+}
+
+.scroll-to-top:hover {
+  opacity: 1;
+}
+
+.text {
+  font-size: 0.9rem;
+}

@@ -1,0 +1,27 @@
+.district-offices {
+    margin-top: 20px;
+  }
+  
+  .district-offices table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .district-offices th, .district-offices td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .district-offices th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  
+  .district-offices tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .district-offices tr:hover {
+    background-color: #f1f1f1;
+  }
+  

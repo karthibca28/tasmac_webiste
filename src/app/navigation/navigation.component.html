@@ -1,0 +1,32 @@
+<nav class="navbar bg-light mb-5">
+	<div id="header" class="nav-collapse nav-solid">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col col-md-3 text-center">
+					<div class="navbar-brand">
+						<img src="./assets/images/logo/logo.jpg" height="35" width="" />
+					</div>
+					<div id="nav-trigger">
+						<span
+							[class.open]="menuOpen === true"
+							(onClick)="toggleMenu(!menuOpen)"
+							(onKeyUp)="toggleMenu(!menuOpen)"></span>
+					</div>
+				</div>
+				<div class="col col-md-9">
+					<nav id="nav-mobile">
+						@if (menuOpen === true) {
+							<app-navmenu
+								[menu]="menu"
+								(menuStatus)="toggleMenu($event)"
+								[menuOpen]="menuOpen"></app-navmenu>
+						}
+					</nav>
+					<nav id="nav-main">
+						<app-navmenu [menu]="menu" [menuOpen]="true"></app-navmenu>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>

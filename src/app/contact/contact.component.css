@@ -1,0 +1,15 @@
+.info-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+strong {
+    margin-right: 5px;
+}

@@ -1,0 +1,54 @@
+/* Grid container for feature cards */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Individual feature card */
+  .feature-card {
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Ensure link styling is clean */
+  .feature-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .icon-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .icon {
+    margin-bottom: 10px;
+  }
+  
+  .icon-block-description {
+    padding: 10px;
+  }
+  
+  .feature-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .feature-description {
+    font-size: 1em;
+    color: #666;
+  }
+  

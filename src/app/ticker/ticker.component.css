@@ -1,0 +1,29 @@
+
+.ticker {
+    overflow: hidden;
+    white-space: nowrap;
+    /* background-color: rgb(255, 255, 255); */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  */
+    animation: ticker-scroll 30s linear infinite;
+}
+
+
+.ticker span {
+    display: inline-block;
+    padding: 0 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Larger font size */
+    font-weight: bold; /* Optional: Bold text */
+    color: #ff7a7a; /* Optional: Text color */
+}
+
+
+@media (min-width: 768px) {
+    .ticker span {
+        font-size: 16px; /* Larger font size for larger screens */
+    }
+}
+
+@keyframes ticker-scroll {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
