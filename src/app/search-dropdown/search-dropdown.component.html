@@ -4,6 +4,7 @@
       [(ngModel)]="searchText"
       (input)="filterOptions()"
       (focus)="showAllOptions()" 
+      (blur)="displayOptions()"
       placeholder="Search..."
       class="form-control"
     />

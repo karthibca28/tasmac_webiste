@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './search-dropdown.component.css'
 })
 export class SearchDropdownComponent {
-  @Input() options: string[] = [];
+  @Input() options: any[] = [];
   @Input() selectedOption: string | null = null;
   @Input() placeHolder: string | null = null
   @Output() selectedOptionChange = new EventEmitter<string | null>();
@@ -21,8 +21,8 @@ export class SearchDropdownComponent {
   isDropdownVisible: boolean = false;
 
   ngOnInit() {
-    this.filteredOptions = this.options;
-    console.log(this.filteredOptions)
+    // this.filteredOptions = this.options;
+    // console.log(this.filteredOptions)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -30,7 +30,7 @@ export class SearchDropdownComponent {
       this.filteredOptions = this.options;
     }
   }
-  
+
 
   filterOptions() {
     if (!this.searchText) {
@@ -54,13 +54,8 @@ export class SearchDropdownComponent {
     this.selectedOptionChange.emit(this.selectedOption); // Emit the change event
   }
 
-  @HostListener('document:click', ['$event'])
-  onClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    const dropdown = document.querySelector('.custom-dropdown');
-
-    if (dropdown && !dropdown.contains(target)) {
-      this.isDropdownVisible = false;
-    }
+  displayOptions() {
+    console.log("displayOptions")
+    this.isDropdownVisible = false;
   }
 }

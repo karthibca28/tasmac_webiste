@@ -32,8 +32,8 @@
   
   .ticker {
     display: flex;
-    width: 100%;
-    animation: ticker 50s linear infinite;
+    width: 2200px;
+    animation: ticker 20s linear infinite;
   }
   
   .ticker-items {
@@ -44,13 +44,14 @@
     padding: 10px 20px;
     white-space: nowrap;
     color: #000;
+    font-weight: 600;
     /* background: #f8f9fa; */
     border-right: 1px solid #dee2e6;
   }
   
   @keyframes ticker {
     0% {
-      transform: translateX(100%);
+      transform: translateX(30%);
     }
     100% {
       transform: translateX(-100%);

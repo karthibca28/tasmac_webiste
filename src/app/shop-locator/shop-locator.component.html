@@ -8,38 +8,44 @@
         </div>
         <div class="mb-3">
           <label>Select RV Shop No</label>
-          <app-search-dropdown 
+          <!-- <app-search-dropdown 
             [options]="rvShopNos" 
             [(selectedOption)]="selectedRvShopNo"  
             (selectedOptionChange)="filterShops()">
-          </app-search-dropdown>
+          </app-search-dropdown> -->
+          <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="name" optionValue="value"
+            dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedRvShopNo"
+            (onChange)="filterShops()"></p-dropdown>
         </div>
         <div class="form-group">
           <h6 class="mb-3">OR</h6>
         </div>
         <div class="mb-3">
           <label>Select District</label>
-          <app-search-dropdown 
-            [options]="districts" 
-            [(selectedOption)]="selectedDistrict"  
-            (selectedOptionChange)="filterShops()">
-          </app-search-dropdown>
+          <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="name" optionValue="value"
+          dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedDistrict"
+          (onChange)="filterShops()" (onChange)="filterTaluk()"></p-dropdown>
+          <!-- <app-search-dropdown [options]="districts" [(selectedOption)]="selectedDistrict"
+            (selectedOptionChange)="filterTaluk()">
+          </app-search-dropdown> -->
         </div>
         <div class="mb-3">
           <label>Select Taluk</label>
-          <app-search-dropdown 
-            [options]="taluks" 
-            [(selectedOption)]="selectedTaluk"  
+          <p-dropdown [filter]="true" appendTo="body" [options]="taluks" optionLabel="name" optionValue="value"
+            dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedTaluk"
+            (onChange)="filterShops()"></p-dropdown>
+          <!-- <app-search-dropdown [options]="taluks" [(selectedOption)]="selectedTaluk"
             (selectedOptionChange)="filterShops()">
-          </app-search-dropdown>
+          </app-search-dropdown> -->
         </div>
         <div class="mb-3">
           <label>Select Another RV Shop No</label>
-          <app-search-dropdown 
-            [options]="rvShopNos" 
-            [(selectedOption)]="selectedRvShopNo2" 
-            (selectedOptionChange)="filterShops()">
-          </app-search-dropdown>
+          <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="name" optionValue="value"
+            dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedRvShopNo"
+            (onChange)="filterShops()"></p-dropdown>
+          <!-- <app-search-dropdown [options]="rvShopNos" [(selectedOption)]="selectedRvShopNo"
+            (selectedOptionChange)="filterShopByTaluk()">
+          </app-search-dropdown> -->
         </div>
         <div class="">
           <button (click)="resetFilters()">Reset</button>
@@ -74,7 +80,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th colspan="8" class="bg-dark">
+                <th colspan="9" class="bg-dark">
                   <h2 class="py-0 m-0 text-white">RV SHOPS DETAILS</h2>
                 </th>
               </tr>
@@ -100,7 +106,7 @@
                 <td>{{ shop.taluk }}</td>
                 <td>{{ shop.area }}</td>
                 <td>{{ shop.address }}</td>
-                <td (click)="navigate(shop.latitude,shop.longitude)"><a>View</a></td>
+                <td (click)="navigate(shop.latitude,shop.longitude)"><a style="color: blue;">View</a></td>
               </tr>
             </tbody>
           </table>

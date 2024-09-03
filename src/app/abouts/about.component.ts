@@ -74,4 +74,7 @@ export class AboutComponent implements OnInit {
   downloadReport(file:any){
 
   }
+  navigateToContact(){
+    this.router.navigate(['/contact'])
+  }
 }

@@ -2309,3 +2309,16 @@ h4 {
 .primary-fc01 {
   color: #ED242C!important;
 }
+.primeng-inputbox {
+  padding: 0.63rem !important;
+}
+.p-inputtext {
+  width: 100% !important;
+  /* padding: 0.55rem 0.7rem !important; */
+  /* border: 1px solid rgb(118 118 118 / 38%) !important; */
+  padding: 0.60rem 0.75rem;
+  font-size: 0.85rem;
+}
+.p-dropdown-items-wrapper .p-dropdown-items {
+  padding-left: 0rem;
+}
