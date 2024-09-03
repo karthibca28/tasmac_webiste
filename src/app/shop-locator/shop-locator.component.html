@@ -4,38 +4,42 @@
     <div class="row">
       <div class="col-md-4 text-start">
         <div class="form-group">
-          <h5 class="mb-1">Filters</h5>
-          <hr />
-        </div>
-        <div class="form-group">
           <h6 class="mb-3">Locate shop by using shop number</h6>
         </div>
         <div class="mb-3">
-          <select [(ngModel)]="selectedRvShopNo" (change)="filterShops()" class="form-select">
-            <option value="">Select Shop No.</option>
-            <option *ngFor="let rvShopNo of rvShopNos" [value]="rvShopNo">{{ rvShopNo }}</option>
-          </select>
+          <label>Select RV Shop No</label>
+          <app-search-dropdown 
+            [options]="rvShopNos" 
+            [(selectedOption)]="selectedRvShopNo"  
+            (selectedOptionChange)="filterShops()">
+          </app-search-dropdown>
         </div>
         <div class="form-group">
           <h6 class="mb-3">OR</h6>
         </div>
         <div class="mb-3">
-          <select [(ngModel)]="selectedDistrict" (change)="filterShops()" (change)="filterTaluk()" class="form-select">
-            <option value="">Select District</option>
-            <option *ngFor="let district of districts"  [value]="district">{{ district }}</option>
-          </select>
+          <label>Select District</label>
+          <app-search-dropdown 
+            [options]="districts" 
+            [(selectedOption)]="selectedDistrict"  
+            (selectedOptionChange)="filterShops()">
+          </app-search-dropdown>
         </div>
         <div class="mb-3">
-          <select [(ngModel)]="selectedTaluk" (change)="filterShops()" (change)="filterShopByTaluk()" class="form-select">
-            <option value="">Select Taluk</option>
-            <option *ngFor="let taluk of taluks" [value]="taluk">{{ taluk }}</option>
-          </select>
+          <label>Select Taluk</label>
+          <app-search-dropdown 
+            [options]="taluks" 
+            [(selectedOption)]="selectedTaluk"  
+            (selectedOptionChange)="filterShops()">
+          </app-search-dropdown>
         </div>
         <div class="mb-3">
-          <select [(ngModel)]="selectedRvShopNo" (change)="filterShops()" class="form-select">
-            <option value="">Select RV shop No</option>
-            <option *ngFor="let rvShopNo of rvShopNos" [value]="rvShopNo">{{ rvShopNo }}</option>
-          </select>
+          <label>Select Another RV Shop No</label>
+          <app-search-dropdown 
+            [options]="rvShopNos" 
+            [(selectedOption)]="selectedRvShopNo2" 
+            (selectedOptionChange)="filterShops()">
+          </app-search-dropdown>
         </div>
         <div class="">
           <button (click)="resetFilters()">Reset</button>
@@ -83,6 +87,7 @@
                 <th>Taluk</th>
                 <th>Area</th>
                 <th>Address</th>
+                <th>Get Direction</th>
               </tr>
             </thead>
             <tbody>
@@ -95,6 +100,7 @@
                 <td>{{ shop.taluk }}</td>
                 <td>{{ shop.area }}</td>
                 <td>{{ shop.address }}</td>
+                <td (click)="navigate(shop.latitude,shop.longitude)"><a>View</a></td>
               </tr>
             </tbody>
           </table>

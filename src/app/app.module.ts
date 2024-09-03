@@ -22,6 +22,7 @@ import { InMemoryDataService } from './shared/services/in-memory-data.service';
 import { OfficeDetailsComponent } from './office-details/office-details.component';
 import { DistrictOfficesComponent } from './district-offices/district-offices.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 		CommonModule,
 		AppRoutingModule,
 		FormsModule,
-
+		BrowserAnimationsModule,
 		HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
 			dataEncapsulation: false,
 			passThruUnknownUrl: true,

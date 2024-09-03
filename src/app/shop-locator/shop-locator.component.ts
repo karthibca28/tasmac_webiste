@@ -3,6 +3,9 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { FormsModule } from '@angular/forms';
 import * as L from 'leaflet';
 import 'leaflet.markercluster'; // Import leaflet.markercluster
+import { PascalCasePipe } from '../services/pascal-case.pipe';
+import { DropdownModule } from 'primeng/dropdown';
+import { SearchDropdownComponent } from '../search-dropdown/search-dropdown.component';
 
 interface Shop {
   slNo: number;
@@ -22,7 +25,7 @@ interface Shop {
   templateUrl: './shop-locator.component.html',
   styleUrls: ['./shop-locator.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule,PascalCasePipe,DropdownModule,SearchDropdownComponent]
 })
 export class ShopLocatorComponent implements OnInit {
   @ViewChild('map', { static: true }) mapElement: ElementRef;
@@ -33,6 +36,7 @@ export class ShopLocatorComponent implements OnInit {
   selectedDistrict = '';
   selectedTaluk = '';
   selectedRvShopNo = '';
+  selectedRvShopNo2 = ''
   isShow: boolean = false;
   topPosToStartShowing = 100;
   map: L.Map;
@@ -41,7 +45,7 @@ export class ShopLocatorComponent implements OnInit {
   filteredShops: Shop[] = [];
 
   districts: string[] = [];
-  taluks: string[] = [];
+  taluks: any[] = [];
   rvShopNos: string[] = [];
 
   defaultAmbatturShop: Shop = {
@@ -89,6 +93,7 @@ export class ShopLocatorComponent implements OnInit {
         this.filterShops(); // Apply default filters
       })
       .catch(error => console.error('Error loading shop data:', error));
+      console.log(this.rvShopNos)
   }
 
   isValidShop(shop: Shop): boolean {
@@ -153,7 +158,11 @@ export class ShopLocatorComponent implements OnInit {
     }
   }
   
-
+  navigate(latitude: number, longitude: number) {
+    const googleMapsUrl = `https://www.google.com/maps/@${latitude},${longitude},15z`;
+    window.open(googleMapsUrl, '_blank');
+  }
+  
 
   onLocationFound(e: L.LocationEvent): void {
     const customIcon = L.icon({
