@@ -57,8 +57,6 @@ export class ShopLocatorComponent implements OnInit {
     address: 'No.64, Keesan Nagar, Ayanampakkam, Ch-95'
   };
 
- 
-
   @HostListener('window:scroll')
   checkScroll() {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;

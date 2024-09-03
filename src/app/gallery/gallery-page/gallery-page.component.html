@@ -1,11 +1,14 @@
-<section id="gallery" class="introduction scrollto text-center">
-	<div class="row clearfix">
-		<aside id="gallery" class="row text-center scrollto clearfix">
+<section id="gallery" class="py-5 text-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="mb-3">சமூக நீதி நாள் உறுதிமொழி</h3>
+			</div>
 			@for (image of images$ | async; track image; let i = $index) {
-				<div>
+				<div class="col-md-4">
 					<app-image-block [image]="image"></app-image-block>
 				</div>
 			}
-		</aside>
+		</div>
 	</div>
 </section>

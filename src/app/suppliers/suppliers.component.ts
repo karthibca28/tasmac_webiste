@@ -152,6 +152,28 @@ export class SuppliersComponent implements OnInit {
 		// 	phoneNo: '',
 		// },
 	];
+	winery = [
+		{
+			slNo: 1,
+			name: 'WINERY LIMITED',
+			location:
+				'Mount Tiruvallur High Road, Aranvoyal Village, Thiruvallur District 602 025',
+			phoneNo: '27621187',
+		},
+		{
+			slNo: 2,
+			name: 'WINERY PRIVATE LTD.',
+			location: 'No.112, M.M. Nagar, Valasaravakkam, Chennai 600 087',
+			phoneNo: '28291238',
+		},
+		{
+			slNo: 3,
+			name: 'WINERY STUNT LTD.',
+			location:
+				'788/2, Kuthambakkam, Thirumazhisai, Thiruvallur District 602 107',
+			phoneNo: '26811154',
+		}
+	];
 
 	constructor() {}
 

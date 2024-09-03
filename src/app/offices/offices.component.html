@@ -2,8 +2,14 @@
   <div class="container">
     <h2 class="text-center" style="font-weight: bold;">Our Offices</h2>
     <div class="row">
-      <div class="col">
+      <div class="col-12">
         <div class="office-details">
+          <div 
+            class="office-item" 
+            [ngClass]="{'active': selectedOfficeType === 'headoffice'}"
+            (click)="showDetails('headoffice')">
+            <div class="text">Head Office</div>
+          </div>
           <div 
             class="office-item" 
             [ngClass]="{'active': selectedOfficeType === 'regional'}"
@@ -24,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-12 mt-3">
         <app-office-details *ngIf="selectedOfficeData" [officeData]="selectedOfficeData"></app-office-details>
       </div>
     </div>

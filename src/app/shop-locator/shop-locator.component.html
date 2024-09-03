@@ -1,26 +1,39 @@
 <div class="shop-locator mt-4">
   <div class="container py-5 text-center">
-    <h2 class="mb-0">SHOP LOCATIONS</h2>
+    <h2 class="mb-3">SHOP LOCATIONS</h2>
     <div class="row">
       <div class="col-md-4 text-start">
         <div class="form-group">
-          <h5 class="mb-3">Filters</h5>
+          <h5 class="mb-1">Filters</h5>
+          <hr />
+        </div>
+        <div class="form-group">
+          <h6 class="mb-3">Locate shop by using shop number</h6>
         </div>
         <div class="mb-3">
-          <select [(ngModel)]="selectedDistrict" (change)="filterShops()" (change)="filterTaluk()" class="w-100">
+          <select [(ngModel)]="selectedRvShopNo" (change)="filterShops()" class="form-select">
+            <option value="">Select Shop No.</option>
+            <option *ngFor="let rvShopNo of rvShopNos" [value]="rvShopNo">{{ rvShopNo }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <h6 class="mb-3">OR</h6>
+        </div>
+        <div class="mb-3">
+          <select [(ngModel)]="selectedDistrict" (change)="filterShops()" (change)="filterTaluk()" class="form-select">
             <option value="">Select District</option>
             <option *ngFor="let district of districts"  [value]="district">{{ district }}</option>
           </select>
         </div>
         <div class="mb-3">
-          <select [(ngModel)]="selectedTaluk" (change)="filterShops()" (change)="filterShopByTaluk()" class="w-100">
+          <select [(ngModel)]="selectedTaluk" (change)="filterShops()" (change)="filterShopByTaluk()" class="form-select">
             <option value="">Select Taluk</option>
             <option *ngFor="let taluk of taluks" [value]="taluk">{{ taluk }}</option>
           </select>
         </div>
         <div class="mb-3">
-          <select [(ngModel)]="selectedRvShopNo" (change)="filterShops()" class="w-100">
-            <option value="">Select RV Shop No</option>
+          <select [(ngModel)]="selectedRvShopNo" (change)="filterShops()" class="form-select">
+            <option value="">Select RV shop No</option>
             <option *ngFor="let rvShopNo of rvShopNos" [value]="rvShopNo">{{ rvShopNo }}</option>
           </select>
         </div>

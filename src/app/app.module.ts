@@ -21,6 +21,7 @@ import { ConfigService } from './shared/services/config.service';
 import { InMemoryDataService } from './shared/services/in-memory-data.service';
 import { OfficeDetailsComponent } from './office-details/office-details.component';
 import { DistrictOfficesComponent } from './district-offices/district-offices.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { DistrictOfficesComponent } from './district-offices/district-offices.co
 		NavigationComponent,
 		NavmenuComponent,
 		SocialComponent,
+		NgSelectModule
 	],
 	providers: [ConfigService],
 	bootstrap: [AppComponent],

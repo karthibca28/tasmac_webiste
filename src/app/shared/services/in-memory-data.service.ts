@@ -148,7 +148,7 @@ export class InMemoryDataService implements InMemoryDbService {
 		];
 		const menu = [
 			{ id: 1, title: 'Home', link: '/home' },
-			{ id: 3, title: 'Our Prescense', link: '/offices' },
+			{ id: 3, title: 'Our Presence', link: '/offices' },
 			// { id: 3, title: 'Services', link: '/services' },
 			// { id: 4, title: 'Gallery', link: '/gallery' },
 			// { id: 5, title: 'Organisation', link: '/organization' },

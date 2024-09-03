@@ -15,15 +15,21 @@ import { FormsModule } from '@angular/forms';
 	styleUrl: './brands-page.component.css',
 })
 export class brandsPageComponent implements OnInit {
-	selectedTab: 'IMFS' | 'IFL' = 'IMFS';
+	selectedTab: 'ALL' | 'BEER' | 'BRANDY' | 'RUM' | 'VODKA' | 'JIN' | 'WINE' | 'WHISKY' = 'ALL';
 	searchTerm: string = '';
-	filteredImfsBrands: any[] = [];
-	filteredIfLBrands: any[] = [];
+	filteredAllBrands: any[] = [];
+	filteredBeerBrands: any[] = [];
+	filteredBrandyBrands: any[] = [];
+	filteredRumBrands: any[] = [];
+	filteredVodkaBrands: any[] = [];
+	filteredJinBrands: any[] = [];
+	filteredWineBrands: any[] = [];
+	filteredWhiskyBrands: any[] = [];
 	isShow: boolean = false;
 	topPosToStartShowing = 100;
-	imfsData: any = {
+	allData: any = {
 		date: '01.02.2024',
-		type: 'IMFS BRANDS',
+		type: 'ALL BRANDS',
 		brands: [
 			{
 				company: 'M/S. ENRICA ENTERPRISES PVT. LTD.',
@@ -2306,16 +2312,6 @@ export class brandsPageComponent implements OnInit {
 					},
 				],
 			},
-			{
-				
-			}
-		],
-	};
-
-	iflData: any = {
-		date: '19.07.2023',
-		type: 'Imported Foreign Liquor/Wine/Beer',
-		brands: [
 			{
 				company: 'M/s. VINSPRI DISTRIBUTORS PVT LTD',
 				products: [
@@ -4924,17 +4920,422 @@ export class brandsPageComponent implements OnInit {
 			},
 		],
 	};
-
-	imfsBeer:any={
-
-	}
+	beerData: any = {
+		date: '01.02.2024',
+		type: 'BEER',
+		brands: [
+			{
+				company: 'M/S. ENRICA ENTERPRISES PVT. LTD.',
+				products: [
+					{
+						name: 'GOLDEN GRAPE ORDINARY BRANDY',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'OLD KING XXXX RUM',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "MEN'S CLUB DELUXE BRANDY",
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'BAGPIPER MEDIUM WHISKY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'NO.1 MC DOWELL MEDIUM WHISKY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "NO.1 MC DOWELL'S FINE BRANDY",
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'HONEY BEE FINE BRANDY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+				],
+			},
+		]
+	};
+	brandyData: any = {
+		date: '01.02.2024',
+		type: 'BRANDY',
+		brands: [
+			{
+				company: 'M/S. ENRICA ENTERPRISES PVT. LTD.',
+				products: [
+					{
+						name: 'GOLDEN GRAPE ORDINARY BRANDY',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'OLD KING XXXX RUM',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "MEN'S CLUB DELUXE BRANDY",
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "NO.1 MC DOWELL'S FINE BRANDY",
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'HONEY BEE FINE BRANDY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+				],
+			},
+		]
+	};
+	vodkaData: any = {
+		date: '01.02.2024',
+		type: 'VODKA',
+		brands: [
+			{
+				company: 'M/S. ENRICA ENTERPRISES PVT. LTD.',
+				products: [
+					{
+						name: 'GOLDEN GRAPE ORDINARY BRANDY',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'OLD KING XXXX RUM',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "MEN'S CLUB DELUXE BRANDY",
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "NO.1 MC DOWELL'S FINE BRANDY",
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'HONEY BEE FINE BRANDY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+				],
+			},
+		]
+	};
+	rumData: any = {
+		date: '01.02.2024',
+		type: 'RUM',
+		brands: [
+			{
+				company: 'M/S. ENRICA ENTERPRISES PVT. LTD.',
+				products: [
+					{
+						name: 'GOLDEN GRAPE ORDINARY BRANDY',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'OLD KING XXXX RUM',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "MEN'S CLUB DELUXE BRANDY",
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "NO.1 MC DOWELL'S FINE BRANDY",
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'HONEY BEE FINE BRANDY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+				],
+			},
+		]
+	};
+	wineData: any = {
+		date: '01.02.2024',
+		type: 'WINE',
+		brands: [
+			{
+				company: 'M/S. ENRICA ENTERPRISES PVT. LTD.',
+				products: [
+					{
+						name: 'GOLDEN GRAPE ORDINARY BRANDY',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'OLD KING XXXX RUM',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "MEN'S CLUB DELUXE BRANDY",
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "NO.1 MC DOWELL'S FINE BRANDY",
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'HONEY BEE FINE BRANDY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+				],
+			},
+		]
+	};
+	whiskyData: any = {
+		date: '01.02.2024',
+		type: 'WHISKY',
+		brands: [
+			{
+				company: 'M/S. ENRICA ENTERPRISES PVT. LTD.',
+				products: [
+					{
+						name: 'GOLDEN GRAPE ORDINARY BRANDY',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'OLD KING XXXX RUM',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "MEN'S CLUB DELUXE BRANDY",
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "NO.1 MC DOWELL'S FINE BRANDY",
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'HONEY BEE FINE BRANDY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+				],
+			},
+		]
+	};
+	jinData: any = {
+		date: '01.02.2024',
+		type: 'Gin',
+		brands: [
+			{
+				company: 'M/S. ENRICA ENTERPRISES PVT. LTD.',
+				products: [
+					{
+						name: 'GOLDEN GRAPE ORDINARY BRANDY',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'OLD KING XXXX RUM',
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "MEN'S CLUB DELUXE BRANDY",
+						prices: {
+							'1000 ml': 560,
+							'750 ml': 280,
+							'375 ml': 140,
+							'180 ml': null,
+						},
+					},
+					{
+						name: "NO.1 MC DOWELL'S FINE BRANDY",
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+					{
+						name: 'HONEY BEE FINE BRANDY',
+						prices: {
+							'1000 ml': 680,
+							'750 ml': 340,
+							'375 ml': 170,
+							'180 ml': null,
+						},
+					},
+				],
+			},
+		]
+	};
 
 	brands$: Observable<Brands> = new Observable();
 	companies$: Observable<Company[]> = new Observable();
 
 	constructor(private config: ConfigService) {
-		this.filteredImfsBrands = this.imfsData.brands;
-		this.filteredIfLBrands = this.iflData.brands;
+		this.initializeFilteredData();
 	}
 	
 	@HostListener('window:scroll')
@@ -4955,6 +5356,16 @@ export class brandsPageComponent implements OnInit {
 		this.getPageData('pages', 2);
 		this.getBlockData('companies');
 	}
+	initializeFilteredData() {
+		this.filteredAllBrands = this.allData.brands;
+		this.filteredBeerBrands = this.beerData.brands;
+		this.filteredBrandyBrands = this.brandyData.brands;
+		this.filteredRumBrands = this.rumData.brands;
+		this.filteredVodkaBrands = this.vodkaData.brands;
+		this.filteredJinBrands = this.jinData.brands;
+		this.filteredWineBrands = this.wineData.brands;
+		this.filteredWhiskyBrands = this.whiskyData.brands;
+	}
 
 	getPageData(database: string, id?: number) {
 		this.brands$ = this.config.getSettings(database, id).pipe(
@@ -4974,35 +5385,58 @@ export class brandsPageComponent implements OnInit {
 		);
 	}
 
-	selectTab(tab: 'IMFS' | 'IFL') {
+	selectTab(tab: 'ALL' | 'BEER' | 'BRANDY' | 'RUM' | 'VODKA' | 'JIN' | 'WINE' | 'WHISKY') {
 		this.selectedTab = tab;
 		this.filterProducts();
 	}
 
 	filterProducts() {
-		if (this.selectedTab === 'IMFS') {
-		  if (!this.imfsData || !this.imfsData.brands) {
-			console.error('IMFS data or brands are missing');
-			return; // Exit function if data is not available
-		  }
-		  console.log('IMFS Data Before Filtering:', this.imfsData.brands);
-		  this.filteredImfsBrands = this.filterBrands(this.imfsData.brands);
-		  console.log('Filtered IMFS Brands:', this.filteredImfsBrands);
-		} else {
-		  if (!this.iflData || !this.iflData.brands) {
-			console.error('IFL data or brands are missing');
-			return; // Exit function if data is not available
-		  }
-		  console.log('IFL Data Before Filtering:', this.iflData.brands);
-		  this.filteredIfLBrands = this.filterBrands(this.iflData.brands);
-		  console.log('Filtered IFL Brands:', this.filteredIfLBrands);
+		switch (this.selectedTab) {
+			case 'ALL':
+				this.filteredAllBrands = this.filterBrands(this.allData.brands);
+				break;
+			case 'BEER':
+				this.filteredBeerBrands = this.filterBrands(this.beerData.brands);
+				break;
+			case 'BRANDY':
+				this.filteredBrandyBrands = this.filterBrands(this.brandyData.brands);
+				break;
+			case 'RUM':
+				this.filteredRumBrands = this.filterBrands(this.rumData.brands);
+				break;
+			case 'VODKA':
+				this.filteredVodkaBrands = this.filterBrands(this.vodkaData.brands);
+				break;
+			case 'JIN':
+				this.filteredJinBrands = this.filterBrands(this.jinData.brands);
+				break;
+			case 'WINE':
+				this.filteredWineBrands = this.filterBrands(this.wineData.brands);
+				break;
+			case 'WHISKY':
+				this.filteredWhiskyBrands = this.filterBrands(this.whiskyData.brands);
+				break;
+			default:
+				console.error('Invalid tab selection');
 		}
+		// if (this.selectedTab === 'ALL') {
+		//   if (!this.allData || !this.allData.brands) {
+		// 	return;
+		//   }
+		//   this.filteredAllBrands = this.filterBrands(this.allData.brands);
+		// } else {
+		//   if (!this.beerData || !this.beerData.brands) {
+		// 	console.error('Beer data or brands are missing');
+		// 	return;
+		//   }
+		//   this.filteredBeerBrands = this.filterBrands(this.beerData.brands);
+		// }
 	  }
 	  
 	  filterBrands(brands: any[]) {
 		if (!brands || !Array.isArray(brands)) {
 		  console.error('Brands are not an array:', brands);
-		  return []; // Return an empty array if brands is invalid
+		  return [];
 		}
 	  
 		console.log('Brands Before Filtering:', brands);

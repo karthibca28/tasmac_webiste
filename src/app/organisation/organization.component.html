@@ -1,60 +1,28 @@
-
-<div class="organization-container py-4">
-    <div class="container text-center">
-        <h3 class="mb-3">Board of Directors</h3>
-        <p class="text-secondary">The Board of Directors of TASMAC with the following members takes policy decision and monitors the functioning of TASMAC.</p>
-        <div class="row justify-content-center">
-            <div class="col">
-                <ul class="nav nav-pills pt-2" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Board of Directors</button>
+<div class="py-4 text-center">
+    <h3 class="mb-3">Board of Directors</h3>
+    <p class="text-secondary">The Board of Directors of TASMAC with the following members takes policy decision and monitors the functioning of TASMAC.</p>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <ul class="nav nav-pills pt-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Board of Directors</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-ho-tab" data-bs-toggle="pill" data-bs-target="#pills-ho" type="button" role="tab" aria-controls="pills-ho" aria-selected="false">Head Office</button>
+                </li>
+                <!-- <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-how-tab" data-bs-toggle="pill" data-bs-target="#pills-how" type="button" role="tab" aria-controls="pills-how" aria-selected="false">Head Office Workflow</button>
+                </li> -->
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-srm-tab" data-bs-toggle="pill" data-bs-target="#pills-srm" type="button" role="tab" aria-controls="pills-srm" aria-selected="false">SRM Office</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="pills-ho-tab" data-bs-toggle="pill" data-bs-target="#pills-ho" type="button" role="tab" aria-controls="pills-ho" aria-selected="false">Head Office</button>
-                    </li>
-                    <!-- <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="pills-how-tab" data-bs-toggle="pill" data-bs-target="#pills-how" type="button" role="tab" aria-controls="pills-how" aria-selected="false">Head Office Workflow</button>
-                    </li> -->
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-srm-tab" data-bs-toggle="pill" data-bs-target="#pills-srm" type="button" role="tab" aria-controls="pills-srm" aria-selected="false">SRM Office</button>
-                      </li>
-                </ul>
-                <div class="tab-content pt-4" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-4 mt-2" *ngFor="let director of boardDirectors">
-                                    <div class="card h-100">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <img [src]="director.image" alt="{{ director.name }}" class="rounded-circle" height="100px" width="100px">
-                                            </div>
-                                            <h1>{{ director.name }}</h1>
-                                            <p class="text-primary text-uppercase mb-2">{{ director.position }}</p>
-                                            <p>{{ director.contact }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-ho" role="tabpanel" aria-labelledby="pills-ho-tab">
+            </ul>
+            <div class="tab-content pt-4" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="container">
                         <div class="row">
-                            <div class="col">
-                                <img src="./assets/images/logo/tasmac_org_chart.jpg" class="w-100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-how" role="tabpanel" aria-labelledby="pills-how-tab">
-                        <div class="row">
-                            <div class="col-md-12">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-srm" role="tabpanel" aria-labelledby="pills-srm-tab">
-                        <div class="row">
-                            <div class="col-md-4" *ngFor="let director of srmDirectors">
-                                <div class="card">
+                            <div class="col-md-4 col-lg-4 mt-2" *ngFor="let director of boardDirectors">
+                                <div class="card h-100">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-center align-items-center">
                                             <img [src]="director.image" alt="{{ director.name }}" class="rounded-circle" height="100px" width="100px">
@@ -63,6 +31,87 @@
                                         <p class="text-primary text-uppercase mb-2">{{ director.position }}</p>
                                         <p>{{ director.contact }}</p>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-ho" role="tabpanel" aria-labelledby="pills-ho-tab">
+                    <div class="row">
+                        <!-- <div class="col-md-12 text-center">
+                            <div class="table-responsive">
+                                <h3 class="fs-bold mb-3">ORGANIZATION CHART</h3>
+                                <div class="tree">
+                                    <ul>
+                                        <li>
+                                            <a href="#">MANAGING DIRECTOR</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">GENERAL MANAGER(Finance)</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#">CHIEF ACCOUNTS OFFICER</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">GENERAL MANAGER(Wholesale & Admin)</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">GENERAL MANAGER(Retail Vending)</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">SENIOR REGIONAL<br/>MANAGERS</a>
+                                                    <ul>
+                                                        <li><a href="#">Grand Child</a></li>
+                                                        <li>
+                                                            <a href="#">Grand Child</a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#">Great Grand Child</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">Great Grand Child</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">Great Grand Child</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href="#">Grand Child</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">COMPANY SECRETARY</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-md-10 offset-md-1">
+                            <img src="./assets/images/logo/tasmac_org_chart.jpg" class="w-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-how" role="tabpanel" aria-labelledby="pills-how-tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-srm" role="tabpanel" aria-labelledby="pills-srm-tab">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let director of srmDirectors">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img [src]="director.image" alt="{{ director.name }}" class="rounded-circle" height="100px" width="100px">
+                                    </div>
+                                    <h1>{{ director.name }}</h1>
+                                    <p class="text-primary text-uppercase mb-2">{{ director.position }}</p>
+                                    <p>{{ director.contact }}</p>
                                 </div>
                             </div>
                         </div>

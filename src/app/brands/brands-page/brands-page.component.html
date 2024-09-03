@@ -20,36 +20,41 @@
   </div>
 </section> -->
 
-
-<main>
-
-<div class="brands-page">
-  <div class="container py-5 text-center">
-    <h2 class="mb-0 pb-0">RETAIIL PRICES</h2>
+<div class="container py-4">
+    <h2 class="">RETAIIL PRICES</h2>
     <div class="row">
-        <div class="col">
-          <div class="search-container">
-            <input type="text" placeholder="Search products..." [(ngModel)]="searchTerm" (input)="filterProducts()" class="search-bar" />
-            <button (click)="clearSearch()" class="clear-button">Clear</button>
-          </div>
+        <div class="col-md-7"></div>
+        <div class="col-md-5 text-end">
+            <div class="search-container d-flex justify-content-between">
+              <!-- <input type="text" placeholder="Search products..." [(ngModel)]="searchTerm" (input)="filterProducts()" class="" /> -->
+              <input type="text" class="form-control mb-2" [(ngModel)]="searchTerm" (input)="filterProducts()" placeholder="Search products...">
+              <div>
+                <button (click)="clearSearch()" class="btn btn-primary ms-1 mt-1">Clear</button>
+              </div>
+            </div>
+        </div>
+        <div class="col-12">
           <div class="tabs-container">
             <div class="tabs">
-              <button class="tab-button" [class.active]="selectedTab === 'IMFS'" (click)="selectTab('IMFS')">IMFS</button>
-              <button class="tab-button" [class.active]="selectedTab === 'IFL'" (click)="selectTab('IFL')">IFL</button>
-              <button class="tab-button" [class.active]="selectedTab === 'BEER'" (click)="selectTab('BEER')">BEER</button>
-              <button class="tab-button" [class.active]="selectedTab === 'WINE'" (click)="selectTab('WINE')">WINE</button>
-              <button class="tab-button" [class.active]="selectedTab === 'WHISKY'" (click)="selectTab('WHISKY')">WHISKY</button>
-              <button class="tab-button" [class.active]="selectedTab === 'JIN'" (click)="selectTab('JIN')">JIN</button>
+                <button class="tab-button" [class.active]="selectedTab === 'ALL'" (click)="selectTab('ALL')">All products</button>
+                <!-- <button class="tab-button" [class.active]="selectedTab === 'IMFS'" (click)="selectTab('IMFS')">IMFS</button>
+                <button class="tab-button" [class.active]="selectedTab === 'IFL'" (click)="selectTab('IFL')">IFL</button> -->
+                <button class="tab-button" [class.active]="selectedTab === 'BEER'" (click)="selectTab('BEER')">Beer</button>
+                <button class="tab-button" [class.active]="selectedTab === 'BRANDY'" (click)="selectTab('BRANDY')">Brandy</button>
+                <button class="tab-button" [class.active]="selectedTab === 'JIN'" (click)="selectTab('JIN')">Gin</button>
+                <button class="tab-button" [class.active]="selectedTab === 'RUM'" (click)="selectTab('RUM')">Rum</button>
+                <button class="tab-button" [class.active]="selectedTab === 'VODKA'" (click)="selectTab('RUM')">Vodka</button>
+                <button class="tab-button" [class.active]="selectedTab === 'WHISKY'" (click)="selectTab('WHISKY')">Whisky</button>
+                <button class="tab-button" [class.active]="selectedTab === 'WINE'" (click)="selectTab('WINE')">Wine</button>
             </div>
-            <div class="content mx-2">
-              <div *ngIf="selectedTab === 'IMFS'">
+            <div class="content mx-2 w-100">
+              <div *ngIf="selectedTab === 'ALL'">
                 <div class="date-type-container mb-2">
-                  <h2>MRP PRICE LIST AS ON {{ imfsData.date }}</h2>
-                  <h3>MAXIMUM RETAIL PRICE OF {{ imfsData.type }}</h3>
+                  <h2>MRP PRICE LIST AS ON {{ allData.date }}</h2>
+                  <h3>MAXIMUM RETAIL PRICE OF {{ allData.type }}</h3>
                 </div>
-                <div *ngFor="let company of filteredImfsBrands; let i = index">
-                  <div class="table-responsive">
-                    <table class="table">
+                <div class="table-responsive" *ngFor="let company of filteredAllBrands; let i = index">
+                    <table class="table w-100">
                       <thead>
                         <tr>
                           <th colspan="6" class="text-start bg-secondary bg-gradient">
@@ -80,16 +85,15 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div>
                 </div>
               </div>
     
-              <div *ngIf="selectedTab === 'IFL'">
+              <div *ngIf="selectedTab === 'BEER'">
                 <div class="date-type-container mb-2">
-                  <h2>MRP PRICE LIST AS ON {{ iflData.date }}</h2>
-                  <h3>MAXIMUM RETAIL PRICE OF {{ iflData.type }}</h3>
+                  <h2>MRP PRICE LIST AS ON {{ beerData.date }}</h2>
+                  <h3>MAXIMUM RETAIL PRICE OF {{ beerData.type }}</h3>
                 </div>
-                <div *ngFor="let company of filteredIfLBrands; let i = index">
+                <div *ngFor="let company of filteredBeerBrands; let i = index">
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -125,12 +129,53 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="selectedTab === 'BEER'">
+              <div *ngIf="selectedTab === 'BRANDY'">
                 <div class="date-type-container mb-2">
-                  <h2>MRP PRICE LIST AS ON {{ iflData.date }}</h2>
-                  <h3>MAXIMUM RETAIL PRICE OF {{ iflData.type }}</h3>
+                  <h2>MRP PRICE LIST AS ON {{ brandyData.date }}</h2>
+                  <h3>MAXIMUM RETAIL PRICE OF {{ brandyData.type }}</h3>
                 </div>
-                <div *ngFor="let company of filteredIfLBrands; let i = index">
+                <div *ngFor="let company of filteredBrandyBrands; let i = index">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th colspan="6" class="text-start bg-secondary bg-gradient">
+                            <h4 class="py-0 m-0 text-white">{{ company.company }}</h4>
+                          </th>
+                        </tr>
+                        <tr>
+                          <th>S.NO</th>
+                          <th>Product Name</th>
+                          <th>1000 ml</th>
+                          <th>750 ml</th>
+                          <th>375 ml</th>
+                          <th>180 ml</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let product of company.products; let j = index">
+                          <td>{{ j + 1 }}</td>
+                          <td>{{ product.name }}</td>
+                          <!-- <td>{{ product.prices['1000 ml'] || 'N/A' }}</td>
+                          <td>{{ product.prices['750 ml'] || 'N/A' }}</td>
+                          <td>{{ product.prices['375 ml'] || 'N/A' }}</td>
+                          <td>{{ product.prices['180 ml'] || 'N/A' }}</td> -->
+                          <td>{{ product.prices['1000 ml'] ? 'Rs. ' + product.prices['1000 ml'] : 'N/A' }}</td>
+                          <td>{{ product.prices['750 ml'] ? 'Rs. ' + product.prices['750 ml'] : 'N/A' }}</td>
+                          <td>{{ product.prices['375 ml'] ? 'Rs. ' + product.prices['375 ml'] : 'N/A' }}</td>
+                          <td>{{ product.prices['180 ml'] ? 'Rs. ' + product.prices['180 ml'] : 'N/A' }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="selectedTab === 'RUM'">
+                <div class="date-type-container mb-2">
+                  <h2>MRP PRICE LIST AS ON {{ rumData.date }}</h2>
+                  <h3>MAXIMUM RETAIL PRICE OF {{ rumData.type }}</h3>
+                </div>
+                <div *ngFor="let company of filteredRumBrands; let i = index">
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -168,10 +213,51 @@
               </div>
               <div *ngIf="selectedTab === 'WINE'">
                 <div class="date-type-container mb-2">
-                  <h2>MRP PRICE LIST AS ON {{ iflData.date }}</h2>
-                  <h3>MAXIMUM RETAIL PRICE OF {{ iflData.type }}</h3>
+                  <h2>MRP PRICE LIST AS ON {{ wineData.date }}</h2>
+                  <h3>MAXIMUM RETAIL PRICE OF {{ wineData.type }}</h3>
                 </div>
-                <div *ngFor="let company of filteredIfLBrands; let i = index">
+                <div *ngFor="let company of filteredWineBrands; let i = index">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th colspan="6" class="text-start bg-secondary bg-gradient">
+                            <h4 class="py-0 m-0 text-white">{{ company.company }}</h4>
+                          </th>
+                        </tr>
+                        <tr>
+                          <th>S.NO</th>
+                          <th>Product Name</th>
+                          <th>1000 ml</th>
+                          <th>750 ml</th>
+                          <th>375 ml</th>
+                          <th>180 ml</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let product of company.products; let j = index">
+                          <td>{{ j + 1 }}</td>
+                          <td>{{ product.name }}</td>
+                          <!-- <td>{{ product.prices['1000 ml'] || 'N/A' }}</td>
+                          <td>{{ product.prices['750 ml'] || 'N/A' }}</td>
+                          <td>{{ product.prices['375 ml'] || 'N/A' }}</td>
+                          <td>{{ product.prices['180 ml'] || 'N/A' }}</td> -->
+                          <td>{{ product.prices['1000 ml'] ? 'Rs. ' + product.prices['1000 ml'] : 'N/A' }}</td>
+                          <td>{{ product.prices['750 ml'] ? 'Rs. ' + product.prices['750 ml'] : 'N/A' }}</td>
+                          <td>{{ product.prices['375 ml'] ? 'Rs. ' + product.prices['375 ml'] : 'N/A' }}</td>
+                          <td>{{ product.prices['180 ml'] ? 'Rs. ' + product.prices['180 ml'] : 'N/A' }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="selectedTab === 'VODKA'">
+                <div class="date-type-container mb-2">
+                  <h2>MRP PRICE LIST AS ON {{ vodkaData.date }}</h2>
+                  <h3>MAXIMUM RETAIL PRICE OF {{ vodkaData.type }}</h3>
+                </div>
+                <div *ngFor="let company of filteredVodkaBrands; let i = index">
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -209,10 +295,10 @@
               </div>
               <div *ngIf="selectedTab === 'WHISKY'">
                 <div class="date-type-container mb-2">
-                  <h2>MRP PRICE LIST AS ON {{ iflData.date }}</h2>
-                  <h3>MAXIMUM RETAIL PRICE OF {{ iflData.type }}</h3>
+                  <h2>MRP PRICE LIST AS ON {{ whiskyData.date }}</h2>
+                  <h3>MAXIMUM RETAIL PRICE OF {{ whiskyData.type }}</h3>
                 </div>
-                <div *ngFor="let company of filteredIfLBrands; let i = index">
+                <div *ngFor="let company of filteredWhiskyBrands; let i = index">
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -250,10 +336,10 @@
               </div>
               <div *ngIf="selectedTab === 'JIN'">
                 <div class="date-type-container mb-2">
-                  <h2>MRP PRICE LIST AS ON {{ iflData.date }}</h2>
-                  <h3>MAXIMUM RETAIL PRICE OF {{ iflData.type }}</h3>
+                  <h2>MRP PRICE LIST AS ON {{ jinData.date }}</h2>
+                  <h3>MAXIMUM RETAIL PRICE OF {{ jinData.type }}</h3>
                 </div>
-                <div *ngFor="let company of filteredIfLBrands; let i = index">
+                <div *ngFor="let company of filteredJinBrands; let i = index">
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -293,9 +379,9 @@
           </div>
         </div>
     </div>
-  </div>
 </div>
 
+<main>
 <div class="scroll-to-top" [ngClass]="{'show': isShow}" (click)="scrollToTop()">
   ↑
 </div>  

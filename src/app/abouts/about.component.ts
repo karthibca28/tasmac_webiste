@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { FeatureBlockComponent } from './feature-block/feature-block.component';
 import { AppModule } from '../app.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -19,11 +20,18 @@ export class AboutComponent implements OnInit {
   intro$: Observable<Intro>;
   features$: Observable<Feature[]>;
 
-  constructor(private config: ConfigService) { }
+  constructor(private config: ConfigService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadPageData('pages', 1);
     this.loadFeatureData('features');
+  }
+
+  navigateToBrands() {
+    this.router.navigate(['/brands']);
+  }
+  navigateToEvents() {
+    this.router.navigate(['/gallery']);
   }
 
   private loadPageData(database: string, id?: number): void {

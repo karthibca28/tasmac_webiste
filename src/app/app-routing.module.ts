@@ -88,6 +88,62 @@ const routes: Routes = [
 				mod => mod.OfficesComponent
 			),
 	},
+	{
+		path: 'rti',
+		loadComponent: () =>
+			import('./allpolicy/rti/rti.component').then(
+				mod => mod.RtiComponent
+			),
+	},
+	{
+		path: 'policies',
+		loadComponent: () =>
+			import('./allpolicy/policies/policies.component').then(
+				mod => mod.PoliciesComponent
+			),
+	},
+	{
+		path: 'actrules',
+		loadComponent: () =>
+			import('./allpolicy/act-rules/act-rules.component').then(
+				mod => mod.ActRulesComponent
+			),
+	},
+	{
+		path: 'feedback',
+		loadComponent: () =>
+			import('./allpolicy/feedback/feedback.component').then(
+				mod => mod.FeedbackComponent
+			),
+	},
+	{
+		path: 'disclaimer',
+		loadComponent: () =>
+			import('./allpolicy/disclaimer/disclaimer.component').then(
+				mod => mod.DisclaimerComponent
+			),
+	},
+	{
+		path: 'privacypolicy',
+		loadComponent: () =>
+			import('./allpolicy/privacypolicy/privacypolicy.component').then(
+				mod => mod.PrivacypolicyComponent
+			),
+	},
+	{
+		path: 'sitemap',
+		loadComponent: () =>
+			import('./allpolicy/sitemap/sitemap.component').then(
+				mod => mod.SitemapComponent
+			),
+	},
+	{
+		path: 'termservice',
+		loadComponent: () =>
+			import('./allpolicy/termservice/termservice.component').then(
+				mod => mod.TermserviceComponent
+			),
+	},
 	
 	{
 		path: '404',

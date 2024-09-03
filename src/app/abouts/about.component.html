@@ -1,160 +1,329 @@
-<section id="about">
-	<div class="container py-4">
-		<div class="text-center">
-			<h3 class="mb-3 fs-bold">Explore</h3>
-			<p class="text-black-50" style="font-size: 15px;">TASMAC procures IMFS and Beer from 11 local IMFS
-				manufacturers, 7 Beer manufacturers, and one local wine producer. It also sources Scotch, Whisky, and
-				select wine brands from other states. TASMAC handles the retail sale of Foreign Liquor and distributes
-				IMFS & Beer through 43 depots across the State.</p>
-		</div>
-		<div class="row">
-			<div class="col-md-6 mt-2">
-				<div class="cardGrid">
-					<a class="card1">
-						<h4>Tenders</h4>
-						<p class="small mb-0">Explore tender opportunities and procurement notices from our
-							organization. Stay updated on current bids and contracts for suppliers and contractors
-							across sectors. Our transparent, competitive process ensures equal opportunities for all
-							participants.</p>
-						<div class="go-corner">
-							<div class="go-arrow">
-								→
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-6 mt-2">
-				<div class="cardGrid">
-					<a class="card1">
-						<h4>Retail Prices</h4>
-						<p class="small mb-0">Access the latest list of Maximum Retail Prices (MRP) for a wide range of
-							products. This section ensures consumers are informed about the price limits set by
-							authorities to prevent overpricing and protect consumer interests.</p>
-						<div class="go-corner">
-							<div class="go-arrow">
-								→
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-6 mt-2">
-				<div class="cardGrid">
-					<a class="card1">
-						<h4>Excise Duty/VAT Structure</h4>
-						<p class="small mb-0">Understand the current excise duty and VAT structure for various products
-							and services. Find detailed information on tax rates, exemptions, and compliance to help
-							businesses and consumers navigate the tax landscape.</p>
-						<div class="go-corner">
-							<div class="go-arrow">
-								→
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-			<!-- </div>
-		<div class="row mt-3"> -->
-			<div class="col-md-6 mt-2">
-				<div class="cardGrid">
-					<a class="card1">
-						<h4>Vigiliance & Anti Corruption</h4>
-						<p class="small mb-0">Our Vigilance and Anti-Corruption wing promotes transparency and
-							accountability, preventing and addressing corruption. Find resources, guidelines, and
-							contact information for reporting unethical activities to ensure a fair environment.</p>
-						<div class="go-corner">
-							<div class="go-arrow">
-								→
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-6 mt-2">
-				<div class="cardGrid">
-					<a class="card1">
-						<h4>Online Import Permit (IFL)</h4>
-						<p class="small mb-0">Apply and manage your import permits online with ease. This section
-							provides a streamlined process for obtaining the necessary permits for importing goods,
-							ensuring compliance with regulatory requirements and facilitating smooth trade operations.
-						</p>
-						<div class="go-corner">
-							<div class="go-arrow">
-								→
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-md-6 mt-2">
-				<div class="cardGrid">
-					<a class="card1">
-						<h4>Online Export Permit - Beer</h4>
-						<p class="small mb-0">Simplify your export process with our online export permit system. This
-							section offers a convenient way to apply for and track export permits, ensuring that your
-							goods meet all regulatory standards and facilitating efficient international trade.</p>
-						<div class="go-corner">
-							<div class="go-arrow">
-								→
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-
-			<div class="col-md-12 mt-2">
-				<div class="card">
-					<div class="card-body" style="display: flex;justify-content: space-between;align-items: center;">
-						<div class="col-md-6">
-							<button type="button" class="btn btn-outline-success btn-sm"
-								(click)="forms('annual_report')">
-								Annual Reports
-							</button>
-							<button type="button" class="btn btn-outline-success btn-sm ms-2"
-								(click)="forms('forms_report')">
-								Forms
-							</button>
-						</div>
-						<div class="col-md-6">
-							<li *ngFor="let report of reports" style="justify-content: start;display: grid;">
-								<a [href]="report.file" target="_blank" style="text-decoration: none; color: inherit;">
-									{{ report.name }}
-								</a>
-							</li>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- <div class="row">
-			<ng-container *ngIf="intro$ | async as intro">
-			  <div class="col-md-4">
-				<div class="section-heading">
-					<h2 class="tagline mb-0">Explore</h2>
-					<h2 class="section-title text-primary mb-0">{{ intro.title }}</h2>
-					<p class="">{{ intro.description }}</p>
-				</div>
-			  </div>
-			</ng-container>
-		
-		<ng-container *ngIf="features$ | async as features">
-			  <div class="feature-grid">
-				<div *ngFor="let feature of features" class="feature-card">
-				  <a [href]="feature.link" target="_blank" class="feature-link">
-					<div class="icon-block">
-					  <div class="icon">
-						<i class="fa fa-{{ feature.icon }} fa-2x"></i>
-					  </div>
-					  <div class="icon-block-description">
-						<h4 class="feature-title">{{ feature.title }}</h4>
-						<p class="feature-description">{{ feature.description }}</p>
-					  </div>
-					</div>
-				  </a>
-				</div>
-			  </div>
-			</ng-container>
-		</div>  -->
+<div id="about" class="py-md-4 py-2">
+	<div class="text-center px-3 px-md-5">
+		<h3 class="mb-3 fs-bold">Quick Links</h3>
+		<p class="text-black-50" style="font-size: 15px;">TASMAC procures IMFS and Beer from 11 local IMFS
+			manufacturers, 7 Beer manufacturers, and one local wine producer. It also sources Scotch, Whisky, and
+			select wine brands from other states. TASMAC handles the retail sale of Foreign Liquor and distributes
+			IMFS & Beer through 43 depots across the State.</p>
 	</div>
-</section>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="flip-card mx-auto my-3">
+				<div class="flip-card-inner">
+				  <!-- Front Side -->
+				  <div class="flip-card-front card border-0">
+					<div class="card-body">
+					  <h5 class="card-title text-center">Notice Board</h5>
+					  <p class="card-text text-center">This is the front side of the flip card.</p>
+					</div>
+				  </div>
+				  <!-- Back Side -->
+				  <div class="flip-card-back card border-0 text-white bg-primary">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <div class="text-center">
+						<h5 class="card-title">Back Side</h5>
+						<p class="card-text">Get an overview of TASMAC's operations, history, and impact on the local economy. Explore key facts and figures at a glance.</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="flip-card mx-auto">
+				<div class="flip-card-inner">
+				  <!-- Front Side -->
+				  <div class="flip-card-front card border-0 shadow">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <h5 class="mb-0">Shop Locator</h5>
+					</div>
+				  </div>
+				  <!-- Back Side -->
+				  <div class="flip-card-back card border-0 text-white bg-primary">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <div class="text-center">
+						<h5 class="card-title">Shop Locator</h5>
+						<p class="card-text">Find your nearest TASMAC outlet with our easy-to-use shop locator. Search by shop number ,district and get directions to the closest store.</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="flip-card mx-auto ">
+				<div class="flip-card-inner">
+				  <!-- Front Side -->
+				  <div class="flip-card-front card border-0 shadow">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <h5 class="mb-0">TASMAC at a Glance</h5>
+					</div>
+				  </div>
+				  <!-- Back Side -->
+				  <div class="flip-card-back card border-0 text-white bg-primary">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <div class="text-center">
+						<h5 class="card-title">TASMAC at a Glance</h5>
+						<p class="card-text">Get an overview of TASMAC's operations, history, and impact on the local economy. Explore key facts and figures at a glance.</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="flip-card mx-auto">
+				<div class="flip-card-inner">
+				  <!-- Front Side -->
+				  <div class="flip-card-front card border-0 shadow">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <h5 class="mb-0">Complaints and Grievances</h5>
+					</div>
+				  </div>
+				  <!-- Back Side -->
+				  <div class="flip-card-back card border-0 text-white bg-primary">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <div class="text-center">
+						<h5 class="card-title">Complaints and Grievances</h5>
+						<p class="card-text">Have a concern or issue? Submit your complaints and grievances here, and we'll ensure they are addressed promptly and effectively.</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="flip-card mx-auto">
+				<div class="flip-card-inner">
+				  <!-- Front Side -->
+				  <div class="flip-card-front card border-0 shadow">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <h5 class="mb-0">TASMAC Financial Information</h5>
+					</div>
+				  </div>
+				  <!-- Back Side -->
+				  <div class="flip-card-back card border-0 text-white bg-primary">
+					<div class="card-body d-flex align-items-center justify-content-center">
+					  <div class="text-center">
+						<h5 class="card-title">TASMAC Financial Information</h5>
+						<p class="card-text">Access annual reports and financial statements to understand TASMAC's performance. Download the latest reports and financial documents here.</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<a (click)="navigateToBrands()" class="pe-auto">
+				<div class="flip-card mx-auto">
+					<div class="flip-card-inner">
+					<!-- Front Side -->
+					<div class="flip-card-front card border-0 shadow">
+						<div class="card-body d-flex align-items-center justify-content-center">
+						<h4 class="mb-0">Events</h4>
+						</div>
+					</div>
+					<!-- Back Side -->
+					<div class="flip-card-back card border-0 text-white bg-primary">
+						<div class="card-body d-flex align-items-center justify-content-center">
+							<div class="text-center">
+								<h5 class="card-title">Events</h5>
+								<p class="card-text">Stay updated with the latest events hosted by TASMAC. Browse through our event and explore the gallery for photos and highlights.</p>
+								<button type="button" class="btn btn-danger btn-sm ms-2">
+									View Events
+								</button>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="col-md-4">
+			<a (click)="navigateToBrands()" class="pe-auto">
+				<div class="flip-card mx-auto">
+					<div class="flip-card-inner">
+					<!-- Front Side -->
+					<div class="flip-card-front card border-0 shadow">
+						<div class="card-body d-flex align-items-center justify-content-center">
+						<h4 class="mb-0">Retail Prices</h4>
+						</div>
+					</div>
+					<!-- Back Side -->
+					<div class="flip-card-back card border-0 text-white bg-primary">
+						<div class="card-body d-flex align-items-center justify-content-center">
+							<div class="text-center">
+								<h5 class="card-title">Retail Prices</h5>
+								<p class="card-text">Access the latest list of Maximum Retail Prices (MRP) for a wide range of products. This section ensures consumers are informed about the price limits set by authorities to prevent overpricing and protect consumer interests.</p>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="col-md-4">
+			<a (click)="navigateToBrands()" class="pe-auto">
+				<div class="flip-card mx-auto">
+					<div class="flip-card-inner">
+					<!-- Front Side -->
+					<div class="flip-card-front card border-0 shadow">
+						<div class="card-body d-flex align-items-center justify-content-center">
+						<h4 class="mb-0">VAT/Structure</h4>
+						</div>
+					</div>
+					<!-- Back Side -->
+					<div class="flip-card-back card border-0 text-white bg-primary">
+						<div class="card-body d-flex align-items-center justify-content-center">
+							<div class="text-center">
+								<h5 class="card-title">VAT/Structure</h5>
+								<p class="card-text">Understand the current excise duty and VAT structure for various products and services. Find detailed information on tax rates, exemptions, and compliance to help businesses and consumers navigate the tax landscape.</p>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="col-md-4">
+			<a (click)="navigateToBrands()" class="pe-auto">
+				<div class="flip-card mx-auto">
+					<div class="flip-card-inner">
+					<!-- Front Side -->
+					<div class="flip-card-front card border-0 shadow">
+						<div class="card-body d-flex align-items-center justify-content-center">
+						<h4 class="mb-0">Vigiliance & Anti Corruption</h4>
+						</div>
+					</div>
+					<!-- Back Side -->
+					<div class="flip-card-back card border-0 text-white bg-primary">
+						<div class="card-body d-flex align-items-center justify-content-center">
+							<div class="text-center">
+								<h5 class="card-title">Vigiliance & Anti Corruption</h5>
+								<p class="card-text">Our Vigilance and Anti-Corruption wing promotes transparency and accountability, preventing and addressing corruption. Find resources, guidelines, and contact information for reporting unethical activities to ensure a fair environment.</p>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<!-- <div class="row">
+		<div class="col-md-6 mt-2">
+			<div class="cardGrid">
+				<a class="card1" href="http://www.tenders.tn.gov.in/innerpage.asp?choice=cr7&id=136" target="_blank" rel="noopener noreferrer">
+					<h4>Tenders</h4>
+					<p class="small mb-0">Explore tender opportunities and procurement notices from our
+						organization. Stay updated on current bids and contracts for suppliers and contractors
+						across sectors. Our transparent, competitive process ensures equal opportunities for all
+						participants.</p>
+					<div class="go-corner">
+						<div class="go-arrow">
+							→
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-6 mt-2">
+			<div class="cardGrid">
+				<a class="card1" (click)="navigateToBrands()">
+					<h4>Retail Prices</h4>
+					<p class="small mb-0">Access the latest list of Maximum Retail Prices (MRP) for a wide range of
+						products. This section ensures consumers are informed about the price limits set by
+						authorities to prevent overpricing and protect consumer interests.</p>
+					<div class="go-corner">
+						<div class="go-arrow">
+							→
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-6 mt-2">
+			<div class="cardGrid">
+				<a class="card1" (click)="navigateToBrands()">
+					<h4>Excise Duty/VAT Structure</h4>
+					<p class="small mb-0">Understand the current excise duty and VAT structure for various products
+						and services. Find detailed information on tax rates, exemptions, and compliance to help
+						businesses and consumers navigate the tax landscape.</p>
+					<div class="go-corner">
+						<div class="go-arrow">
+							→
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-6 mt-2">
+			<div class="cardGrid">
+				<a class="card1" (click)="navigateToBrands()">
+					<h4>Vigiliance & Anti Corruption</h4>
+					<p class="small mb-0">Our Vigilance and Anti-Corruption wing promotes transparency and
+						accountability, preventing and addressing corruption. Find resources, guidelines, and
+						contact information for reporting unethical activities to ensure a fair environment.</p>
+					<div class="go-corner">
+						<div class="go-arrow">
+							→
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-6 mt-2">
+			<div class="cardGrid">
+				<a class="card1" (click)="navigateToBrands()">
+					<h4>Online Import Permit (IFL)</h4>
+					<p class="small mb-0">Apply and manage your import permits online with ease. This section
+						provides a streamlined process for obtaining the necessary permits for importing goods,
+						ensuring compliance with regulatory requirements and facilitating smooth trade operations.
+					</p>
+					<div class="go-corner">
+						<div class="go-arrow">
+							→
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-6 mt-2">
+			<div class="cardGrid">
+				<a class="card1" (click)="navigateToBrands()">
+					<h4>Online Export Permit - Beer</h4>
+					<p class="small mb-0">Simplify your export process with our online export permit system. This
+						section offers a convenient way to apply for and track export permits, ensuring that your
+						goods meet all regulatory standards and facilitating efficient international trade.</p>
+					<div class="go-corner">
+						<div class="go-arrow">
+							→
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-12 mt-2">
+			<div class="card">
+				<div class="card-body" style="display: flex;justify-content: space-between;align-items: center;">
+					<div class="col-md-6">
+						<button type="button" class="btn btn-outline-success btn-sm"
+							(click)="forms('annual_report')">
+							Annual Reports
+						</button>
+						<button type="button" class="btn btn-outline-success btn-sm ms-2"
+							(click)="forms('forms_report')">
+							Forms
+						</button>
+					</div>
+					<div class="col-md-6">
+						<li *ngFor="let report of reports" style="justify-content: start;display: grid;">
+							<a [href]="report.file" target="_blank" style="text-decoration: none; color: #1e66f6;">
+								{{ report.name }}
+							</a>
+						</li>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</div>

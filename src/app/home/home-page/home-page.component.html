@@ -3,15 +3,20 @@
 	<div class="row align-items-center">
 		<div class="col-md-5">
 			<div class="section-heading text-center">
-				<p class="mb-1 pb-0">Tamil Nadu State Marketing Corporation Limited.</p>
-				<h1 class="mb-1 pb-0 fw-bold">WELCOME TO TASMAC</h1>
+				<!-- <p class="mb-1 pb-0">Tamil Nadu State Marketing Corporation Limited.</p> -->
+				<h1 class="mb-1 pb-0 fw-bold text-red">Tamil Nadu State Marketing Corporation Limited.</h1>
             	<p  class="text-red mt-1">(A Government of Tamilnadu Undertaking)</p>
-				<button type="button" class="btn btn-danger btn-sm">
-					Tender Details
-				</button>
-				<button type="button" class="btn btn-outline-danger btn-sm ms-2">
-					Introduction
-				</button>
+				<!-- <a href="http://www.tenders.tn.gov.in/innerpage.asp?choice=cr7&id=136" target="_blank" rel="noopener noreferrer">
+					<button type="button" class="btn btn-danger btn-sm">
+						Tender Details
+					</button>
+				</a>
+				<button type="button" class="btn btn-outline-danger btn-sm ms-2" routerLink="/gallery">
+					Events
+				</button> -->
+				<div class="">
+					<app-ticker></app-ticker>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-7">
@@ -42,17 +47,17 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid" style="background-color: #ebebeb;">
+<!-- <div class="container-fluid" style="background-color: #ebebeb;">
 	<div class="row">
 		<div class="col py-2">
 			<app-ticker></app-ticker>
 		</div>
 	</div>
-</div>
+</div> -->
 <div class="container text-center py-4">
 	<div class="row align-items-center">
 		<div class="col-md-12">
-			<h3>Our Prescense</h3>
+			<h3>Our presence across the state</h3>
 			<div class="row pt-3">
 				<div class="col-md-3 text-center">
 					<div class="d-flex justify-content-center" style="cursor: pointer;" (click)="routePrescense('regional')">
@@ -66,7 +71,7 @@
 							<div class="progress-value">5</div>
 						</div>
 					</div>
-					<p class="mb-0">Regional Offices</p>
+					<p class="mb-0 fw-bold">Regional Offices</p>
 				</div>
 				<div class="col-md-3 text-center">
 					<div class="d-flex justify-content-center" style="cursor: pointer;" (click)="routePrescense('district')">
@@ -80,7 +85,7 @@
 							<div class="progress-value">38</div>
 						</div>
 					</div>
-					<p class="mb-0">District Offices</p>
+					<p class="mb-0 fw-bold">District Manager Offices</p>
 				</div>
 				<div class="col-md-3 text-center">
 					<div class="d-flex justify-content-center" style="cursor: pointer;" (click)="routePrescense('depots')">
@@ -94,7 +99,7 @@
 							<div class="progress-value">43</div>
 						</div>
 					</div>
-					<p class="mb-0">Depots</p>
+					<p class="mb-0 fw-bold">Depots</p>
 				</div>
 				<div class="col-md-3 text-center">
 					<div class="d-flex justify-content-center">
@@ -105,10 +110,13 @@
 							<span class="progress-right">
 								<span class="progress-bar"></span>
 							</span>
-							<div class="progress-value">{{shopData?.length}}</div>
+							<div class="progress-value">
+								<span style="font-size: 20px;">4777 <sup>+</sup></span>
+								<!-- {{shopData?.length}} -->
+							</div>
 						</div>
 					</div>
-					<p class="mb-0">Depots</p>
+					<p class="mb-0 fw-bold">Retail Outlets</p>
 				</div>
 			</div>
 		</div>
@@ -130,15 +138,12 @@
 	</div>
 </div>
 
-<app-about></app-about>
-<div class="container">
-	<div class="row">
-		<div class="col">
-			
-		</div>
-	</div>
+<div class="container-fluid my-3 bg-light122">
+	<app-about></app-about>
 </div>
-<app-organization></app-organization>
+<div class="container">
+	<app-organization></app-organization>
+</div>
 
 <main>
 	<app-office-details *ngIf="selectedOfficeData" [officeData]="selectedOfficeData"></app-office-details>

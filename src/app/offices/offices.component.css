@@ -24,9 +24,6 @@ main {
   display: flex;
   justify-content: flex-start; /* Align items to the start for a sidebar-like layout */
   gap: 1rem; /* Space between items */
-  margin-bottom: 1rem;
-  padding-bottom: 10px; /* Space between tabs and the line */
-  border-bottom: 2px solid #004eff; /* Subtle line below the tabs */
   position: relative;
 }
 
@@ -34,9 +31,8 @@ main {
 .office-item {
   position: relative;
   background-color: #fff;
-  border: 2px solid transparent; /* Transparent border initially */
   border-radius: 4px; /* Slightly rounded corners for a button-like appearance */
-  padding: 1rem 2rem;
+  padding: 0.7rem 2rem;
   text-align: center;
   cursor: pointer;
   font-size: 1rem;
@@ -56,7 +52,7 @@ main {
   left: 0;
   width: 0%; /* Default: no underline */
   height: 3px; /* Height of the underline */
-  background-color: #004eff; /* Color of the underline */
+  background-color: #ED242C; /* Color of the underline */
   transition: width 0.3s ease; /* Transition for underline width */
 }
 
@@ -67,9 +63,9 @@ main {
 
 /* Highlight the Selected Tab */
 .office-item.active {
-  background-color: #4b80fa; /* Background color for the active tab */
+  background-color: #ED242C; /* Background color for the active tab */
   color: #fff; /* Text color for the active tab */
-  /* border: 2px solid #004eff;  */
+  /* border: 2px solid #ED242C;  */
 }
 
 .office-item.active::after {

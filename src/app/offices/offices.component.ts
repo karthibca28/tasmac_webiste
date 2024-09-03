@@ -12,13 +12,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OfficesComponent implements OnInit {
 	@Input() officeData: any;
-
-
 	selectedOfficeData: any;
 	selectedOfficeType: string | null = null;
 	isShow: boolean = false;
 	topPosToStartShowing = 100;
 
+	headOffice = {
+		title: 'Head Offices',
+		offices: [
+			{
+				city: 'Chennai',
+				address: 'CMDA Tower–II, IV Floor, Gandhi Irwin Bridge Road, Egmore, Chennai – 600 008.',
+				email: 'dmtasmacnorth@gmail.com',
+				phone: '044-26231877'
+			},
+		]
+	};
 	regionalOffices = {
 		title: 'Regional Managers Offices',
 		offices: [
@@ -672,21 +681,24 @@ export class OfficesComponent implements OnInit {
 	}
 	constructor(private activeRoute: ActivatedRoute) { }
 	ngOnInit() {
-		this.selectedOfficeType = 'regional';
-		this.selectedOfficeData = this.regionalOffices;
+		this.selectedOfficeType = 'headoffice';
+		this.selectedOfficeData = this.headOffice;
 		this.activeRoute.queryParams.subscribe((res: any) => {
 			if (res && typeof res === 'object' && !Array.isArray(res) && Object.keys(res).length > 0) {
 				console.log(res)
 				this.selectedOfficeType = res.offices
-				if (res.offices === 'regional') {
-					this.selectedOfficeData = this.regionalOffices;
+				if (res.offices === 'headoffice') {
+					this.selectedOfficeData = this.headOffice;
 					console.log('1')
 				} else if (res.offices === 'district') {
 					this.selectedOfficeData = this.districtOffices;
 					console.log('2')
+				} else if (res.offices === 'district') {
+					this.selectedOfficeData = this.districtOffices;
+					console.log('3')
 				} else {
 					this.selectedOfficeData = this.depotsData;
-					console.log('3')
+					console.log('4')
 				}
 			}
 		})
@@ -697,15 +709,18 @@ export class OfficesComponent implements OnInit {
 			this.selectedOfficeData = null;
 			this.selectedOfficeType = null;
 		} else {
-			if (type === 'regional') {
-				this.selectedOfficeData = this.regionalOffices;
+			if (type === 'headoffice') {
+				this.selectedOfficeData = this.headOffice;
 				console.log('1')
+			} else if (type === 'regional') {
+				this.selectedOfficeData = this.regionalOffices;
+				console.log('2')
 			} else if (type === 'district') {
 				this.selectedOfficeData = this.districtOffices;
-				console.log('2')
+				console.log('3')
 			} else {
 				this.selectedOfficeData = this.depotsData;
-				console.log('3')
+				console.log('4')
 			}
 			this.selectedOfficeType = type;
 		}
