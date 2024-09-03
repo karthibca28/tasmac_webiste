@@ -262,15 +262,15 @@ export class ShopLocatorComponent implements OnInit {
     }
     else {
       fetch('assets/tasmac-shops.json')
-        .then(response => response.json())
-        .then((data: Shop[]) => {
+      .then(response => response.json())
+      .then((data: Shop[]) => {
+          this.filterShops()
           this.shops = data.filter(shop => this.isValidShop(shop));
           this.taluks = Array.from(
             new Map(this.shops.filter(f=> f.district == this.selectedDistrict).map(shop => [shop.taluk, { name: shop.taluk, value: shop.taluk }]))
               .values()
           ).sort((a, b) => a.name.localeCompare(b.name));
           this.rvShopNos = [...new Set(this.shops.filter(f => f.district == this.selectedDistrict).map(shop => ({ name: shop.rvShopsNo.toString(), value: shop.rvShopsNo })))].sort();
-          this.filterShops()
         })
         .catch(error => console.error('Error loading shop data:', error));
     }
