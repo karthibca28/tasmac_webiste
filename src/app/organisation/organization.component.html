@@ -21,7 +21,10 @@
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-4 col-lg-4 mt-2" *ngFor="let director of boardDirectors">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <img src="./assets/images/Managingdirector.png" class="w-75 img-fluid">
+                            </div>
+                            <!-- <div class="col-md-4 col-lg-4 mt-2" *ngFor="let director of boardDirectors">
                                 <div class="card h-100">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-center align-items-center">
@@ -32,88 +35,54 @@
                                         <p>{{ director.contact }}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-ho" role="tabpanel" aria-labelledby="pills-ho-tab">
                     <div class="row">
-                        <!-- <div class="col-md-12 text-center">
-                            <div class="table-responsive">
-                                <h3 class="fs-bold mb-3">ORGANIZATION CHART</h3>
-                                <div class="tree">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <img src="./assets/images/chairperson.png" class="w-75 img-fluid">
+                            <!-- <ul class="tree">
+                                <li> 
+                                    <span>
+                                        <h4 class="mb-0 text-primary">CHAIRPERSON</h4>
+                                        <p class="mb-0 text-danger">THE PRINCIPAL SECRETARY TO GOVERNMENT  
+                                            Home, Prohibition & Excise Dept.</p>
+                                    </span>
                                     <ul>
-                                        <li>
-                                            <a href="#">MANAGING DIRECTOR</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">GENERAL MANAGER(Finance)</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">CHIEF ACCOUNTS OFFICER</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">GENERAL MANAGER(Wholesale & Admin)</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">GENERAL MANAGER(Retail Vending)</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">SENIOR REGIONAL<br/>MANAGERS</a>
-                                                    <ul>
-                                                        <li><a href="#">Grand Child</a></li>
-                                                        <li>
-                                                            <a href="#">Grand Child</a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="#">Great Grand Child</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Great Grand Child</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Great Grand Child</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="#">Grand Child</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">COMPANY SECRETARY</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        <li> <span>The Principal Secretary to Govt. 
+                                            Home, Prohibition & Excise Dept.</span></li>
+                                        <li> <span>The Principal   Secretary to Govt. 
+                                            Finance Dept.</span></li>
+                                        <li> <span>The Secretary to Govt. 
+                                            Commercial Taxes & Registration Dept.</span></li>
+                                        <li><span>
+                                            The Commissioner of Prohibition & Excise.
+                                        </span></li>
+                                        <li><span>
+                                            The Managing Director,TASMAC Ltd.
+                                        </span></li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div class="col-md-10 offset-md-1">
+                                </li>
+                            </ul> -->
+                        </div>
+                        <!-- <div class="col-md-10 offset-md-1">
                             <img src="./assets/images/logo/tasmac_org_chart.jpg" class="w-100">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="tab-pane fade" id="pills-how" role="tabpanel" aria-labelledby="pills-how-tab">
+                <!-- <div class="tab-pane fade" id="pills-how" role="tabpanel" aria-labelledby="pills-how-tab">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <img src="./assets/images/Managingdirector.png" class="w-75 img-fluid">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="tab-pane fade" id="pills-srm" role="tabpanel" aria-labelledby="pills-srm-tab">
                     <div class="row">
-                        <div class="col-md-4" *ngFor="let director of srmDirectors">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img [src]="director.image" alt="{{ director.name }}" class="rounded-circle" height="100px" width="100px">
-                                    </div>
-                                    <h1>{{ director.name }}</h1>
-                                    <p class="text-primary text-uppercase mb-2">{{ director.position }}</p>
-                                    <p>{{ director.contact }}</p>
-                                </div>
-                            </div>
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <img src="./assets/images/orgchart.png" class="w-75 img-fluid">
                         </div>
                     </div>
                 </div>

@@ -33,6 +33,15 @@ export class AboutComponent implements OnInit {
   navigateToEvents() {
     this.router.navigate(['/gallery']);
   }
+  navigateToshopLocator() {
+    this.router.navigate(['/shoplocator']);
+  }
+  navigateToshopVat() {
+    this.router.navigate(['/suppliers']);
+  }
+  navigateToVigilance() {
+    this.router.navigate(['/suppliers']);
+  }
 
   private loadPageData(database: string, id?: number): void {
     this.intro$ = this.config.getSettings(database, id).pipe(
