@@ -23,6 +23,7 @@ import { OfficeDetailsComponent } from './office-details/office-details.componen
 import { DistrictOfficesComponent } from './district-offices/district-offices.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		NavigationComponent,
 		NavmenuComponent,
 		SocialComponent,
-		NgSelectModule
+		NgSelectModule,
+		RouterModule
 	],
 	providers: [ConfigService],
 	bootstrap: [AppComponent],

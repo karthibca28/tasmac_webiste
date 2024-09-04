@@ -6,7 +6,7 @@
 		<div class="col-md-4 mt-4">
 			<div class="flip-card mx-auto ">
 				<div>
-					<div class="card border-0 shadow">
+					<div class="card border-0 shadow" (click)="navigateTonoticeboard()">
 						<div class="card-body d-flex align-items-center justify-content-center">
 							<h5 class="mb-0">Notice Board</h5>
 						</div>
@@ -48,13 +48,13 @@
 			</div>
 		</div>
 		<div class="col-md-4 mt-4">
-			<div class="flip-card mx-auto ">
+			<div class="flip-card mx-auto">
 				<div>
 					<div class="card border-0 shadow">
 						<div class="card-body d-flex align-items-center justify-content-center">
 							<h5 class="mb-0">TASMAC at a Glance</h5>
 						</div>
-						<button type="button" class="btn btn-danger btn-sm m-2">
+						<button type="button" class="btn btn-danger btn-sm m-2" (click)="navigateToGlance()">
 							View
 						</button>
 					</div>
@@ -77,7 +77,7 @@
 						<div class="card-body d-flex align-items-center justify-content-center">
 							<h5 class="mb-0">Complaints and Grievances</h5>
 						</div>
-						<button type="button" class="btn btn-danger btn-sm m-2">
+						<button type="button" class="btn btn-danger btn-sm m-2" (click)="navigateToComplaints()">
 							Raise Complaint
 						</button>
 					</div>
@@ -101,7 +101,7 @@
 						<div class="card-body d-flex align-items-center justify-content-center">
 							<h5 class="mb-0">TASMAC Financial Information</h5>
 						</div>
-						<button type="button" class="btn btn-danger btn-sm m-2">
+						<button type="button" class="btn btn-danger btn-sm m-2" (click)="navigateToDownload()">
 							Download Reports
 						</button>
 					</div>

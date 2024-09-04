@@ -1,4 +1,4 @@
-<nav class="navbar bg-light mb-5">
+<!-- <nav class="navbar bg-light mb-5">
 	<div id="header" class="nav-collapse nav-solid">
 		<div class="container-fluid">
 			<div class="row align-items-center">
@@ -14,7 +14,7 @@
 					</div>
 				</div>
 				<div class="col col-md-9">
-					<nav id="nav-mobile">
+					 <nav id="nav-mobile">
 						@if (menuOpen === true) {
 							<app-navmenu
 								[menu]="menu"
@@ -22,11 +22,106 @@
 								[menuOpen]="menuOpen"></app-navmenu>
 						}
 					</nav>
+				
 					<nav id="nav-main">
-						<app-navmenu [menu]="menu" [menuOpen]="true"></app-navmenu>
+						 <app-navmenu [menu]="menu" [menuOpen]="true"></app-navmenu> -->
+						<!-- { id: 1, title: 'Home', link: '/home' },
+			{ id: 3, title: 'Our Presence', link: '/offices' },
+			// { id: 3, title: 'Services', link: '/services' },
+			// { id: 4, title: 'Gallery', link: '/gallery' },
+			// { id: 5, title: 'Organisation', link: '/organization' },
+			{ id: 6, title: 'Products', link: '/brands' },
+			// { id: 7, title: 'Pricing', link: '/pricing' },
+			{ id: 8, title: 'Suppliers', link: '/suppliers' },
+			{ id: 9, title: 'Shop Locator', link: '/shoplocator' },
+			{ id: 2, title: 'About', link: '/about' },
+			{ id: 10, title: 'Contact', link: '/contact' },
 					</nav>
 				</div>
 			</div>
 		</div>
 	</div>
-</nav>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+	<div class="container-fluid">
+	  <a class="navbar-brand" routerLink="/">
+		<img src="assets/images/logo/logo.jpg" height="35" class="" />
+	  </a>
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarScroll">
+		<div></div>
+		<!-- <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+		  <li class="nav-item">
+			<a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/offices">Our Presence</a>
+		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Tasmac at glance
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+			  <li><a class="dropdown-item" href="/profile">Profile</a></li>
+			  <li><a class="dropdown-item" href="/orgchart">Organization</a></li>
+			  <li><a class="dropdown-item" href="/boardofdirector">Board of Directors</a></li>
+			</ul>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/brands">Products</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/suppliers">Suppliers</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/shoplocator">Shop Locator</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/about">About</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/contact">Contact</a>
+		  </li>
+		</ul> -->
+		<ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+			<!-- Dynamically generate menu items -->
+			<li *ngFor="let menuItem of menuItems" class="nav-item" [ngClass]="{'dropdown': menuItem.isDropdown}">
+			  <!-- Check if the menu item has a dropdown -->
+			  <a
+				class="nav-link"
+				[routerLink]="!menuItem.isDropdown ? menuItem.link : null"
+				(click)="toggleMenu()"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: true }"
+				[ngClass]="{'dropdown-toggle': menuItem.isDropdown}"
+				[attr.id]="menuItem.isDropdown ? 'navbarScrollingDropdown' : null"
+				[attr.role]="menuItem.isDropdown ? 'button' : null"
+				[attr.data-bs-toggle]="menuItem.isDropdown ? 'dropdown' : null"
+				[attr.aria-expanded]="menuItem.isDropdown ? 'false' : null"
+				href="#" 
+			  >
+				{{ menuItem.title }}
+			  </a>
+			  <!-- Submenu for dropdown items -->
+			  <ul *ngIf="menuItem.isDropdown" class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+				<li *ngFor="let subItem of menuItem.subMenu">
+				  <a
+					class="dropdown-item"
+					[routerLink]="subItem.link"
+					(click)="toggleMenu()"
+					routerLinkActive="active"
+					[routerLinkActiveOptions]="{ exact: true }"
+				  >
+					{{ subItem.title }}
+				  </a>
+				</li>
+			  </ul>
+			</li>
+		  </ul>
+	  </div>
+	</div>
+  </nav>

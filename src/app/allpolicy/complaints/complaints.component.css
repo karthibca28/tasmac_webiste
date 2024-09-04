@@ -1,0 +1,17 @@
+.card {
+    border-radius: 8px;
+  }
+  
+  .card-header {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .card-title {
+    margin: 0;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }  

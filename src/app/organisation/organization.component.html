@@ -7,84 +7,185 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Board of Directors</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-ho-tab" data-bs-toggle="pill" data-bs-target="#pills-ho" type="button" role="tab" aria-controls="pills-ho" aria-selected="false">Head Office</button>
-                </li>
                 <!-- <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-how-tab" data-bs-toggle="pill" data-bs-target="#pills-how" type="button" role="tab" aria-controls="pills-how" aria-selected="false">Head Office Workflow</button>
                 </li> -->
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-srm-tab" data-bs-toggle="pill" data-bs-target="#pills-srm" type="button" role="tab" aria-controls="pills-srm" aria-selected="false">SRM Office</button>
-                    </li>
+                </li>
+                <!-- <li class="nav-item" role="presentation">
+                    <button class="nav-link" (click)="navigateToshopLocator()">Organisation Chart</button>
+                </li> -->
             </ul>
             <div class="tab-content pt-4" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div class="container">
+                    <div class="social-box">
+                        <div class="container">
+                             <div class="row">
+                                <div class="col-lg-4 col-xs-12 text-center">
+                                    <div class="box shadow-lg border">
+                                        <i class="fa fa-user fa-3x text-red" aria-hidden="true"></i>
+                                        <div class="box-title">
+                                            <h3>Thiru. Dheeraj Kumar, IAS</h3>
+                                        </div>
+                                        <div class="box-text">
+                                            <span>The Chairman, TASMAC and Additional Chief Secretary to Government, Home, Prohibition and Excise Department, Secretariat, Chennai - 600 009.</span>
+                                        </div>
+                                        <!-- <div class="box-btn">
+                                            <a href="#">Learn More</a>
+                                        </div> -->
+                                     </div>
+                                </div>	 
+                                
+                                 <div class="col-lg-4 col-xs-12  text-center">
+                                    <div class="box shadow-lg border">
+                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                                        <div class="box-title">
+                                            <h3>Thiru. T. Udhayachandran, IAS.,</h3>
+                                        </div>
+                                        <div class="box-text">
+                                            <span>Principal Secretary to Government, Finance Department, Secretariat, Chennai - 600 009.</span>
+                                        </div>
+                                     </div>
+                                </div>	 
+                                
+                                 <div class="col-lg-4 col-xs-12 text-center">
+                                    <div class="box shadow-lg border">
+                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                                        <div class="box-title">
+                                            <h3>Thiru. Brajendra Navnit, IAS.,</h3>
+                                        </div>
+                                        <div class="box-text">
+                                            <span>Principal Secretary to Government, Commercial Taxes and Registration Department, Secretariat, Chennai-600 009.</span>
+                                        </div>
+                                     </div>
+                                </div>	 
+                                
+                                <div class="col-lg-4 col-xs-12 text-center">
+                                    <div class="box shadow-lg border">
+                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                                        <div class="box-title">
+                                            <h3>Tmt. S.P.Karthikaa, IAS.,</h3>
+                                        </div>
+                                        <div class="box-text">
+                                            <span>Director of Prohibition and Excise, Chepauk, Chennai - 600 005.</span>
+                                        </div>
+                                     </div>
+                                </div>	 
+                                
+                                <div class="col-lg-4 col-xs-12 text-center">
+                                    <div class="box shadow-lg border">
+                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                                        <div class="box-title">
+                                            <h3>Dr. S. Visakan, IAS.,</h3>
+                                        </div>
+                                        <div class="box-text">
+                                            <span>Managing Director, TASMAC Ltd., Egmore, Chennai - 600 008.</span>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>		
+                        </div>
+                    </div>
+                    <!-- <div class="container">
                         <div class="row">
                             <div class="col-md-12 d-flex justify-content-center">
                                 <img src="./assets/images/Managingdirector.png" class="w-75 img-fluid">
                             </div>
-                            <!-- <div class="col-md-4 col-lg-4 mt-2" *ngFor="let director of boardDirectors">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center align-items-center">
-                                            <img [src]="director.image" alt="{{ director.name }}" class="rounded-circle" height="100px" width="100px">
-                                        </div>
-                                        <h1>{{ director.name }}</h1>
-                                        <p class="text-primary text-uppercase mb-2">{{ director.position }}</p>
-                                        <p>{{ director.contact }}</p>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="tab-pane fade" id="pills-ho" role="tabpanel" aria-labelledby="pills-ho-tab">
+                <!-- <div class="tab-pane fade" id="pills-ho" role="tabpanel" aria-labelledby="pills-ho-tab">
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-center">
                             <img src="./assets/images/chairperson.png" class="w-75 img-fluid">
-                            <!-- <ul class="tree">
-                                <li> 
-                                    <span>
-                                        <h4 class="mb-0 text-primary">CHAIRPERSON</h4>
-                                        <p class="mb-0 text-danger">THE PRINCIPAL SECRETARY TO GOVERNMENT  
-                                            Home, Prohibition & Excise Dept.</p>
-                                    </span>
-                                    <ul>
-                                        <li> <span>The Principal Secretary to Govt. 
-                                            Home, Prohibition & Excise Dept.</span></li>
-                                        <li> <span>The Principal   Secretary to Govt. 
-                                            Finance Dept.</span></li>
-                                        <li> <span>The Secretary to Govt. 
-                                            Commercial Taxes & Registration Dept.</span></li>
-                                        <li><span>
-                                            The Commissioner of Prohibition & Excise.
-                                        </span></li>
-                                        <li><span>
-                                            The Managing Director,TASMAC Ltd.
-                                        </span></li>
-                                    </ul>
-                                </li>
-                            </ul> -->
-                        </div>
-                        <!-- <div class="col-md-10 offset-md-1">
-                            <img src="./assets/images/logo/tasmac_org_chart.jpg" class="w-100">
-                        </div> -->
-                    </div>
-                </div>
-                <!-- <div class="tab-pane fade" id="pills-how" role="tabpanel" aria-labelledby="pills-how-tab">
-                    <div class="row">
-                        <div class="col-md-12 d-flex justify-content-center">
-                            <img src="./assets/images/Managingdirector.png" class="w-75 img-fluid">
                         </div>
                     </div>
                 </div> -->
                 <div class="tab-pane fade" id="pills-srm" role="tabpanel" aria-labelledby="pills-srm-tab">
-                    <div class="row">
-                        <div class="col-md-12 d-flex justify-content-center">
-                            <img src="./assets/images/orgchart.png" class="w-75 img-fluid">
+                    <div class="container py-3">
+                        <div class="row">
+                            <div class="col-md-4 offset-md-4 col-xs-12">
+                                <div class="card shadow-lg border">
+                                    <div class="card-body">
+                                        <div class="box-title">
+                                            <h3>SENIOR REGIONAL MANAGERS</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>	 
                         </div>
+                        <div class="row mt-4">
+                            <div class="col-md-1 col-xs-12"></div>
+                            <div class="col-md-2 col-xs-12">
+                                <div class="card shadow border" style="height: 100px">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="box-title">
+                                            <h4 class="mb-0">CHENNAI REGION</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-xs-12">
+                                <div class="card shadow border" style="height: 100px">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="box-title">
+                                            <h4 class="mb-0">COIMBATORE REGION</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-xs-12">
+                                <div class="card shadow border" style="height: 100px">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="box-title">
+                                            <h4 class="mb-0">MADURAI REGION</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>	 
+                            <div class="col-md-2 col-xs-12">
+                                <div class="card shadow border" style="height: 100px">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="box-title">
+                                            <h4 class="mb-0">SALEM REGION</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-xs-12">
+                                <div class="card shadow border" style="height: 100px">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="box-title">
+                                            <h4 class="mb-0">TRICHY REGION</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-12"></div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-4 offset-md-2 col-xs-12">
+                                <div class="card shadow-lg border">
+                                    <div class="card-body">
+                                        <div class="box-title">
+                                            <h4>38 DISTRICT MANAGERS</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 offset-md-2 col-xs-12">
+                                <div class="card shadow-lg border">
+                                    <div class="card-body">
+                                        <div class="box-title">
+                                            <h4>5 SPECIAL FLYING SQUAD</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>		
                     </div>
+                    <!-- <img src="./assets/images/orgchart.png" class="w-75 img-fluid"> -->
                 </div>
             </div>
         </div>

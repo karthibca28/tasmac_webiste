@@ -1,0 +1,37 @@
+.social-box .box {
+    border-radius: 10px; 
+    cursor: pointer;
+    margin: 10px 0;
+    padding: 20px 10px;
+    transition: all 0.5s ease-out;
+}
+.social-box h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.box-title h4 {
+    font-size: 1rem!important;
+    font-weight: 700;
+}
+
+.social-box .box:hover {
+   box-shadow: 0 0 6px #4183D7;
+}
+
+.social-box .box-text {
+    font-size: 15px;
+    line-height: 24px;
+    margin: 10px 0;
+    color: #a5a5a5;
+}
+
+.social-box .box-btn a {
+    color: #4183D7;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.social-box .fa {
+    color: #1271cb;
+    margin-bottom: 10px;
+}

@@ -42,6 +42,18 @@ export class AboutComponent implements OnInit {
   navigateToVigilance() {
     this.router.navigate(['/suppliers']);
   }
+  navigateToGlance() {
+    this.router.navigate(['/profile']);
+  }
+  navigateToDownload() {
+    this.router.navigate(['/downloads']);
+  }
+  navigateToComplaints() {
+    this.router.navigate(['/complaints']);
+  }
+  navigateTonoticeboard() {
+    this.router.navigate(['/noticeboard']);
+  }
 
   private loadPageData(database: string, id?: number): void {
     this.intro$ = this.config.getSettings(database, id).pipe(

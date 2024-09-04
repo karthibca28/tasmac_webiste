@@ -144,6 +144,55 @@ const routes: Routes = [
 				mod => mod.TermserviceComponent
 			),
 	},
+	{
+		path: 'vigilance',
+		loadComponent: () =>
+			import('./allpolicy/vigilance/vigilance.component').then(
+				mod => mod.VigilanceComponent
+			),
+	},
+	{
+		path: 'profile',
+		loadComponent: () =>
+			import('./allpolicy/profile/profile.component').then(
+				mod => mod.ProfileComponent
+			),
+	},
+	{
+		path: 'downloads',
+		loadComponent: () =>
+			import('./allpolicy/download-report/download-report.component').then(
+				mod => mod.DownloadReportComponent
+			),
+	},
+	{
+		path: 'complaints',
+		loadComponent: () =>
+			import('./allpolicy/complaints/complaints.component').then(
+				mod => mod.ComplaintsComponent
+			),
+	},
+	{
+		path: 'orgchart',
+		loadComponent: () =>
+			import('./allpolicy/org-chart/org-chart.component').then(
+				mod => mod.OrgChartComponent
+			),
+	},
+	{
+		path: 'boardofdirector',
+		loadComponent: () =>
+			import('./allpolicy/boardofdirector/boardofdirector.component').then(
+				mod => mod.BoardofdirectorComponent
+			),
+	},
+	{
+		path: 'noticeboard',
+		loadComponent: () =>
+			import('./allpolicy/noticeboard/noticeboard.component').then(
+				mod => mod.NoticeboardComponent
+			),
+	},
 	
 	{
 		path: '404',

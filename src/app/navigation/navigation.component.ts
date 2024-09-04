@@ -1,20 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { ConfigService } from '../shared/services/config.service';
 import { NavmenuComponent } from '../navmenu/navmenu.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-navigation',
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.css'],
     standalone: true,
-    imports: [NavmenuComponent],
+    imports: [CommonModule, NavmenuComponent, RouterModule],
 })
 export class NavigationComponent implements OnInit {
 	menu: { id: number; title: string; link: string }[];
 
 	menuOpen: boolean;
 	database = 'menu';
+
+	menuItems = [
+		{ id: 1, title: 'Home', link: '/home' },
+		{ id: 3, title: 'Our Presence', link: '/offices' },
+		{
+		  id: 4,
+		  title: 'Tasmac at a Glance',
+		  isDropdown: true,
+		  subMenu: [
+			{ id: 11, title: 'Profile', link: '/profile' },
+			{ id: 12, title: 'Organization', link: '/orgchart' },
+			{ id: 13, title: 'Board of Directors', link: '/boardofdirector' }
+		  ]
+		},
+		{ id: 6, title: 'Products', link: '/brands' },
+		{ id: 8, title: 'Suppliers', link: '/suppliers' },
+		{ id: 9, title: 'Shop Locator', link: '/shoplocator' },
+		{ id: 2, title: 'About', link: '/about' },
+		{ id: 10, title: 'Contact', link: '/contact' }
+	  ];
 
 	constructor(
 		private location: Location,
