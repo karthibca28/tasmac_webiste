@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -193,19 +192,25 @@ const routes: Routes = [
 				mod => mod.NoticeboardComponent
 			),
 	},
-	
 	{
 		path: '404',
-		loadChildren: () =>
+		loadComponent: () =>
 			import('./notfound/notfound-page/notfound-page.component').then(
 				mod => mod.NotfoundPageComponent
 			),
 	},
+	// {
+	// 	path: '404',
+	// 	loadChildren: () =>
+	// 		import('./notfound/notfound-page/notfound-page.component').then(
+	// 			mod => mod.NotfoundPageComponent
+	// 		),
+	// },
 	{ path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
-	imports: [CommonModule, RouterModule.forRoot(routes)],
+	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 	declarations: [],
 })
