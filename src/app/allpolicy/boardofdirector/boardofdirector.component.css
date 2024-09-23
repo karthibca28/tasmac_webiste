@@ -1,10 +1,92 @@
-.social-box .box {
-    border-radius: 10px; 
-    cursor: pointer;
-    margin: 10px 0;
-    padding: 20px 10px;
-    transition: all 0.5s ease-out;
+
+
+.organization-container {
+    background: #f0f4f8;
 }
+
+.sidebar {
+    flex: 0 0 250px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.sidebar-button {
+    width: 100%;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.2em;
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.sidebar-button.active, .sidebar-button:hover {
+    background: #004eff;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.sidebar-button.active::after, .sidebar-button:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: #fff;
+    border-radius: 4px 0 0 4px;
+}
+
+
+
+@media (max-width: 1200px) {
+    .organization-container { padding: 15px; max-width: calc(100% - 30px); }
+    .sidebar { flex: 0 0 200px; }
+    .tab-content { padding: 15px; }
+    .tab-pane { flex-direction: column; }
+    .director-card, .org-level { flex: 1 1 calc(50% - 20px); }
+}
+
+@media (max-width: 768px) {
+    .organization-container {
+        flex-direction: column;
+        padding: 10px;
+        max-width: calc(100% - 20px);
+    }
+    .sidebar { margin-right: 0; margin-bottom: 20px; }
+    .tab-content { flex-direction: column; }
+    .director-card, .org-level { flex: 1 1 100%; }
+}
+
+h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* .social-box .container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.social-box .row {
+    display: flex;
+    flex: 1;
+} */
+
+.box {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+}
+
 .social-box h3 {
     font-size: 1.2rem;
     font-weight: 700;
@@ -34,4 +116,8 @@
 .social-box .fa {
     color: #1271cb;
     margin-bottom: 10px;
+}
+
+.card:hover {
+    border: 2px solid red!important;
 }

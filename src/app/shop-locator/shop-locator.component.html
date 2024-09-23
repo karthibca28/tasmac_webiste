@@ -6,46 +6,32 @@
         <div class="form-group">
           <h6 class="mb-3">Locate shop by using shop number</h6>
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <label>Select RV Shop No</label>
-          <!-- <app-search-dropdown 
-            [options]="rvShopNos" 
-            [(selectedOption)]="selectedRvShopNo"  
-            (selectedOptionChange)="filterShops()">
-          </app-search-dropdown> -->
           <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="name" optionValue="value"
             dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedRvShopNo"
-            (onChange)="filterShops()"></p-dropdown>
+            ></p-dropdown>
         </div>
         <div class="form-group">
           <h6 class="mb-3">OR</h6>
-        </div>
+        </div> -->
         <div class="mb-3">
           <label>Select District</label>
-          <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="name" optionValue="value"
-          dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedDistrict"
-          (onChange)="filterShops()" (onChange)="filterTaluk()"></p-dropdown>
-          <!-- <app-search-dropdown [options]="districts" [(selectedOption)]="selectedDistrict"
-            (selectedOptionChange)="filterTaluk()">
-          </app-search-dropdown> -->
+          <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="Revenue_DistrictName"
+            optionValue="Revenue_DistrictId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+            (onChange)="filterRvAndTaluk()" [(ngModel)]="selectedDistrict"></p-dropdown>
         </div>
         <div class="mb-3">
           <label>Select Taluk</label>
-          <p-dropdown [filter]="true" appendTo="body" [options]="taluks" optionLabel="name" optionValue="value"
+          <p-dropdown [filter]="true" appendTo="body" [options]="taluks" optionLabel="talukaName" optionValue="talukaId"
             dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedTaluk"
-            (onChange)="filterShops()"></p-dropdown>
-          <!-- <app-search-dropdown [options]="taluks" [(selectedOption)]="selectedTaluk"
-            (selectedOptionChange)="filterShops()">
-          </app-search-dropdown> -->
+            (onChange)="filterRV()"></p-dropdown>
         </div>
         <div class="mb-3">
           <label>Select Another RV Shop No</label>
-          <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="name" optionValue="value"
-            dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedRvShopNo"
-            (onChange)="filterShops()"></p-dropdown>
-          <!-- <app-search-dropdown [options]="rvShopNos" [(selectedOption)]="selectedRvShopNo"
-            (selectedOptionChange)="filterShopByTaluk()">
-          </app-search-dropdown> -->
+          <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="RVShopsNo"
+            optionValue="RVShopsNo" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+            [(ngModel)]="selectedRvShopNo" (onChange)="getRvShopDetails()"></p-dropdown>
         </div>
         <div class="">
           <button (click)="resetFilters()">Reset</button>
@@ -56,19 +42,6 @@
           <div #map id="map"></div>
           <div class="filter-container">
             <div class="filter-section">
-              <!-- <select [(ngModel)]="selectedDistrict" (change)="filterShops()">
-                <option value="">Select District</option>
-                <option *ngFor="let district of districts" [value]="district">{{ district }}</option>
-              </select>
-              <select [(ngModel)]="selectedTaluk" (change)="filterShops()">
-                <option value="">Select Taluk</option>
-                <option *ngFor="let taluk of taluks" [value]="taluk">{{ taluk }}</option>
-              </select>
-              <select [(ngModel)]="selectedRvShopNo" (change)="filterShops()">
-                <option value="">Select RV Shop No</option>
-                <option *ngFor="let rvShopNo of rvShopNos" [value]="rvShopNo">{{ rvShopNo }}</option>
-              </select>
-              <button (click)="resetFilters()">Reset</button> -->
             </div>
           </div>
         </div>
@@ -86,26 +59,16 @@
               </tr>
               <tr>
                 <th>S.No.</th>
-                <th>SRM Office</th>
-                <th>DM Office</th>
                 <th>RV Shop No</th>
-                <th>District</th>
-                <th>Taluk</th>
-                <th>Area</th>
                 <th>Address</th>
                 <th>Get Direction</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let shop of filteredShops">
-                <td>{{ shop.slNo }}</td>
-                <td>{{ shop.srmOffice }}</td>
-                <td>{{ shop.dmOffice }}</td>
-                <td>{{ shop.rvShopsNo }}</td>
-                <td>{{ shop.district }}</td>
-                <td>{{ shop.taluk }}</td>
-                <td>{{ shop.area }}</td>
-                <td>{{ shop.address }}</td>
+              <tr *ngFor="let shop of filteredShops; let i=index">
+                <td>{{ i+1 }}</td>
+                <td>{{ shop.RVShopsNo }}</td>
+                <td>{{ shop.Address }}</td>
                 <td (click)="navigate(shop.latitude,shop.longitude)"><a style="color: blue;">View</a></td>
               </tr>
             </tbody>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Image } from '../models/image.model';
 @Component({
     selector: 'app-image-block',
@@ -6,5 +6,13 @@ import { Image } from '../models/image.model';
     standalone: true,
 })
 export class ImageBlockComponent {
-	@Input() image: Image;
+    @Input() Image: any
+    images:any
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['dynamicData']) {
+            this.images = this.Image
+            console.log(this.images)
+        }
+    }
 }

@@ -22,7 +22,8 @@ import { InMemoryDataService } from './shared/services/in-memory-data.service';
 import { OfficeDetailsComponent } from './office-details/office-details.component';
 import { DistrictOfficesComponent } from './district-offices/district-offices.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 
@@ -71,7 +72,7 @@ import { RouterModule } from '@angular/router';
 		// NgSelectModule,
 		// RouterModule
 	],
-	providers: [ConfigService],
+	providers: [ConfigService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

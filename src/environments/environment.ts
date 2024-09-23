@@ -4,6 +4,8 @@
 
 export const environment = {
 	production: false,
+	baseUrl: 'https://dashboardapi.tasmace2euat.in/master-data/api/',
+	hrmsUrl:'https://apihrms.tasmace2euat.in/hrms/api/v1/'
 };
 
 /*

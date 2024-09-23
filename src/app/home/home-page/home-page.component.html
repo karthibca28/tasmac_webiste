@@ -4,8 +4,9 @@
 		<div class="col-md-5 mt-4">
 			<div class="section-heading text-center">
 				<!-- <p class="mb-1 pb-0">Tamil Nadu State Marketing Corporation Limited.</p> -->
-				<h1 class="mb-1 pb-0 fw-bold" style="color: #DD241A;">Tamil Nadu State Marketing Corporation Limited.</h1>
-            	<p  class="text-red mt-1">(A Government of Tamilnadu Undertaking)</p>
+				<h1 class="mb-1 pb-0 fw-bold" style="color: #DD241A;">Tamil Nadu State Marketing Corporation Limited.
+				</h1>
+				<p class="text-red mt-1">(A Government of Tamilnadu Undertaking)</p>
 				<!-- <a href="http://www.tenders.tn.gov.in/innerpage.asp?choice=cr7&id=136" target="_blank" rel="noopener noreferrer">
 					<button type="button" class="btn btn-danger btn-sm">
 						Tender Details
@@ -14,34 +15,49 @@
 				<button type="button" class="btn btn-outline-danger btn-sm ms-2" routerLink="/gallery">
 					Events
 				</button> -->
-				<div class="">
+				<div>
 					<app-ticker></app-ticker>
+				</div>
+				<div class="mb-2" style="display: flex;justify-content: space-around;">
+					<div>
+						<div style="font-weight: 600;color: #000;">Tool-Free</div>
+						<span>18004252015</span>
+					</div>
+					<div>
+						<div style="font-weight: 600;">Complain in WhatsApp Number</div>
+						<div style="cursor: pointer;color: #000;">
+							<span (click)="raiserComplain('7397720230')">7397720230</span> | <span (click)="raiserComplain('7397720235')">7397720235</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-7">
 			<div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
 				<div class="carousel-inner">
-				  <div class="carousel-item active" style="background-image: url('assets/images/banner/tasmacelite.jpg');height: 250px;">
-					<div class="d-block w-100 carousel-item-content"></div>
-				  </div>
-				  <div class="carousel-item" style="background-image: url('assets/images/Tasmac-store-pic2.jpg');height: 250px">
-					<div class="d-block w-100 carousel-item-content"></div>
-				  </div>
-				  <div class="carousel-item" style="background-image: url('assets/images/maxresdefault.jpg');height: 250px">
-					<div class="d-block w-100 carousel-item-content"></div>
-				  </div>
-				  <div class="carousel-item" style="background-image: url('assets/images/Tasmac-store-pic4.jpg');height: 250px">
-					<div class="d-block w-100 carousel-item-content"></div>
-				  </div>
+					<div class="carousel-item active"
+						style="background-image: url('assets/images/banner/tasmacelite.jpg')">
+						<div class="d-block w-100 carousel-item-content"></div>
+					</div>
+					<div class="carousel-item" style="background-image: url('assets/images/Tasmac-store-pic2.jpg')">
+						<div class="d-block w-100 carousel-item-content"></div>
+					</div>
+					<div class="carousel-item" style="background-image: url('assets/images/maxresdefault.jpg')">
+						<div class="d-block w-100 carousel-item-content"></div>
+					</div>
+					<div class="carousel-item" style="background-image: url('assets/images/Tasmac-store-pic4.jpg')">
+						<div class="d-block w-100 carousel-item-content"></div>
+					</div>
 				</div>
-				<button id="prevButton" class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
-				  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				  <span class="visually-hidden">Previous</span>
+				<button id="prevButton" class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
 				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
-				  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-				  <span class="visually-hidden">Next</span>
+				<button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
 				</button>
 			</div>
 		</div>
@@ -60,7 +76,8 @@
 			<h3>Our presence across the state</h3>
 			<div class="row pt-3">
 				<div class="col-md-3 text-center">
-					<div class="d-flex justify-content-center" style="cursor: pointer;" (click)="routePrescense('regional')">
+					<div class="d-flex justify-content-center" style="cursor: pointer;"
+						(click)="routePrescense('regional')">
 						<div class="progress blue">
 							<span class="progress-left">
 								<span class="progress-bar"></span>
@@ -74,7 +91,8 @@
 					<p class="mb-0 fw-bold">Regional Offices</p>
 				</div>
 				<div class="col-md-3 text-center">
-					<div class="d-flex justify-content-center" style="cursor: pointer;" (click)="routePrescense('district')">
+					<div class="d-flex justify-content-center" style="cursor: pointer;"
+						(click)="routePrescense('district')">
 						<div class="progress yellow">
 							<span class="progress-left">
 								<span class="progress-bar"></span>
@@ -88,7 +106,8 @@
 					<p class="mb-0 fw-bold">District Manager Offices</p>
 				</div>
 				<div class="col-md-3 text-center">
-					<div class="d-flex justify-content-center" style="cursor: pointer;" (click)="routePrescense('depots')">
+					<div class="d-flex justify-content-center" style="cursor: pointer;"
+						(click)="routePrescense('depots')">
 						<div class="progress green">
 							<span class="progress-left">
 								<span class="progress-bar"></span>
@@ -111,7 +130,7 @@
 								<span class="progress-bar"></span>
 							</span>
 							<div class="progress-value">
-								<span style="font-size: 20px;">4700 +</span>
+								<span style="font-size: 20px;">4829 +</span>
 								<!-- {{shopData?.length}} -->
 							</div>
 						</div>
@@ -147,9 +166,9 @@
 
 <main>
 	<app-office-details *ngIf="selectedOfficeData" [officeData]="selectedOfficeData"></app-office-details>
-    <div class="scroll-to-top" [ngClass]="{'show': isShow}" (click)="scrollToTop()">
-        ↑
-    </div>
+	<div class="scroll-to-top" [ngClass]="{'show': isShow}" (click)="scrollToTop()">
+		↑
+	</div>
 </main>
 
 <!-- <app-about-page></app-about-page> -->

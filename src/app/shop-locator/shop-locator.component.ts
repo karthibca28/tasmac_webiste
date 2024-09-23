@@ -6,18 +6,19 @@ import 'leaflet.markercluster'; // Import leaflet.markercluster
 import { PascalCasePipe } from '../services/pascal-case.pipe';
 import { DropdownModule } from 'primeng/dropdown';
 import { SearchDropdownComponent } from '../search-dropdown/search-dropdown.component';
+import { FormService } from '../services/form.service';
 
 interface Shop {
   slNo: number;
   srmOffice: string;
   dmOffice: string;
-  rvShopsNo: number;
+  RVShopsNo: number;
   district: string;
   taluk: string;
   area: string;
   latitude: number;
   longitude: number;
-  address: string;
+  Address: string;
 }
 
 @Component({
@@ -52,13 +53,13 @@ export class ShopLocatorComponent implements OnInit {
     slNo: 8848,
     srmOffice: '',
     dmOffice: '',
-    rvShopsNo: 8848,
+    RVShopsNo: 8848,
     district: 'Ambattur',
     taluk: '',
     area: 'Ayanampakkam',
     latitude: 13.0878,
     longitude: 80.1777,
-    address: 'No.64, Keesan Nagar, Ayanampakkam, Ch-95'
+    Address: 'No.64, Keesan Nagar, Ayanampakkam, Ch-95'
   };
 
   @HostListener('window:scroll')
@@ -75,31 +76,72 @@ export class ShopLocatorComponent implements OnInit {
       behavior: 'smooth'
     });
   }
+  constructor(private formService: FormService) { }
 
   ngOnInit(): void {
-    this.loadShopData();
+    // this.loadShopData();
     this.initMap();
+    this.getDistrict();
+    this.getAllTaluk();
+    this.getAllShopNo()
+
   }
 
-  loadShopData(): void {
-    fetch('assets/tasmac-shops.json')
-      .then(response => response.json())
-      .then((data: Shop[]) => {
-        this.shops = data.filter(shop => this.isValidShop(shop));
-        this.districts = Array.from(
-          new Map(this.shops.map(shop => [shop.district, { name: shop.district, value: shop.district }]))
-            .values()
-        ).sort((a, b) => a.name.localeCompare(b.name));
-        this.taluks = Array.from(
-          new Map(this.shops.map(shop => [shop.taluk, { name: shop.taluk, value: shop.taluk }]))
-            .values()
-        ).sort((a, b) => a.name.localeCompare(b.name));
-        this.rvShopNos = [...new Set(this.shops.map(shop => ({ name: shop.rvShopsNo, value: shop.rvShopsNo })))].sort();
-        this.filteredShops = this.shops;
-        console.log(this.rvShopNos)
-        this.filterShops();
-      })
-      .catch(error => console.error('Error loading shop data:', error));
+  getDistrict() {
+    this.formService.getAllDistrict().subscribe((res: any) => {
+      this.districts = res.data.slice(0, -1);
+    })
+  }
+
+  getAllTaluk() {
+    this.formService.getAllTaluk().subscribe((res: any) => {
+      this.taluks = res.data.slice(0, -1);
+    })
+  }
+
+  getAllShopNo() {
+    this.formService.getAllShopNo().subscribe((res: any) => {
+      this.rvShopNos = res.data.slice(0, -1);
+    })
+  }
+
+  filterRvAndTaluk() {
+    this.formService.getAllTaluk().subscribe((res: any) => {
+      this.taluks = res.data.slice(0, -1).filter((f: any) => f.districtId == this.selectedDistrict);
+    })
+    this.formService.getAllShopNo().subscribe((res: any) => {
+      this.rvShopNos = res.data.slice(0, -1).filter((f: any) => f.districtId == this.selectedDistrict);;
+    })
+    const value = {
+      "i_DistrictId": this.selectedDistrict
+    }
+    this.formService.getShopLocationByDistrict(value).subscribe((res: any) => {
+      this.filteredShops = res.data.slice(0, -1)
+      this.addShopMarkers(this.filteredShops)
+    })
+  }
+
+  filterRV() {
+    this.formService.getAllShopNo().subscribe((res: any) => {
+      this.rvShopNos = res.data.slice(0, -1).filter((f: any) => f.talukId == this.selectedTaluk);
+    })
+    const value = {
+      "i_TalukaId": this.selectedTaluk
+    }
+    this.formService.getShopLocationByTaluk(value).subscribe((res: any) => {
+      this.filteredShops = res.data.slice(0, -1)
+      this.addShopMarkers(this.filteredShops)
+    })
+  }
+
+  getRvShopDetails() {
+    const value = {
+      "i_ShopNumber": this.selectedRvShopNo
+    }
+    this.formService.getShopLocationByShopNo(value).subscribe((res: any) => {
+      this.filteredShops = res.data.slice(0, -1)
+      this.addShopMarkers(this.filteredShops)
+    })
   }
 
   isValidShop(shop: Shop): boolean {
@@ -127,19 +169,17 @@ export class ShopLocatorComponent implements OnInit {
 
   addShopMarkers(shops: Shop[]): void {
     this.markers.clearLayers();
-
-    // Create a custom icon
     const customIcon = L.icon({
       iconUrl: 'assets/images/location-png.png',
       iconSize: [30, 30],
     });
 
     shops.forEach(shop => {
-      if (this.isValidShop(shop)) {
+      if (this.isValidShop(shop)&& shop.latitude && shop.longitude) {
         const popupContent = `
-          <b>Shop ${shop.rvShopsNo}</b><br>
-          ${shop.address}<br>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${shop.latitude},${shop.longitude}" 
+          <b>Shop ${shop.RVShopsNo}</b><br>
+          ${shop.Address}<br>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${shop?.latitude},${shop?.longitude}" 
              target="_blank" style="color: blue; text-decoration: none;">
             <i class="fa fa-directions"></i> Get Directions
           </a>
@@ -155,7 +195,7 @@ export class ShopLocatorComponent implements OnInit {
 
         this.markers.addLayer(marker);
       } else {
-        console.warn(`Invalid location for shop ${shop.rvShopsNo}: (${shop.latitude}, ${shop.longitude})`);
+        console.warn(`Invalid location for shop ${shop.RVShopsNo}: (${shop.latitude}, ${shop.longitude})`);
       }
     });
 
@@ -165,8 +205,15 @@ export class ShopLocatorComponent implements OnInit {
   }
 
   navigate(latitude: number, longitude: number) {
-    const googleMapsUrl = `https://www.google.com/maps/@${latitude},${longitude},15z`;
+    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
     window.open(googleMapsUrl, '_blank');
+  }
+
+  resetFilters() {
+    this.selectedDistrict = '',
+      this.selectedTaluk = '',
+      this.selectedRvShopNo = ''
+    this.initMap();
   }
 
 
@@ -188,7 +235,7 @@ export class ShopLocatorComponent implements OnInit {
     console.error('Geolocation error:', e.message);
     this.map.setView([this.defaultAmbatturShop.latitude, this.defaultAmbatturShop.longitude], 16);
     L.marker([this.defaultAmbatturShop.latitude, this.defaultAmbatturShop.longitude])
-      .bindPopup(`<b>Shop ${this.defaultAmbatturShop.rvShopsNo}</b><br>${this.defaultAmbatturShop.address}`)
+      .bindPopup(`<b>Shop ${this.defaultAmbatturShop.RVShopsNo}</b><br>${this.defaultAmbatturShop.Address}`)
       .addTo(this.map)
       .openPopup();
   }
@@ -212,8 +259,8 @@ export class ShopLocatorComponent implements OnInit {
       this.map.setView([nearestShop.latitude, nearestShop.longitude], 16);
 
       const popupContent = `
-        <b>Nearest Shop ${nearestShop.rvShopsNo}</b><br>
-        ${nearestShop.address}<br>
+        <b>Nearest Shop ${nearestShop.RVShopsNo}</b><br>
+        ${nearestShop.Address}<br>
         <a href="https://www.google.com/maps/dir/?api=1&destination=${nearestShop.latitude},${nearestShop.longitude}" 
            target="_blank" style="color: blue; text-decoration: none;">
           <i class="fa fa-directions"></i> Get Directions
@@ -227,69 +274,4 @@ export class ShopLocatorComponent implements OnInit {
     }
   }
 
-  filterShops(): void {
-    this.filteredShops = this.shops.filter(shop =>
-      (this.searchTerm === '' ||
-        shop.area.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        shop.address.toLowerCase().includes(this.searchTerm.toLowerCase())) &&
-      (this.selectedDistrict === '' || shop.district === this.selectedDistrict) &&
-      (this.selectedTaluk === '' || shop.taluk === this.selectedTaluk) &&
-      (this.selectedRvShopNo === '' || shop.rvShopsNo.toString() === this.selectedRvShopNo)
-    );
-
-    this.addShopMarkers(this.filteredShops);
-
-    if (this.filteredShops.length > 0) {
-      this.map.fitBounds(this.markers.getBounds());
-    }
-  }
-
-  resetFilters(): void {
-    this.searchTerm = '';
-    this.selectedDistrict = '';
-    this.selectedTaluk = '';
-    this.selectedRvShopNo = '';
-    this.filteredShops = this.shops;
-    this.addShopMarkers(this.filteredShops);
-
-    this.map.locate({ setView: true, maxZoom: 16 });
-  }
-
-  filterTaluk() {
-    if (this.selectedDistrict == "") {
-      this.loadShopData()
-      this.filterShops()
-    }
-    else {
-      fetch('assets/tasmac-shops.json')
-      .then(response => response.json())
-      .then((data: Shop[]) => {
-          this.filterShops()
-          this.shops = data.filter(shop => this.isValidShop(shop));
-          this.taluks = Array.from(
-            new Map(this.shops.filter(f=> f.district == this.selectedDistrict).map(shop => [shop.taluk, { name: shop.taluk, value: shop.taluk }]))
-              .values()
-          ).sort((a, b) => a.name.localeCompare(b.name));
-          this.rvShopNos = [...new Set(this.shops.filter(f => f.district == this.selectedDistrict).map(shop => ({ name: shop.rvShopsNo.toString(), value: shop.rvShopsNo })))].sort();
-        })
-        .catch(error => console.error('Error loading shop data:', error));
-    }
-  }
-
-  filterShopByTaluk() {
-    if (this.selectedTaluk == "") {
-      this.rvShopNos = [...new Set(this.shops.filter(f => f.district == this.selectedDistrict).map(shop => shop.rvShopsNo.toString()))].sort();
-      this.filterShops()
-    }
-    else {
-      fetch('assets/tasmac-shops.json')
-        .then(response => response.json())
-        .then((data: Shop[]) => {
-          this.shops = data.filter(shop => this.isValidShop(shop));
-          this.rvShopNos = [...new Set(this.shops.filter(f => f.district == this.selectedDistrict).map(shop => ({ name: shop.rvShopsNo.toString(), value: shop.rvShopsNo })))].sort();
-          this.filterShops()
-        })
-        .catch(error => console.error('Error loading shop data:', error));
-    }
-  }
 }

@@ -4,34 +4,51 @@
     <div class="row">
       <div class="col-12">
         <div class="office-details">
-          <div 
-            class="office-item" 
-            [ngClass]="{'active': selectedOfficeType === 'headoffice'}"
-            (click)="showDetails('headoffice')">
+          <div class="office-item" [ngClass]="{'active': selectedOfficeType === 1}" (click)="getStaffByOffice(1)">
             <div class="text">Head Office</div>
           </div>
-          <div 
-            class="office-item" 
-            [ngClass]="{'active': selectedOfficeType === 'regional'}"
-            (click)="showDetails('regional')">
+          <div class="office-item" [ngClass]="{'active': selectedOfficeType === 2}" (click)="getStaffByOffice(2)">
             <div class="text">Regional Offices</div>
           </div>
-          <div 
-            class="office-item" 
-            [ngClass]="{'active': selectedOfficeType === 'district'}"
-            (click)="showDetails('district')">
+          <div class="office-item" [ngClass]="{'active': selectedOfficeType === 3}" (click)="getStaffByOffice(3)">
             <div class="text">District Offices</div>
           </div>
-          <div 
-            class="office-item" 
-            [ngClass]="{'active': selectedOfficeType === 'depots'}"
-            (click)="showDetails('depots')">
+          <div class="office-item" [ngClass]="{'active': selectedOfficeType === 4}" (click)="getStaffByOffice(4)">
             <div class="text">Depots</div>
           </div>
         </div>
       </div>
       <div class="col-12 mt-3">
-        <app-office-details *ngIf="selectedOfficeData" [officeData]="selectedOfficeData"></app-office-details>
+        <!-- <app-office-details *ngIf="selectedOfficeData" [officeData]="selectedOfficeData"></app-office-details> -->
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <!-- <tr>
+                <th colspan="9" style="background-color: #004D98;">
+                  
+                </th>
+              </tr> -->
+              <tr>
+                <th style="background-color: #004D98;color: white;">S.No</th>
+                <th style="background-color: #004D98;color: white;">Name</th>
+                <th style="background-color: #004D98;color: white;">Email</th>
+                <th style="background-color: #004D98;color: white;">Designation</th>
+                <th style="background-color: #004D98;color: white;">Office</th>
+                <th style="background-color: #004D98;color: white;">District</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let office of staffDetails; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ office.name ? office.name :'-' }}</td>
+                <td>{{ office.email ? office.email :'-' }}</td>
+                <td>{{ office.designation ? office.designation :'-' }}</td>
+                <td>{{ office.office ? office.office :'-' }}</td>
+                <td>{{ office.district ? office.district :'-' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -40,4 +57,3 @@
     ↑
   </div>
 </section>
-

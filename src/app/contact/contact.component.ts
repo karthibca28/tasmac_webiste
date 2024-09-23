@@ -100,4 +100,8 @@ export class ContactComponent {
 		//   }
 		// ];
 	}
+
+	raiserComplain(complaintNo: string) {
+		window.open(`https://wa.me/${complaintNo}?text=Hi`, '_blank');
+	}
 }

@@ -764,6 +764,9 @@ export class HomePageComponent implements OnInit {
 		}
 	}
 
+	raiserComplain(complaintNo: string) {
+		window.open(`https://wa.me/${complaintNo}?text=Hi`, '_blank');
+	}
 	routePrescense(offices: string) {
 		const queryParams = {
 			offices: offices

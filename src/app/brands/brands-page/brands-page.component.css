@@ -147,7 +147,7 @@ h4 {
 
 .tabs {
   display: flex;
-  gap: 5px;
+  /* gap: 5px; */
 }
 
 .tab-button {
@@ -155,7 +155,7 @@ h4 {
   cursor: pointer;
   border: none;
   background-color: #f0f0f0;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 .tab-button.active {
@@ -204,3 +204,4 @@ h4 {
 .scroll-to-top:hover {
   opacity: 1;
 }
+
