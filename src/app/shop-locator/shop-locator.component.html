@@ -16,6 +16,12 @@
           <h6 class="mb-3">OR</h6>
         </div> -->
         <div class="mb-3">
+          <label>Select Another RV Shop No</label>
+          <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="RVShopsNo"
+            optionValue="RVShopsNo" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+            [(ngModel)]="selectedRvShopNo" (onChange)="getRvShopDetails()"></p-dropdown>
+        </div>
+        <div class="mb-3">
           <label>Select District</label>
           <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="Revenue_DistrictName"
             optionValue="Revenue_DistrictId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
@@ -27,12 +33,7 @@
             dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedTaluk"
             (onChange)="filterRV()"></p-dropdown>
         </div>
-        <div class="mb-3">
-          <label>Select Another RV Shop No</label>
-          <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="RVShopsNo"
-            optionValue="RVShopsNo" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
-            [(ngModel)]="selectedRvShopNo" (onChange)="getRvShopDetails()"></p-dropdown>
-        </div>
+
         <div class="">
           <button (click)="resetFilters()">Reset</button>
         </div>
