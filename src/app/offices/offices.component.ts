@@ -42,7 +42,8 @@ export class OfficesComponent implements OnInit {
 	getStaffByOffice(staffType:any){
 		this.selectedOfficeType = staffType
 		this.formService.getStaffByOffice(staffType).subscribe((res:any)=>{
-			this.staffDetails = res.data.staffs.data
+			this.staffDetails = res.data.staffs.data;
+			console.log("Details", res)
 		})
 	}
 	
