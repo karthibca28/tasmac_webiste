@@ -63,43 +63,44 @@
                                 <th>RV Shop No</th>
                                 <th>District Name</th>
                                 <th>Taluk Name</th>
-                                <th>Brand Name</th>
-                                <th>Product Name</th>
-                                <th>Unit Size(ml)</th>
-                                <th>Available Bottle Stock</th>
-                                <th>Available Stock</th>
+                                <th>View</th>
                             </tr>
                         </thead>
                         <tbody>
                             <ng-container *ngFor="let shop of filteredStockDetails; let i = index">
-                                <tr>
+                                <tr (click)="toggleExpand(i)" style="cursor: pointer;">
                                     <td>{{ i + 1 }}</td>
                                     <td>{{ shop.shopNumber }}</td>
                                     <td>{{ shop.districtName }}</td>
                                     <td>{{ shop.talukaName }}</td>
-                                    <td>{{ shop.Stock_details[0]?.brandName ? shop.Stock_details[0].brandName : '-' }}
-                                    </td>
-                                    <td>{{ shop.Stock_details[0]?.productName ? shop.Stock_details[0].productName : '-'
-                                        }}</td>
-                                    <td>{{ shop.Stock_details[0]?.unitName ? shop.Stock_details[0].unitName : '-' }}
-                                    </td>
-                                    <td>{{ shop.Stock_details[0]?.bottles ? shop.Stock_details[0].bottles : '-' }}</td>
-                                    <td>{{ shop.Stock_details[0]?.currentStock ? shop.Stock_details[0].currentStock :
-                                        '0' }}</td>
+                                    <td>{{ expandedRow === i ? '▼' : '►' }}</td>
                                 </tr>
-                                <ng-container *ngFor="let stock of shop.Stock_details;let j = index">
-                                    <tr *ngIf="j > 0">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{ stock.brandName ? stock.brandName : '-' }}</td>
-                                        <td>{{ stock.productName ? stock.productName : '-' }}</td>
-                                        <td>{{ stock.unitName ? stock.unitName : '-' }}</td>
-                                        <td>{{ stock.bottles ? stock.bottles : '-' }}</td>
-                                        <td>{{ stock.currentStock ? stock.currentStock : '0' }}</td>
-                                    </tr>
-                                </ng-container>
+                                <tr *ngIf="expandedRow === i">
+                                    <td colspan="9">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Brand Name</th>
+                                                    <th>Product Name</th>
+                                                    <th>Unit Size(ml)</th>
+                                                    <th>Available Bottle Stock</th>
+                                                    <th>Available Stock</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <ng-container *ngFor="let stock of shop.Stock_details">
+                                                    <tr>
+                                                        <td>{{ stock.brandName ? stock.brandName : '-' }}</td>
+                                                        <td>{{ stock.productName ? stock.productName : '-' }}</td>
+                                                        <td>{{ stock.unitName ? stock.unitName : '-' }}</td>
+                                                        <td>{{ stock.bottles ? stock.bottles : '-' }}</td>
+                                                        <td>{{ stock.currentStock ? stock.currentStock : '0' }}</td>
+                                                    </tr>
+                                                </ng-container>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
                             </ng-container>
                         </tbody>
                     </table>
