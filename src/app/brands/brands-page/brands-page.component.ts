@@ -41,9 +41,9 @@ export class brandsPageComponent implements OnInit {
 	getAllBrands() {
 		this.formService.getAllBrands().subscribe((res: any) => {
 			this.brands = res.data.sort((a: any, b: any) => {
-				return a.brandName?.localeCompare(b.brandName);
+				return a.BrandName?.localeCompare(b.BrandName);
 			}).slice(0, -1);
-			this.brands.unshift({ brandId: 0, brandName: 'All' })
+			this.brands.unshift({ BrandId: 0, BrandName: 'All' })
 			console.log(this.brands)
 		})
 	}
@@ -76,13 +76,13 @@ export class brandsPageComponent implements OnInit {
 	}
 
 	selectTab(tab: any) {
-		this.selectedTab = tab.brandId
+		this.selectedTab = tab.BrandId
 		if (tab.brandId == 0) {
 			this.getAllProducts()
 			this.clearSearch();
 		}
 		else {
-			this.getLiquoreProductsByBrandId(tab.brandId)
+			this.getLiquoreProductsByBrandId(tab.BrandId)
 			this.clearSearch();
 		}
 	}

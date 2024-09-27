@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrganizationChartModule } from 'primeng/organizationchart';
 
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
   styleUrls: ['./organization.component.css'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, OrganizationChartModule],
 })
 export class OrganizationComponent {
   selectedTab: string = 'board';
@@ -41,7 +42,7 @@ export class OrganizationComponent {
       name: 'Dr. S. Visakan, IAS',
       position: 'Managing Director',
       contact: 'Managing Director, TASMAC LTD., 4TH Floor, CMDA Tower- II, Egmore, Chennai - 600008',
-     image: 'assets/images/directors/logo.jpg'
+      image: 'assets/images/directors/logo.jpg'
     }
   ];
   hoDirectors = [
@@ -55,7 +56,7 @@ export class OrganizationComponent {
       name: 'Dr. S. Visakan, IAS',
       position: 'Managing Director',
       contact: 'Managing Director, TASMAC LTD., 4TH Floor, CMDA Tower- II, Egmore, Chennai - 600008',
-     image: 'assets/images/directors/logo.jpg'
+      image: 'assets/images/directors/logo.jpg'
     }
   ];
   srmDirectors = [
@@ -69,7 +70,7 @@ export class OrganizationComponent {
       name: 'Dr. S. Visakan, IAS',
       position: 'Managing Director',
       contact: 'Managing Director, TASMAC LTD., 4TH Floor, CMDA Tower- II, Egmore, Chennai - 600008',
-     image: 'assets/images/directors/logo.jpg'
+      image: 'assets/images/directors/logo.jpg'
     }
   ];
 
@@ -113,6 +114,35 @@ export class OrganizationComponent {
       ]
     }
   ];
+
+  tasmacOrganisatinStructure = [
+    {
+      label: 'SENIOR REGIONAL MANAGERS',
+      expanded: true,
+      children: [
+        {
+          label: 'CHENNAI REGION',
+          expanded: false,
+        },
+        {
+          label: 'COIMBATORE REGION',
+          expanded: false,
+        },
+        {
+          label: 'MADURAI REGION',
+          expanded: false,
+        },
+        {
+          label: 'SALEM REGION',
+          expanded: false,
+        },
+        {
+          label: 'TRICHY REGION',
+          expanded: false,
+        },
+      ]
+    }
+  ]
 
   constructor(private router: Router) { }
 

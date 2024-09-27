@@ -52,4 +52,8 @@ export class FormService {
   getStaffByOffice(staffType:any){
     return this.http.get(`${this.hrmsUrl}shared/lp/staffs?officeTypeId=${staffType}`)
   }
+
+  getAllStockDetails(){
+    return this.http.post(`${this.baseUrl}liquor/get-stockDetails`,'')
+  }
 }

@@ -13,6 +13,8 @@
 } */
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+@import '~ngx-org-chart/_theming.scss';
+
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -56,12 +58,14 @@ figure {
   z-index: 9999;
 }
 
-.page-border > .top-border,
-.page-border > .right-border,
-.page-border > .bottom-border,
-.page-border > .left-border {
+.page-border>.top-border,
+.page-border>.right-border,
+.page-border>.bottom-border,
+.page-border>.left-border {
   padding: 11px;
-  background: #444; /* Light gray background */;
+  background: #444;
+  /* Light gray background */
+  ;
 }
 
 .page-border .bottom-border,
@@ -219,13 +223,15 @@ textarea:focus {
 
 #navigation-logo {
   display: none;
-      margin-left: -310px
+  margin-left: -310px
 }
+
 #tn-logo {
   display: none;
-  max-width: 100%;  
-  height: auto;  
+  max-width: 100%;
+  height: auto;
 }
+
 .nav-solid #logo #tn-logo {
   display: inline-block;
   padding-left: 15px !important;
@@ -336,6 +342,7 @@ textarea:focus {
   position: fixed !important;
   left: 0;
 }
+
 #header.nav-solid nav a {
   border-bottom: 3px solid;
   border-color: #fff;
@@ -828,6 +835,7 @@ blockquote {
 
 /* Always display arrows on touch devices */
 @media only screen and (max-device-width: 1024px) {
+
   .featherlight-next:hover,
   .featherlight-previous:hover {
     background: none;
@@ -845,9 +853,11 @@ blockquote {
 .video_container,
 .easyContainer {
   position: relative;
-  padding-bottom: 56.25%; /* 16/9 ratio */
+  padding-bottom: 56.25%;
+  /* 16/9 ratio */
   margin: 0;
-  padding-top: 0; /* IE6 workaround*/
+  padding-top: 0;
+  /* IE6 workaround*/
   height: 0;
   overflow: hidden;
 }
@@ -1114,18 +1124,23 @@ blockquote {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #fff; /* change if the mask should have another color then white */
-  z-index: 99999; /* makes sure it stays on top */
+  background-color: #fff;
+  /* change if the mask should have another color then white */
+  z-index: 99999;
+  /* makes sure it stays on top */
 }
 
 #status {
   width: 110px;
   height: 110px;
   position: absolute;
-  left: 50%; /* centers the loading animation horizontally one the screen */
-  top: 50%; /* centers the loading animation vertically one the screen */
+  left: 50%;
+  /* centers the loading animation horizontally one the screen */
+  top: 50%;
+  /* centers the loading animation vertically one the screen */
   background-position: center;
-  margin: -55px 0 0 -55px; /* is width and height divided by two */
+  margin: -55px 0 0 -55px;
+  /* is width and height divided by two */
   text-align: center;
 }
 
@@ -1135,7 +1150,7 @@ blockquote {
 * Licensed under MIT
 */
 .la-ball-triangle-path,
-.la-ball-triangle-path > div {
+.la-ball-triangle-path>div {
   position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1152,7 +1167,7 @@ blockquote {
   color: #333;
 }
 
-.la-ball-triangle-path > div {
+.la-ball-triangle-path>div {
   display: inline-block;
   float: none;
   background-color: currentColor;
@@ -1164,7 +1179,7 @@ blockquote {
   height: 32px;
 }
 
-.la-ball-triangle-path > div {
+.la-ball-triangle-path>div {
   position: absolute;
   top: 0;
   left: 0;
@@ -1173,21 +1188,21 @@ blockquote {
   border-radius: 100%;
 }
 
-.la-ball-triangle-path > div:nth-child(1) {
+.la-ball-triangle-path>div:nth-child(1) {
   -webkit-animation: ball-triangle-path-ball-one 2s 0s ease-in-out infinite;
   -moz-animation: ball-triangle-path-ball-one 2s 0s ease-in-out infinite;
   -o-animation: ball-triangle-path-ball-one 2s 0s ease-in-out infinite;
   animation: ball-triangle-path-ball-one 2s 0s ease-in-out infinite;
 }
 
-.la-ball-triangle-path > div:nth-child(2) {
+.la-ball-triangle-path>div:nth-child(2) {
   -webkit-animation: ball-triangle-path-ball-two 2s 0s ease-in-out infinite;
   -moz-animation: ball-triangle-path-ball-two 2s 0s ease-in-out infinite;
   -o-animation: ball-triangle-path-ball-two 2s 0s ease-in-out infinite;
   animation: ball-triangle-path-ball-two 2s 0s ease-in-out infinite;
 }
 
-.la-ball-triangle-path > div:nth-child(3) {
+.la-ball-triangle-path>div:nth-child(3) {
   -webkit-animation: ball-triangle-path-ball-tree 2s 0s ease-in-out infinite;
   -moz-animation: ball-triangle-path-ball-tree 2s 0s ease-in-out infinite;
   -o-animation: ball-triangle-path-ball-tree 2s 0s ease-in-out infinite;
@@ -1199,7 +1214,7 @@ blockquote {
   height: 16px;
 }
 
-.la-ball-triangle-path.la-sm > div {
+.la-ball-triangle-path.la-sm>div {
   width: 4px;
   height: 4px;
 }
@@ -1209,7 +1224,7 @@ blockquote {
   height: 64px;
 }
 
-.la-ball-triangle-path.la-2x > div {
+.la-ball-triangle-path.la-2x>div {
   width: 20px;
   height: 20px;
 }
@@ -1219,7 +1234,7 @@ blockquote {
   height: 96px;
 }
 
-.la-ball-triangle-path.la-3x > div {
+.la-ball-triangle-path.la-3x>div {
   width: 30px;
   height: 30px;
 }
@@ -1232,25 +1247,31 @@ blockquote {
     -webkit-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -webkit-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -webkit-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translate(0, 220%);
@@ -1263,25 +1284,31 @@ blockquote {
     -moz-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -moz-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -moz-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -moz-transform: translate(0, 220%);
@@ -1294,25 +1321,31 @@ blockquote {
     -o-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -o-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -o-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -o-transform: translate(0, 220%);
@@ -1327,9 +1360,11 @@ blockquote {
     -o-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -webkit-transform: translate(110%, 0);
@@ -1337,9 +1372,11 @@ blockquote {
     -o-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -webkit-transform: translate(220%, 220%);
@@ -1347,9 +1384,11 @@ blockquote {
     -o-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translate(0, 220%);
@@ -1364,25 +1403,31 @@ blockquote {
     -webkit-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -webkit-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -webkit-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translate(110%, 0);
@@ -1395,25 +1440,31 @@ blockquote {
     -moz-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -moz-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -moz-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -moz-transform: translate(110%, 0);
@@ -1426,25 +1477,31 @@ blockquote {
     -o-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -o-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -o-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -o-transform: translate(110%, 0);
@@ -1459,9 +1516,11 @@ blockquote {
     -o-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -webkit-transform: translate(220%, 220%);
@@ -1469,9 +1528,11 @@ blockquote {
     -o-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -webkit-transform: translate(0, 220%);
@@ -1479,9 +1540,11 @@ blockquote {
     -o-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translate(110%, 0);
@@ -1496,25 +1559,31 @@ blockquote {
     -webkit-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -webkit-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -webkit-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translate(220%, 220%);
@@ -1527,25 +1596,31 @@ blockquote {
     -moz-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -moz-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -moz-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -moz-transform: translate(220%, 220%);
@@ -1558,25 +1633,31 @@ blockquote {
     -o-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -o-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -o-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -o-transform: translate(220%, 220%);
@@ -1591,9 +1672,11 @@ blockquote {
     -o-transform: translate(220%, 220%);
     transform: translate(220%, 220%);
   }
+
   17% {
     opacity: 0.25;
   }
+
   33% {
     opacity: 1;
     -webkit-transform: translate(0, 220%);
@@ -1601,9 +1684,11 @@ blockquote {
     -o-transform: translate(0, 220%);
     transform: translate(0, 220%);
   }
+
   50% {
     opacity: 0.25;
   }
+
   66% {
     opacity: 1;
     -webkit-transform: translate(110%, 0);
@@ -1611,9 +1696,11 @@ blockquote {
     -o-transform: translate(110%, 0);
     transform: translate(110%, 0);
   }
+
   83% {
     opacity: 0.25;
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translate(220%, 220%);
@@ -2052,8 +2139,7 @@ a:hover,
 
 /* Banner Background and Text Colors */
 #banner {
-  background: url("src\assets\images\banner-images\Tasmac-store-pic1.jpg") no-repeat
-    right top;
+  background: url("src\assets\images\banner-images\Tasmac-store-pic1.jpg") no-repeat right top;
 }
 
 
@@ -2304,14 +2390,17 @@ h4 {
 
 /* Kartick code */
 .primary-bg01 {
-  background-color: #ED242C!important;
+  background-color: #ED242C !important;
 }
+
 .primary-fc01 {
-  color: #ED242C!important;
+  color: #ED242C !important;
 }
+
 .primeng-inputbox {
   padding: 0.63rem !important;
 }
+
 .p-inputtext {
   width: 100% !important;
   /* padding: 0.55rem 0.7rem !important; */
@@ -2319,6 +2408,34 @@ h4 {
   padding: 0.60rem 0.75rem;
   font-size: 0.85rem;
 }
+
 .p-dropdown-items-wrapper .p-dropdown-items {
   padding-left: 0rem;
+}
+
+.p-organizationchart {
+  font-size: 14px;
+  font-weight: 700;
+  color:black ;
+  overflow: auto;
+}
+
+.p-organizationchart-node-content {
+   /* height: 140px; */
+   align-content: center;
+}
+.p-organizationchart-line-down {
+  border: 1px solid;
+}
+
+
+.p-organizationchart-node-content {
+  border: 1px solid;
+}
+
+.p-organizationchart-line-left {
+  border-right: 1px solid;
+}
+.p-organizationchart-line-top{
+  border-top: 1px solid;
 }

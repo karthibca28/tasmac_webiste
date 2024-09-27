@@ -69,16 +69,6 @@ h1 {
     font-weight: 700;
 }
 
-/* .social-box .container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.social-box .row {
-    display: flex;
-    flex: 1;
-} */
-
 .box {
     display: flex;
     flex-direction: column; 
@@ -121,3 +111,4 @@ h1 {
 .card:hover {
     border: 2px solid red!important;
 }
+

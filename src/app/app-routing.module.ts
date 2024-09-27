@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StockAvailabilityComponent } from './stock-availability/stock-availability.component';
+import { OrganisationStructureComponent } from './allpolicy/organisation-structure/organisation-structure.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -193,6 +195,14 @@ const routes: Routes = [
 			),
 	},
 	{
+		path: 'stock-availability',
+		component: StockAvailabilityComponent
+	},
+	{
+		path: 'organisation-structure',
+		component: OrganisationStructureComponent
+	},
+	{
 		path: '404',
 		loadComponent: () =>
 			import('./notfound/notfound-page/notfound-page.component').then(
@@ -214,4 +224,4 @@ const routes: Routes = [
 	exports: [RouterModule],
 	declarations: [],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -17,7 +17,7 @@ export class OfficesComponent implements OnInit {
 	selectedOfficeType: number = 1
 	isShow: boolean = false;
 	topPosToStartShowing = 100;
-	staffDetails:any
+	staffDetails: any
 
 	@HostListener('window:scroll')
 	checkScroll() {
@@ -34,17 +34,16 @@ export class OfficesComponent implements OnInit {
 			behavior: 'smooth'
 		});
 	}
-	constructor(private activeRoute: ActivatedRoute,private formService:FormService) { }
+	constructor(private activeRoute: ActivatedRoute, private formService: FormService) { }
 	ngOnInit() {
-	this.getStaffByOffice(this.selectedOfficeType)
+		this.getStaffByOffice(this.selectedOfficeType)
 	}
 
-	getStaffByOffice(staffType:any){
+	getStaffByOffice(staffType: number) {
 		this.selectedOfficeType = staffType
-		this.formService.getStaffByOffice(staffType).subscribe((res:any)=>{
+		this.formService.getStaffByOffice(staffType).subscribe((res: any) => {
 			this.staffDetails = res.data.staffs.data;
-			console.log("Details", res)
 		})
 	}
-	
+
 }

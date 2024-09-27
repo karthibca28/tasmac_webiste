@@ -30,9 +30,8 @@ interface Shop {
 })
 export class ShopLocatorComponent implements OnInit {
   @ViewChild('map', { static: true }) mapElement: ElementRef;
-
-  latitude = 13.0827; // Default latitude for Chennai
-  longitude = 80.2707; // Default longitude for Chennai
+  latitude = 13.0827;
+  longitude = 80.2707;
   searchTerm = '';
   selectedDistrict = '';
   selectedTaluk = '';

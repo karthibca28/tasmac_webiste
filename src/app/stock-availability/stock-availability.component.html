@@ -1,0 +1,92 @@
+<div class="shop-locator mt-4">
+    <div class="container text-center">
+        <h2 class="mb-3">Stock Availability</h2>
+        <!-- <div class="form-group text-start">
+            <h6 class="mb-3">Filters</h6>
+        </div> -->
+        <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-5 text-end">
+                <div class="search-container d-flex justify-content-between">
+                    <input type="text" class="form-control mb-2" [(ngModel)]="searchTerm" (input)="filterProducts()"
+                        placeholder="Search stocks...">
+                    <!-- <div>
+                        <button (click)="clearSearch()" class="btn btn-primary ms-1 mt-1">Clear</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3 mb-3 text-start">
+                <label>Select District</label>
+                <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="Revenue_DistrictName"
+                    optionValue="Revenue_DistrictId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+                    (onChange)="filterRvAndTaluk()"  [(ngModel)]="selectedDistrict" (onChange)="filterTable()"></p-dropdown>
+            </div>
+            <div class="col-md-3 mb-3 text-start">
+                <label>Select Taluk</label>
+                <p-dropdown [filter]="true" appendTo="body" [options]="taluks" optionLabel="talukaName"
+                    optionValue="talukaId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+                    [(ngModel)]="selectedTaluk" (onChange)="filterRV()" (onChange)="filterTable()"></p-dropdown>
+            </div>
+            <div class="col-md-3 mb-3 text-start">
+                <label>Select Shop No</label>
+                <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="RVShopsNo"
+                    optionValue="RVShopsNo" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+                    [(ngModel)]="selectedRvShopNo" (onChange)="getRvShopDetails()" (onChange)="filterTable()"></p-dropdown>
+            </div>
+            <div class="col-md-3 mb-3 text-start">
+                <label>Select Liquor Type</label>
+                <p-dropdown [filter]="true" appendTo="body" [options]="brands" optionLabel="BrandName"
+                    optionValue="BrandId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+                    [(ngModel)]="selectedBrand" (onChange)="filterTable()"></p-dropdown>
+            </div>
+            <div class="text-end">
+                <button (click)="resetFilters()">Reset</button>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="12" class="bg-dark">
+                                    <h2 class="py-0 m-0 text-white">RV Shops Stock Availability</h2>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>RV Shop No</th>
+                                <th>District Name</th>
+                                <th>Taluk Name</th>
+                                <th style="display: flex;justify-content: space-between;"><span>Brand Name</span><span>
+                                        Package Size</span><span> Available Stock</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let shop of filteredStockDetails; let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ shop.shopNumber }}</td>
+                                <td>{{ shop.districtName }}</td>
+                                <td>{{ shop.talukaName }}</td>
+                                <ng-container *ngFor="let stock of shop.Stock_details; let j = index">
+                            <tr style="display: flex;justify-content: space-between;">
+                                <td>{{ stock.brandName ? stock.brandName:'-' }}</td>
+                                <td>{{ stock.unitName ? stock.unitName : '0' }}</td>
+                                <td>{{ stock.currentStock ? stock.currentStock : '0' }}</td>
+                            </tr>
+                            </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="scroll-to-top" [ngClass]="{'show': isShow}" (click)="scrollToTop()">
+    ↑
+</div>

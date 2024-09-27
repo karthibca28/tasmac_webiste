@@ -36,8 +36,8 @@
     <div class="row">
       <div class="col-md-3">
         <div class="tabs">
-          <button *ngFor="let data of brands" class="tab-button" [class.active]="selectedTab === data.brandId"
-            (click)="selectTab(data)">{{data.brandName}}</button>
+          <button *ngFor="let data of brands" class="tab-button" [class.active]="selectedTab === data.BrandId"
+            (click)="selectTab(data)">{{data.BrandName}}</button>
         </div>
       </div>
       <div class="col-md-9">

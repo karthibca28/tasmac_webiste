@@ -26,10 +26,11 @@ export class NavigationComponent implements OnInit {
 		  isDropdown: true,
 		  subMenu: [
 			{ id: 11, title: 'Profile', link: '/profile' },
-			{ id: 12, title: 'Organization', link: '/orgchart' },
+			{ id: 12, title: 'Organization', link: '/organisation-structure' },
 			{ id: 13, title: 'Board of Directors', link: '/boardofdirector' }
 		  ]
 		},
+		{ id: 6, title: 'Stock Availability', link: '/stock-availability' },
 		{ id: 6, title: 'Products', link: '/brands' },
 		{ id: 8, title: 'Suppliers', link: '/suppliers' },
 		{ id: 9, title: 'Shop Locator', link: '/shoplocator' },
