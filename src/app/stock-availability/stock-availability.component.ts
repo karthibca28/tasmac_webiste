@@ -161,35 +161,43 @@ export class StockAvailabilityComponent {
   }
 
   filterProducts() {
-    let searchData: any
+    let searchData: any;
     if (this.selectedBrand || this.selectedDistrict || this.selectedRvShopNo || this.selectedTaluk) {
-      searchData = this.filteredStockDetailsByDropdown
-    }
-    else {
-      searchData = this.stockDetails
+      searchData = this.filteredStockDetailsByDropdown;
+    } else {
+      searchData = this.stockDetails;
     }
     const lowerCaseSearchTerm = this.searchTerm.toLowerCase();
-    this.filteredStockDetails = searchData.filter(shop => {
+    const filteredShops = searchData.filter(shop => {
       const matchesDistrict = shop.districtName?.toLowerCase().includes(lowerCaseSearchTerm) || false;
+      const matchesTaluk = shop.talukaName?.toLowerCase().includes(lowerCaseSearchTerm) || false;
+      const matchesShopNumber = shop.shopNumber.toString().includes(lowerCaseSearchTerm);
       const matchesStock = shop.Stock_details.some(stock => {
         return (
           (stock.stockName?.toLowerCase().includes(lowerCaseSearchTerm) || false) ||
           (stock.brandName?.toLowerCase().includes(lowerCaseSearchTerm) || false)
         );
       });
-      const matchesTaluk = shop.talukaName?.toLowerCase().includes(lowerCaseSearchTerm) || false;
-      const matchesShopNumber = shop.shopNumber.toString().includes(lowerCaseSearchTerm);
-      return matchesDistrict || matchesStock || matchesTaluk || matchesShopNumber;
+      return matchesDistrict || matchesTaluk || matchesShopNumber || matchesStock;
     });
+    this.filteredStockDetails = filteredShops.map(shop => {
+      const filteredStock = shop.Stock_details.filter(stock => {
+        return (
+          (stock.stockName?.toLowerCase().includes(lowerCaseSearchTerm) || false) ||
+          (stock.brandName?.toLowerCase().includes(lowerCaseSearchTerm) || false)
+        );
+      });
+      return {
+        ...shop,
+        Stock_details: filteredStock
+      };
+    }).filter(shop => shop.Stock_details.length > 0);
   }
-
-
-
 
   resetFilters() {
     this.selectedDistrict = '',
-    this.selectedTaluk = '',
-    this.selectedRvShopNo = ''
+      this.selectedTaluk = '',
+      this.selectedRvShopNo = ''
     this.selectedBrand = ''
     this.searchTerm = ''
     this.filterTable()

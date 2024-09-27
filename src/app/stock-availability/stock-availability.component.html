@@ -9,7 +9,7 @@
             <div class="col-md-5 text-end">
                 <div class="search-container d-flex justify-content-between">
                     <input type="text" class="form-control mb-2" [(ngModel)]="searchTerm" (input)="filterProducts()"
-                        placeholder="Search stocks...">
+                        placeholder="Search">
                     <!-- <div>
                         <button (click)="clearSearch()" class="btn btn-primary ms-1 mt-1">Clear</button>
                     </div> -->
@@ -21,7 +21,8 @@
                 <label>Select District</label>
                 <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="Revenue_DistrictName"
                     optionValue="Revenue_DistrictId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
-                    (onChange)="filterRvAndTaluk()"  [(ngModel)]="selectedDistrict" (onChange)="filterTable()"></p-dropdown>
+                    (onChange)="filterRvAndTaluk()" [(ngModel)]="selectedDistrict"
+                    (onChange)="filterTable()"></p-dropdown>
             </div>
             <div class="col-md-3 mb-3 text-start">
                 <label>Select Taluk</label>
@@ -33,7 +34,8 @@
                 <label>Select Shop No</label>
                 <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="RVShopsNo"
                     optionValue="RVShopsNo" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
-                    [(ngModel)]="selectedRvShopNo" (onChange)="getRvShopDetails()" (onChange)="filterTable()"></p-dropdown>
+                    [(ngModel)]="selectedRvShopNo" (onChange)="getRvShopDetails()"
+                    (onChange)="filterTable()"></p-dropdown>
             </div>
             <div class="col-md-3 mb-3 text-start">
                 <label>Select Liquor Type</label>
@@ -53,35 +55,54 @@
                         <thead>
                             <tr>
                                 <th colspan="12" class="bg-dark">
-                                    <h2 class="py-0 m-0 text-white">RV Shops Stock Availability</h2>
+                                    <h2 class="py-0 m-0 text-white text-center">RV Shops Stock Availability</h2>
                                 </th>
                             </tr>
-                            <tr>
+                            <tr style="white-space: nowrap;">
                                 <th>S.No.</th>
                                 <th>RV Shop No</th>
                                 <th>District Name</th>
                                 <th>Taluk Name</th>
-                                <th style="display: flex;justify-content: space-between;"><span>Brand Name</span><span>
-                                        Package Size</span><span> Available Stock</span></th>
+                                <th>Brand Name</th>
+                                <th>Product Name</th>
+                                <th>Unit Size(ml)</th>
+                                <th>Available Bottle Stock</th>
+                                <th>Available Stock</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let shop of filteredStockDetails; let i = index">
-                                <td>{{ i + 1 }}</td>
-                                <td>{{ shop.shopNumber }}</td>
-                                <td>{{ shop.districtName }}</td>
-                                <td>{{ shop.talukaName }}</td>
-                                <ng-container *ngFor="let stock of shop.Stock_details; let j = index">
-                            <tr style="display: flex;justify-content: space-between;">
-                                <td>{{ stock.brandName ? stock.brandName:'-' }}</td>
-                                <td>{{ stock.unitName ? stock.unitName : '0' }}</td>
-                                <td>{{ stock.currentStock ? stock.currentStock : '0' }}</td>
-                            </tr>
+                            <ng-container *ngFor="let shop of filteredStockDetails; let i = index">
+                                <tr>
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ shop.shopNumber }}</td>
+                                    <td>{{ shop.districtName }}</td>
+                                    <td>{{ shop.talukaName }}</td>
+                                    <td>{{ shop.Stock_details[0]?.brandName ? shop.Stock_details[0].brandName : '-' }}
+                                    </td>
+                                    <td>{{ shop.Stock_details[0]?.productName ? shop.Stock_details[0].productName : '-'
+                                        }}</td>
+                                    <td>{{ shop.Stock_details[0]?.unitName ? shop.Stock_details[0].unitName : '-' }}
+                                    </td>
+                                    <td>{{ shop.Stock_details[0]?.bottles ? shop.Stock_details[0].bottles : '-' }}</td>
+                                    <td>{{ shop.Stock_details[0]?.currentStock ? shop.Stock_details[0].currentStock :
+                                        '0' }}</td>
+                                </tr>
+                                <ng-container *ngFor="let stock of shop.Stock_details;let j = index">
+                                    <tr *ngIf="j > 0">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{ stock.brandName ? stock.brandName : '-' }}</td>
+                                        <td>{{ stock.productName ? stock.productName : '-' }}</td>
+                                        <td>{{ stock.unitName ? stock.unitName : '-' }}</td>
+                                        <td>{{ stock.bottles ? stock.bottles : '-' }}</td>
+                                        <td>{{ stock.currentStock ? stock.currentStock : '0' }}</td>
+                                    </tr>
+                                </ng-container>
                             </ng-container>
-                            </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
