@@ -20,7 +20,7 @@ import { FormService } from '../services/form.service';
 
 })
 export class SuppliersComponent implements OnInit {
-	supplierType: string = 'Distellery'
+	supplierType: string = 'Distillery'
 	supplierDetails: any
 	constructor(private formService: FormService) { }
 
