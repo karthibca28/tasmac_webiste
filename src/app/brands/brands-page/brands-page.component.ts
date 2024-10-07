@@ -70,9 +70,10 @@ export class brandsPageComponent implements OnInit {
 		return [...new Set(unitNames)];
 	}
 
-	getMrpByUnitName(productDetails: any[], unitName: string): number | null {
+	getMrpByUnitName(productDetails: any, unitName: any){
 		const detail = productDetails.find(detail => detail.unitName === unitName);
-		return detail ? detail.mrpPerBottle : null;
+		const response = detail ? `${detail.mrpPerBottle}Rs` : null;
+		return response
 	}
 
 	selectTab(tab: any) {
