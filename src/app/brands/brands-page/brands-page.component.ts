@@ -78,7 +78,7 @@ export class brandsPageComponent implements OnInit {
 
 	selectTab(tab: any) {
 		this.selectedTab = tab.BrandId
-		if (tab.brandId == 0) {
+		if (tab.BrandId == 0) {
 			this.getAllProducts()
 			this.clearSearch();
 		}
