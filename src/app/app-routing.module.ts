@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StockAvailabilityComponent } from './stock-availability/stock-availability.component';
 import { OrganisationStructureComponent } from './allpolicy/organisation-structure/organisation-structure.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { ExciseComponent } from './allpolicy/excise/excise.component';
+import { OnlinePermitsComponent } from './allpolicy/online-permits/online-permits.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -201,6 +204,18 @@ const routes: Routes = [
 	{
 		path: 'organisation-structure',
 		component: OrganisationStructureComponent
+	},
+	{
+		path: 'inventory',
+		component: InventoryComponent
+	},
+	{
+		path: 'excise',
+		component: ExciseComponent
+	},
+	{
+		path: 'online-permit',
+		component: OnlinePermitsComponent
 	},
 	{
 		path: '404',

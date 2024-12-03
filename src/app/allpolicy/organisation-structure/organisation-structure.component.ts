@@ -16,19 +16,19 @@ export class OrganisationStructureComponent {
       expanded: true,
       children: [
         {
-          label: 'The Principal Secretary to Govt.Home Prohibition & Excise Dept.',
+          label: 'The Principal Secretary to Govt.Home Prohibition & Excise Dept (Director).',
           expanded: false,
         },
         {
-          label: 'The Principal Secretary to Govt. Finance Dept.',
+          label: 'The Principal Secretary to Govt. Finance Dept (Director).',
           expanded: false,
         },
         {
-          label: 'The Secretary to Govt. Commercial Taxes & Registration Dept.',
+          label: 'The Secretary to Govt. Commercial Taxes & Registration Dept (Director).',
           expanded: false,
         },
         {
-          label: 'The Commissioner of Prohibition & Excise',
+          label: 'The Commissioner of Prohibition & Excise (Director).',
           expanded: false,
         },
         {

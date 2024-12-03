@@ -2416,26 +2416,29 @@ h4 {
 .p-organizationchart {
   font-size: 14px;
   font-weight: 700;
-  color:black ;
+  color: black;
   overflow: auto;
 }
 
 .p-organizationchart-node-content {
-   /* height: 140px; */
-   align-content: center;
-}
-.p-organizationchart-line-down {
+  align-content: center;
   border: 1px solid;
+  height: 150px;
+  overflow: auto;
 }
 
-
-.p-organizationchart-node-content {
+.p-organizationchart-line-down {
   border: 1px solid;
 }
 
 .p-organizationchart-line-left {
   border-right: 1px solid;
 }
-.p-organizationchart-line-top{
+
+.p-organizationchart-line-top {
   border-top: 1px solid;
+}
+
+.p-node-toggler{
+  display: none;
 }

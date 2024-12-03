@@ -25,7 +25,7 @@
 				
 					<nav id="nav-main">
 						 <app-navmenu [menu]="menu" [menuOpen]="true"></app-navmenu> -->
-						<!-- { id: 1, title: 'Home', link: '/home' },
+<!-- { id: 1, title: 'Home', link: '/home' },
 			{ id: 3, title: 'Our Presence', link: '/offices' },
 			// { id: 3, title: 'Services', link: '/services' },
 			// { id: 4, title: 'Gallery', link: '/gallery' },
@@ -46,15 +46,16 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
 	<div class="container-fluid">
-	  <a class="navbar-brand" routerLink="/">
-		<img src="assets/images/logo/logo.jpg" height="35" class="" />
-	  </a>
-	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarScroll">
-		<div></div>
-		<!-- <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+		<a class="navbar-brand" routerLink="/">
+			<img src="assets/images/logo/logo.jpg" height="35" class="" />
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+			aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarScroll">
+			<div></div>
+			<!-- <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 		  <li class="nav-item">
 			<a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
 		  </li>
@@ -87,41 +88,27 @@
 			<a class="nav-link" href="/contact">Contact</a>
 		  </li>
 		</ul> -->
-		<ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-			<!-- Dynamically generate menu items -->
-			<li *ngFor="let menuItem of menuItems" class="nav-item" [ngClass]="{'dropdown': menuItem.isDropdown}">
-			  <!-- Check if the menu item has a dropdown -->
-			  <a
-				class="nav-link"
-				[routerLink]="!menuItem.isDropdown ? menuItem.link : null"
-				(click)="toggleMenu()"
-				routerLinkActive="active"
-				[routerLinkActiveOptions]="{ exact: true }"
-				[ngClass]="{'dropdown-toggle': menuItem.isDropdown}"
-				[attr.id]="menuItem.isDropdown ? 'navbarScrollingDropdown' : null"
-				[attr.role]="menuItem.isDropdown ? 'button' : null"
-				[attr.data-bs-toggle]="menuItem.isDropdown ? 'dropdown' : null"
-				[attr.aria-expanded]="menuItem.isDropdown ? 'false' : null"
-				href="#" 
-			  >
-				{{ menuItem.title }}
-			  </a>
-			  <!-- Submenu for dropdown items -->
-			  <ul *ngIf="menuItem.isDropdown" class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-				<li *ngFor="let subItem of menuItem.subMenu">
-				  <a
-					class="dropdown-item"
-					[routerLink]="subItem.link"
-					(click)="toggleMenu()"
-					routerLinkActive="active"
-					[routerLinkActiveOptions]="{ exact: true }"
-				  >
-					{{ subItem.title }}
-				  </a>
+			<ul *ngFor="let menuItem of menuItems" class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll"
+				style="--bs-scroll-height: 100px;">
+				<li class="nav-item" [ngClass]="{'dropdown': menuItem.isDropdown, 'show': menuItem.showDropdown}"
+					(mouseenter)="menuItem.isDropdown ? showDropdown(menuItem, true) : null"
+					(mouseleave)="menuItem.isDropdown ? showDropdown(menuItem, false) : null">
+					<a class="nav-link" [routerLink]="!menuItem.isDropdown ? menuItem.link : null"
+						routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+						[ngClass]="{'dropdown-toggle': menuItem.isDropdown}" role="button"
+						[attr.aria-expanded]="menuItem.isDropdown ? 'false' : null" href="#">
+						{{ menuItem.title }}
+					</a>
+					<ul *ngIf="menuItem.isDropdown" class="dropdown-menu" [ngClass]="{'show': menuItem.showDropdown}">
+						<li *ngFor="let subItem of menuItem.subMenu">
+							<a class="dropdown-item" [routerLink]="subItem.link" routerLinkActive="active"
+								[routerLinkActiveOptions]="{ exact: true }">
+								{{ subItem.title }}
+							</a>
+						</li>
+					</ul>
 				</li>
-			  </ul>
-			</li>
-		  </ul>
-	  </div>
+			</ul>
+		</div>
 	</div>
-  </nav>
+</nav>

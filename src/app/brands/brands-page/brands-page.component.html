@@ -63,7 +63,7 @@
                     <th>S.NO</th>
                     <th>Product Name</th>
                     <ng-container *ngFor="let header of getUniqueUnitNames(company.Product_Name)">
-                      <th>{{ header }}</th>
+                      <th>{{ header }}<br><span style="white-space: nowrap;">( Price in Rs)</span></th>
                     </ng-container>
                   </tr>
                 </thead>
@@ -73,8 +73,8 @@
                     <td>{{ product.productName }}</td>
                     <ng-container *ngFor="let header of getUniqueUnitNames(company.Product_Name)">
                       <td>
-                        {{ getMrpByUnitName(product.productDetails, header) || 'N/A' }}
-                      </td>
+                        {{ (getMrpByUnitName(product.productDetails, header)) }}
+                      </td>                      
                     </ng-container>
                   </tr>
                 </tbody>

@@ -34,13 +34,19 @@ export class OfficesComponent implements OnInit {
 			behavior: 'smooth'
 		});
 	}
-	constructor(private activeRoute: ActivatedRoute, private formService: FormService) { }
+	constructor(private activatedRoute: ActivatedRoute, private formService: FormService) { }
 	ngOnInit() {
+		this.activatedRoute.queryParams.subscribe((params: any) => {
+			if (params.offices) {
+				this.getStaffByOffice(parseInt(params.offices))
+			}
+		});
 		this.getStaffByOffice(this.selectedOfficeType)
 	}
 
 	getStaffByOffice(staffType: number) {
 		this.selectedOfficeType = staffType
+		console.log(staffType)
 		this.formService.getStaffByOffice(staffType).subscribe((res: any) => {
 			this.staffDetails = res.data.staffs.data;
 		})

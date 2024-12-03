@@ -43,7 +43,7 @@ export class AboutComponent implements OnInit {
     this.router.navigate(['/suppliers']);
   }
   navigateToGlance() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/inventory']);
   }
   navigateToDownload() {
     this.router.navigate(['/downloads']);

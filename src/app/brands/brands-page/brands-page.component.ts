@@ -70,11 +70,19 @@ export class brandsPageComponent implements OnInit {
 		return [...new Set(unitNames)];
 	}
 
-	getMrpByUnitName(productDetails: any, unitName: any){
+	getMrpByUnitName(productDetails: any, unitName: any): string {
+		if (!productDetails || !Array.isArray(productDetails)) {
+		  return '-';
+		}
 		const detail = productDetails.find(detail => detail.unitName === unitName);
-		const response = detail ? `${detail.mrpPerBottle}Rs` : null;
-		return response
-	}
+		
+		if (detail && detail.mrpPerBottle) {
+		  const formatter = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2 });
+		  return formatter.format(detail.mrpPerBottle);
+		}
+		return '-'; 
+	  }
+	  
 
 	selectTab(tab: any) {
 		this.selectedTab = tab.BrandId
