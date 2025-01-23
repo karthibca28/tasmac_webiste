@@ -16,19 +16,19 @@ export class OrganisationStructureComponent {
       expanded: true,
       children: [
         {
-          label: 'The Principal Secretary to Govt.Home Prohibition & Excise Dept (Director).',
+          label: 'The ACS Secretary to Govt.Home Prohibition & Excise Dept .',
           expanded: false,
         },
         {
-          label: 'The Principal Secretary to Govt. Finance Dept (Director).',
+          label: 'The Principal Secretary to Govt. Finance Dept .',
           expanded: false,
         },
         {
-          label: 'The Secretary to Govt. Commercial Taxes & Registration Dept (Director).',
+          label: 'The Principal Secretary to Govt. Commercial Taxes & Registration Dept .',
           expanded: false,
         },
         {
-          label: 'The Commissioner of Prohibition & Excise (Director).',
+          label: 'The Diretor Commissioner of Prohibition & Excise .',
           expanded: false,
         },
         {
@@ -57,12 +57,26 @@ export class OrganisationStructureComponent {
           expanded: false,
         },
         {
+          label: 'GENERAL MANAGER (Finance)',
+          expanded: false,
+        },
+        {
           label: 'SENIOR REGIONAL MANAGERS',
           expanded: true,
           children: [
             {
               label: 'CHENNAI REGION',
               expanded: false,
+              // children: [
+              //   {
+              //     label: '38 District Managers',
+              //     expanded: false,
+              //   },
+              //   {
+              //     label: '5 SPECIAL FLYING SQUAD',
+              //     expanded: false,
+              //   }
+              // ]
             },
             {
               label: 'COIMBATORE REGION',
@@ -90,10 +104,6 @@ export class OrganisationStructureComponent {
           label: 'LAW OFFICER',
           expanded: false,
         },
-        {
-          label: 'MANAGING DIRECTOR',
-          expanded: false,
-        },
       ]
     }
   ]
@@ -116,6 +126,10 @@ export class OrganisationStructureComponent {
           expanded: false,
         },
         {
+          label: 'GENERAL MANAGER (Finance)',
+          expanded: false,
+        },
+        {
           label: 'COMPANY SECRETARY',
           expanded: false,
         },
@@ -123,10 +137,7 @@ export class OrganisationStructureComponent {
           label: 'LAW OFFICER',
           expanded: false,
         },
-        {
-          label: 'MANAGING DIRECTOR',
-          expanded: false,
-        },
+
       ]
     }
   ]
