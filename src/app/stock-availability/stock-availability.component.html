@@ -19,29 +19,28 @@
         <div class="row mt-4">
             <div class="col-md-3 mb-3 text-start">
                 <label>Select District</label>
-                <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="Revenue_DistrictName"
-                    optionValue="Revenue_DistrictId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+                <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="revenue_district_name"
+                    optionValue="revenue_district_id" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
                     (onChange)="filterRvAndTaluk()" [(ngModel)]="selectedDistrict"
-                    (onChange)="filterTable()"></p-dropdown>
+                    (onChange)="getStockDetailsByDistrict()"></p-dropdown>
             </div>
             <div class="col-md-3 mb-3 text-start">
                 <label>Select Taluk</label>
-                <p-dropdown [filter]="true" appendTo="body" [options]="taluks" optionLabel="talukaName"
-                    optionValue="talukaId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
-                    [(ngModel)]="selectedTaluk" (onChange)="filterRV()" (onChange)="filterTable()"></p-dropdown>
+                <p-dropdown [filter]="true" appendTo="body" [options]="taluks" optionLabel="taluk"
+                    optionValue="taluk_code" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+                    [(ngModel)]="selectedTaluk" (onChange)="filterRV()" (onChange)="getStockDetailsByTaluk()"></p-dropdown>
             </div>
             <div class="col-md-3 mb-3 text-start">
                 <label>Select Shop No</label>
                 <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="RVShopsNo"
                     optionValue="RVShopsNo" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
-                    [(ngModel)]="selectedRvShopNo" (onChange)="getRvShopDetails()"
-                    (onChange)="filterTable()"></p-dropdown>
+                    [(ngModel)]="selectedRvShopNo"></p-dropdown>
             </div>
             <div class="col-md-3 mb-3 text-start">
                 <label>Select Liquor Type</label>
-                <p-dropdown [filter]="true" appendTo="body" [options]="brands" optionLabel="BrandName"
-                    optionValue="BrandId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
-                    [(ngModel)]="selectedBrand" (onChange)="filterTable()"></p-dropdown>
+                <p-dropdown [filter]="true" appendTo="body" [options]="brands" optionLabel="brandName"
+                    optionValue="brandId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+                    [(ngModel)]="selectedBrand"></p-dropdown>
             </div>
             <div class="text-end">
                 <button (click)="resetFilters()">Reset</button>
@@ -62,7 +61,7 @@
                                 <th>S.No.</th>
                                 <th>RV Shop No</th>
                                 <th>District Name</th>
-                                <th>Taluk Name</th>
+                                <!-- <th>Taluk Name</th> -->
                                 <th>View</th>
                             </tr>
                         </thead>
@@ -72,7 +71,7 @@
                                     <td>{{ i + 1 }}</td>
                                     <td>{{ shop.shopNumber }}</td>
                                     <td>{{ shop.districtName }}</td>
-                                    <td>{{ shop.talukaName }}</td>
+                                    <!-- <td>{{ shop.talukaName }}</td> -->
                                     <td>{{ expandedRow === i ? '▼' : '►' }}</td>
                                 </tr>
                                 <tr *ngIf="expandedRow === i">
@@ -83,7 +82,7 @@
                                                     <th>Brand Name</th>
                                                     <th>Product Name</th>
                                                     <th>Unit Size(ml)</th>
-                                                    <th>Available Bottle Stock</th>
+                                                    <!-- <th>Available Bottle Stock</th> -->
                                                     <th>Available Stock</th>
                                                 </tr>
                                             </thead>
@@ -93,7 +92,7 @@
                                                         <td>{{ stock.brandName ? stock.brandName : '-' }}</td>
                                                         <td>{{ stock.productName ? stock.productName : '-' }}</td>
                                                         <td>{{ stock.unitName ? stock.unitName : '-' }}</td>
-                                                        <td>{{ stock.bottles ? stock.bottles : '-' }}</td>
+                                                        <!-- <td>{{ stock.bottles ? stock.bottles : '-' }}</td> -->
                                                         <td>{{ stock.currentStock ? stock.currentStock : '0' }}</td>
                                                     </tr>
                                                 </ng-container>

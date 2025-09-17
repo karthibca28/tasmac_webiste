@@ -23,13 +23,13 @@
         </div>
         <div class="mb-3">
           <label>Select District</label>
-          <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="Revenue_DistrictName"
-            optionValue="Revenue_DistrictId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
+          <p-dropdown [filter]="true" appendTo="body" [options]="districts" optionLabel="revenue_district_name"
+            optionValue="revenue_district_id" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
             (onChange)="filterRvAndTaluk()" [(ngModel)]="selectedDistrict"></p-dropdown>
         </div>
         <div class="mb-3">
           <label>Select Taluk</label>
-          <p-dropdown [filter]="true" appendTo="body" [options]="taluks" optionLabel="talukaName" optionValue="talukaId"
+          <p-dropdown [filter]="true" appendTo="body" [options]="taluks" optionLabel="taluk" optionValue="taluk_code"
             dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}" [(ngModel)]="selectedTaluk"
             (onChange)="filterRV()"></p-dropdown>
         </div>
@@ -70,7 +70,7 @@
                 <td>{{ i+1 }}</td>
                 <td>{{ shop.RVShopsNo }}</td>
                 <td>{{ shop.Address }}</td>
-                <td (click)="navigate(shop.latitude,shop.longitude)"><a style="color: blue;">View</a></td>
+                <td (click)="navigate(shop.latitude,shop.longitude)"><a style="color: blue;cursor: pointer;">View</a></td>
               </tr>
             </tbody>
           </table>

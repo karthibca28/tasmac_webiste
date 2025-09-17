@@ -88,47 +88,47 @@ export class ShopLocatorComponent implements OnInit {
 
   getDistrict() {
     this.formService.getAllDistrict().subscribe((res: any) => {
-      this.districts = res.data.slice(0, -1);
+      this.districts = res.data;
     })
   }
 
   getAllTaluk() {
     this.formService.getAllTaluk().subscribe((res: any) => {
-      this.taluks = res.data.slice(0, -1);
+      this.taluks = res.data;
     })
   }
 
   getAllShopNo() {
     this.formService.getAllShopNo().subscribe((res: any) => {
-      this.rvShopNos = res.data.slice(0, -1);
+      this.rvShopNos = res.data;
     })
   }
 
   filterRvAndTaluk() {
     this.formService.getAllTaluk().subscribe((res: any) => {
-      this.taluks = res.data.slice(0, -1).filter((f: any) => f.districtId == this.selectedDistrict);
+      this.taluks = res.data.filter((f: any) => f.district_code == this.selectedDistrict);
     })
     this.formService.getAllShopNo().subscribe((res: any) => {
-      this.rvShopNos = res.data.slice(0, -1).filter((f: any) => f.districtId == this.selectedDistrict);;
+      this.rvShopNos = res.data.filter((f: any) => f.revenue_district_id == this.selectedDistrict);;
     })
     const value = {
       "i_DistrictId": this.selectedDistrict
     }
     this.formService.getShopLocationByDistrict(value).subscribe((res: any) => {
-      this.filteredShops = res.data.slice(0, -1)
+      this.filteredShops = res.data
       this.addShopMarkers(this.filteredShops)
     })
   }
 
   filterRV() {
     this.formService.getAllShopNo().subscribe((res: any) => {
-      this.rvShopNos = res.data.slice(0, -1).filter((f: any) => f.talukId == this.selectedTaluk);
+      this.rvShopNos = res.data.filter((f: any) => f.talukaId == this.selectedTaluk);
     })
     const value = {
       "i_TalukaId": this.selectedTaluk
     }
     this.formService.getShopLocationByTaluk(value).subscribe((res: any) => {
-      this.filteredShops = res.data.slice(0, -1)
+      this.filteredShops = res.data
       this.addShopMarkers(this.filteredShops)
     })
   }
@@ -138,7 +138,7 @@ export class ShopLocatorComponent implements OnInit {
       "i_ShopNumber": this.selectedRvShopNo
     }
     this.formService.getShopLocationByShopNo(value).subscribe((res: any) => {
-      this.filteredShops = res.data.slice(0, -1)
+      this.filteredShops = res.data
       this.addShopMarkers(this.filteredShops)
     })
   }
@@ -174,11 +174,11 @@ export class ShopLocatorComponent implements OnInit {
     });
 
     shops.forEach(shop => {
-      if (this.isValidShop(shop)&& shop.latitude && shop.longitude) {
+      if (this.isValidShop(shop) && shop.latitude && shop.longitude) {
         const popupContent = `
           <b>Shop ${shop.RVShopsNo}</b><br>
           ${shop.Address}<br>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${shop?.latitude},${shop?.longitude}" 
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${shop?.latitude},${shop?.longitude}"
              target="_blank" style="color: blue; text-decoration: none;">
             <i class="fa fa-directions"></i> Get Directions
           </a>
@@ -212,7 +212,9 @@ export class ShopLocatorComponent implements OnInit {
     this.selectedDistrict = '',
       this.selectedTaluk = '',
       this.selectedRvShopNo = ''
-    this.initMap();
+    this.filteredShops = []
+    // this.initMap();
+    this.addShopMarkers([])
   }
 
 
@@ -260,7 +262,7 @@ export class ShopLocatorComponent implements OnInit {
       const popupContent = `
         <b>Nearest Shop ${nearestShop.RVShopsNo}</b><br>
         ${nearestShop.Address}<br>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=${nearestShop.latitude},${nearestShop.longitude}" 
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${nearestShop.latitude},${nearestShop.longitude}"
            target="_blank" style="color: blue; text-decoration: none;">
           <i class="fa fa-directions"></i> Get Directions
         </a>

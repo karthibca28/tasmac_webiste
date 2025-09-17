@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FormService {
   baseUrl = ''
-  hrmsUrl =''
+  hrmsUrl = ''
 
   constructor(private http: HttpClient) {
     this.baseUrl = environment.baseUrl
@@ -22,38 +22,46 @@ export class FormService {
     return this.http.post(`${this.baseUrl}liquor/get-productList`, '')
   }
 
-  getLiquoreProductsByBrandId(data:any){
-    return this.http.post(`${this.baseUrl}liquor/get-productListByBrand`,data)
+  getLiquoreProductsByBrandId(data: any) {
+    return this.http.post(`${this.baseUrl}liquor/get-productListByBrand`, data)
   }
 
-  getSupplierByTypes(data:any){
-    return this.http.post(`${this.baseUrl}supplier/get-supplierListProductionType`,data)
+  getSupplierByTypes(data: any) {
+    return this.http.post(`${this.baseUrl}supplier/get-supplierListProductionType`, data)
   }
 
-  getAllDistrict(){
-    return this.http.post(`${this.baseUrl}rv-shop/get-districtList`,'')
+  getAllDistrict() {
+    return this.http.post(`${this.baseUrl}rv-shop/get-districtList`, '')
   }
-  getAllTaluk(){
-    return this.http.post(`${this.baseUrl}rv-shop/get-talukList`,'')
+  getAllTaluk() {
+    return this.http.post(`${this.baseUrl}rv-shop/get-talukList`, '')
   }
-  getAllShopNo(){
-    return this.http.post(`${this.baseUrl}rv-shop/get-shopList`,'')
+  getAllShopNo() {
+    return this.http.post(`${this.baseUrl}rv-shop/get-shopList`, '')
   }
-  getShopLocationByShopNo(data:any){
-    return this.http.post(`${this.baseUrl}rv-shop/get-shopListBy-ShopNumber`,data)
+  getShopLocationByShopNo(data: any) {
+    return this.http.post(`${this.baseUrl}rv-shop/get-shopListBy-ShopNumber`, data)
   }
-  getShopLocationByTaluk(data:any){
-    return this.http.post(`${this.baseUrl}rv-shop/get-shopListBy-TalukId`,data)
+  getShopLocationByTaluk(data: any) {
+    return this.http.post(`${this.baseUrl}rv-shop/get-shopListBy-TalukId`, data)
   }
-  getShopLocationByDistrict(data:any){
-    return this.http.post(`${this.baseUrl}rv-shop/get-shopListBy-DistrictId`,data)
+  getShopLocationByDistrict(data: any) {
+    return this.http.post(`${this.baseUrl}rv-shop/get-shopListBy-DistrictId`, data)
   }
 
-  getStaffByOffice(staffType:any){
+  getStaffByOffice(staffType: any) {
     return this.http.get(`${this.hrmsUrl}shared/lp/staffs?officeTypeId=${staffType}`)
   }
 
-  getAllStockDetails(){
-    return this.http.post(`${this.baseUrl}liquor/get-stockDetails`,'')
+  getAllStockDetails() {
+    return this.http.post(`${this.baseUrl}liquor/get-stockDetails`, '')
+  }
+
+  getStockDetailsByDistrict(data: any) {
+    return this.http.post(`${this.baseUrl}liquor/get-stockDetailsBy-DistrictId`, data)
+  }
+
+  getStockDetailsByTaluk(data: any) {
+    return this.http.post(`${this.baseUrl}rv-shop/get-shopListBy-DistrictId-TalukId`, data)
   }
 }

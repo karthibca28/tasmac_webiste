@@ -43,8 +43,7 @@ export class brandsPageComponent implements OnInit {
 			this.brands = res.data.sort((a: any, b: any) => {
 				return a.BrandName?.localeCompare(b.BrandName);
 			}).slice(0, -1);
-			this.brands.unshift({ BrandId: 0, BrandName: 'All' })
-			console.log(this.brands)
+			this.brands.unshift({ brandId: 0, brandName: 'All' })
 		})
 	}
 
@@ -85,13 +84,13 @@ export class brandsPageComponent implements OnInit {
 	  
 
 	selectTab(tab: any) {
-		this.selectedTab = tab.BrandId
-		if (tab.BrandId == 0) {
+		this.selectedTab = tab.brandId
+		if (tab.brandId == 0) {
 			this.getAllProducts()
 			this.clearSearch();
 		}
 		else {
-			this.getLiquoreProductsByBrandId(tab.BrandId)
+			this.getLiquoreProductsByBrandId(tab.brandId)
 			this.clearSearch();
 		}
 	}

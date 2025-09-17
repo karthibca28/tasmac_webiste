@@ -37,7 +37,7 @@ export class SuppliersComponent implements OnInit {
 			p_supplierProductionType: this.supplierType
 		}
 		this.formService.getSupplierByTypes(value).subscribe((res: any) => {
-			this.supplierDetails = res.data.slice(0,-1)
+			this.supplierDetails = res.data
 		})
 	}
 
