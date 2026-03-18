@@ -7,6 +7,8 @@ import { PascalCasePipe } from '../services/pascal-case.pipe';
 import { DropdownModule } from 'primeng/dropdown';
 import { SearchDropdownComponent } from '../search-dropdown/search-dropdown.component';
 import { FormService } from '../services/form.service';
+import { LoaderComponent } from '../loader/loader.component';
+import { LoaderService } from '../services/loader.service';
 
 interface Shop {
   slNo: number;
@@ -26,7 +28,10 @@ interface Shop {
   templateUrl: './shop-locator.component.html',
   styleUrls: ['./shop-locator.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule, PascalCasePipe, DropdownModule, SearchDropdownComponent]
+  imports: [
+    FormsModule, CommonModule,
+    PascalCasePipe, DropdownModule,
+    SearchDropdownComponent, LoaderComponent]
 })
 export class ShopLocatorComponent implements OnInit {
   @ViewChild('map', { static: true }) mapElement: ElementRef;
@@ -75,7 +80,7 @@ export class ShopLocatorComponent implements OnInit {
       behavior: 'smooth'
     });
   }
-  constructor(private formService: FormService) { }
+  constructor(private formService: FormService, private loader: LoaderService) { }
 
   ngOnInit(): void {
     // this.loadShopData();
@@ -105,6 +110,7 @@ export class ShopLocatorComponent implements OnInit {
   }
 
   filterRvAndTaluk() {
+    this.loader.show();
     this.formService.getAllTaluk().subscribe((res: any) => {
       this.taluks = res.data.filter((f: any) => f.district_code == this.selectedDistrict);
     })
@@ -117,6 +123,9 @@ export class ShopLocatorComponent implements OnInit {
     this.formService.getShopLocationByDistrict(value).subscribe((res: any) => {
       this.filteredShops = res.data
       this.addShopMarkers(this.filteredShops)
+      this.loader.hide();
+    }, (error: any) => {
+      this.loader.hide();
     })
   }
 

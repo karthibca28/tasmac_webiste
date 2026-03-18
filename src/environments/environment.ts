@@ -5,7 +5,7 @@
 export const environment = {
 	production: false,
 	baseUrl: 'https://dashboard-api.tasmace2e.in/api/',
-	hrmsUrl:'https://dev.vividtranstech.com/hrms2/api/v1/'
+	hrmsUrl: 'https://hrms.tasmace2e.in/hrms2/api/v1/'
 };
 
 /*

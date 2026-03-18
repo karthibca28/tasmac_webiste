@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { PascalCasePipe } from '../services/pascal-case.pipe';
+import { LoaderService } from '../services/loader.service';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-stock-availability',
   standalone: true,
-  imports: [FormsModule, CommonModule, PascalCasePipe, DropdownModule],
+  imports: [FormsModule, CommonModule, PascalCasePipe, DropdownModule, LoaderComponent],
   templateUrl: './stock-availability.component.html',
   styleUrl: './stock-availability.component.css'
 })
@@ -35,7 +37,7 @@ export class StockAvailabilityComponent {
   stockDetails: any[] = []
   expandedRow: number | null = null;
   filteredStockDetails: any
-
+  allStockDetails: any
   @HostListener('window:scroll')
   checkScroll() {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -50,7 +52,7 @@ export class StockAvailabilityComponent {
       behavior: 'smooth'
     });
   }
-  constructor(private formService: FormService) { }
+  constructor(private formService: FormService, private loader: LoaderService) { }
 
   ngOnInit(): void {
     // this.loadShopData();
@@ -70,9 +72,13 @@ export class StockAvailabilityComponent {
   }
 
   getAllStocks() {
+    this.loader.show();
     this.formService.getAllStockDetails().subscribe((res: any) => {
       this.filteredStockDetails = res.data;
       this.stockDetails = res.data;
+      this.loader.hide();
+    }, (error: any) => {
+      this.loader.hide();
     })
   }
 
@@ -101,6 +107,7 @@ export class StockAvailabilityComponent {
   }
 
   filterRvAndTaluk() {
+    this.loader.show();
     this.formService.getAllTaluk().subscribe((res: any) => {
       this.taluks = res.data.filter((f: any) => f.district_code == this.selectedDistrict);
     })
@@ -109,35 +116,68 @@ export class StockAvailabilityComponent {
     }
     this.formService.getShopLocationByDistrict(value).subscribe((res: any) => {
       this.rvShopNos = res.data
+      this.loader.hide();
+    }, (error: any) => {
+      this.loader.hide();
     })
   }
 
   filterRV() {
+    this.loader.show();
     const value = {
       "i_TalukaId": this.selectedTaluk
     }
     this.formService.getShopLocationByTaluk(value).subscribe((res: any) => {
       this.rvShopNos = res.data
+      this.loader.hide();
+    }, (error: any) => {
+      this.loader.hide();
     })
   }
 
   getStockDetailsByDistrict() {
+    this.loader.show();
     const data = {
       p_districtId: this.selectedDistrict
     }
     this.formService.getStockDetailsByDistrict(data).subscribe((res: any) => {
+      this.allStockDetails = res.data
       this.filteredStockDetails = res.data;
+      this.loader.hide();
+    }, (error: any) => {
+      this.loader.hide();
     })
   }
 
   getStockDetailsByTaluk() {
+    this.loader.show();
     const data = {
-      i_DistrictId: this.selectedDistrict,
-      i_TalukaId: this.selectedTaluk
+      p_districtId: this.selectedDistrict,
+      p_talukId: this.selectedTaluk
     }
     this.formService.getStockDetailsByTaluk(data).subscribe((res: any) => {
+      this.allStockDetails = res.data
       this.filteredStockDetails = res.data;
+      this.loader.hide();
+    }, (error: any) => {
+      this.loader.hide();
     })
+  }
+
+  filterByRvShop() {
+    this.filteredStockDetails = this.allStockDetails.filter(f => f.shopNumber == this.selectedRvShopNo)
+  }
+
+  filterBrand() {
+    this.loader.show();
+    const brandId = Number(this.selectedBrand);
+    this.filteredStockDetails = this.filteredStockDetails.map(shop => ({
+      ...shop,
+      Stock_details: shop.Stock_details.filter(
+        item => item.brandId === brandId
+      )
+    }));
+    this.loader.hide();
   }
 
   filterProducts() {

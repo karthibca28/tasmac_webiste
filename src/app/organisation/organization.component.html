@@ -26,69 +26,14 @@
                     <div class="social-box">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-4 mt-2 col-xs-12 text-center">
+                                <div class="col-lg-4 mt-2 col-xs-12 text-center" *ngFor="let data of boardData">
                                     <div class="box shadow-lg border">
                                         <i class="fa fa-user fa-3x text-red" aria-hidden="true"></i>
                                         <div class="box-title">
-                                            <h3>Thiru. Dheeraj Kumar, IAS</h3>
+                                            <h3>{{data.name}}</h3>
                                         </div>
                                         <div class="box-text">
-                                            <span>The Chairman, TASMAC and Additional Chief Secretary to Government,
-                                                Home, Prohibition and Excise Department, Secretariat, Chennai - 600
-                                                009.</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 mt-2 col-xs-12 text-center">
-                                    <div class="box shadow-lg border">
-                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
-                                        <div class="box-title">
-                                            <h3>Thiru. T. Udhayachandran, IAS.,</h3>
-                                        </div>
-                                        <div class="box-text">
-                                            <span>Principal Secretary to Government, Finance Department, Secretariat,
-                                                Chennai - 600 009.</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 mt-2 col-xs-12 text-center">
-                                    <div class="box shadow-lg border">
-                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
-                                        <div class="box-title">
-                                            <h3>Thiru. Brajendra Navnit, IAS.,</h3>
-                                        </div>
-                                        <div class="box-text">
-                                            <span>Principal Secretary to Government, Commercial Taxes and Registration
-                                                Department, Secretariat, Chennai-600 009.</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 mt-2 col-xs-12 text-center">
-                                    <div class="box shadow-lg border">
-                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
-                                        <div class="box-title">
-                                            <h3>Tmt. S.P.Karthikaa, IAS.,</h3>
-                                        </div>
-                                        <div class="box-text">
-                                            <span>Director of Prohibition and Excise, Chepauk, Chennai - 600 005.</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 mt-2 col-xs-12 text-center">
-                                    <div class="box shadow-lg border">
-                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
-                                        <div class="box-title">
-                                            <h3>Dr. S. Visakan, IAS.,</h3>
-                                        </div>
-                                        <div class="box-text">
-                                            <span>Managing Director,
-                                                TASMAC LTD., 4TH Floor,
-                                                CMDA Tower- II,
-                                                Egmore, Chennai - 600008</span>
+                                            <span>{{data.description}}</span>
                                         </div>
                                     </div>
                                 </div>

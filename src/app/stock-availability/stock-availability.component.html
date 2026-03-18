@@ -34,13 +34,13 @@
                 <label>Select Shop No</label>
                 <p-dropdown [filter]="true" appendTo="body" [options]="rvShopNos" optionLabel="RVShopsNo"
                     optionValue="RVShopsNo" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
-                    [(ngModel)]="selectedRvShopNo"></p-dropdown>
+                    [(ngModel)]="selectedRvShopNo" (onChange)="filterByRvShop()"></p-dropdown>
             </div>
             <div class="col-md-3 mb-3 text-start">
                 <label>Select Liquor Type</label>
                 <p-dropdown [filter]="true" appendTo="body" [options]="brands" optionLabel="brandName"
                     optionValue="brandId" dropdownIcon="pi pi-angle-down" [style]="{'width':'100%'}"
-                    [(ngModel)]="selectedBrand"></p-dropdown>
+                    [(ngModel)]="selectedBrand" (onChange)="filterBrand()"></p-dropdown>
             </div>
             <div class="text-end">
                 <button (click)="resetFilters()">Reset</button>
@@ -111,3 +111,4 @@
 <div class="scroll-to-top" [ngClass]="{'show': isShow}" (click)="scrollToTop()">
     ↑
 </div>
+<app-loader></app-loader>

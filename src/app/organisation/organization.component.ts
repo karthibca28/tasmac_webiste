@@ -12,7 +12,32 @@ import { OrganizationChartModule } from 'primeng/organizationchart';
 })
 export class OrganizationComponent {
   selectedTab: string = 'board';
-
+  boardData = [
+    {
+      name: "Thiru. Dheeraj Kumar, IAS",
+      description: "The Chairman, TASMAC and Additional Chief Secretary to Government, Home, Prohibition and Excise Department, Secretariat, Chennai – 600 009."
+    },
+    {
+      name: "Thiru. T. Udhayachandran, IAS",
+      description: "Additional Chief Secretary to Government, Finance Department, Secretariat, Chennai – 600 009."
+    },
+    {
+      name: "Tmt. Shilpa Prabhakar Satish, IAS",
+      description: "Secretary to Government, Commercial Taxes and Registration Department, Secretariat, Chennai – 600 009."
+    },
+    {
+      name: "Tmt. S.P. Karthikaa, IAS",
+      description: "Director of Prohibition and Excise, Chepauk, Chennai – 600 005."
+    },
+    {
+      name: "Thiru. T. Christuraj, IAS",
+      description: "Managing Director, TASMAC Ltd., Egmore, Chennai – 600 008."
+    },
+    {
+      name: "Thiru. C.R. Balaji",
+      description: "Additional Director (BPE), Finance Department, Secretariat, Chennai."
+    }
+  ];
   boardDirectors = [
     {
       name: 'Tmt. P. Amudha, IAS',

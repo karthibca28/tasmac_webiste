@@ -7,12 +7,14 @@ import { CompaniesBlockComponent } from '../companies-block/companies-block.comp
 import { Brands } from '../models/brands.model';
 import { FormsModule } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
+import { LoaderService } from 'src/app/services/loader.service';
+import { LoaderComponent } from 'src/app/loader/loader.component';
 
 @Component({
 	selector: 'app-brands-page',
 	templateUrl: './brands-page.component.html',
 	standalone: true,
-	imports: [CompaniesBlockComponent, AsyncPipe, CommonModule, FormsModule],
+	imports: [CompaniesBlockComponent, AsyncPipe, CommonModule, FormsModule, LoaderComponent],
 	styleUrl: './brands-page.component.css',
 })
 export class brandsPageComponent implements OnInit {
@@ -24,7 +26,8 @@ export class brandsPageComponent implements OnInit {
 	topPosToStartShowing = 100;
 	filteredProductList: any = [];
 
-	constructor(private config: ConfigService, private formService: FormService) {
+	constructor(
+		private config: ConfigService, private formService: FormService, private loader: LoaderService) {
 	}
 
 	ngOnInit() {
@@ -48,9 +51,11 @@ export class brandsPageComponent implements OnInit {
 	}
 
 	getAllProducts() {
+		this.loader.show();
 		this.formService.getAllLiquoreProducts().subscribe((res: any) => {
 			this.productList = res.data.slice(0, -1);
 			this.filteredProductList = [...this.productList];
+			this.loader.hide();
 		})
 	}
 
@@ -71,17 +76,17 @@ export class brandsPageComponent implements OnInit {
 
 	getMrpByUnitName(productDetails: any, unitName: any): string {
 		if (!productDetails || !Array.isArray(productDetails)) {
-		  return '-';
+			return '-';
 		}
 		const detail = productDetails.find(detail => detail.unitName === unitName);
-		
+
 		if (detail && detail.mrpPerBottle) {
-		  const formatter = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2 });
-		  return formatter.format(detail.mrpPerBottle);
+			const formatter = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2 });
+			return formatter.format(detail.mrpPerBottle);
 		}
-		return '-'; 
-	  }
-	  
+		return '-';
+	}
+
 
 	selectTab(tab: any) {
 		this.selectedTab = tab.brandId

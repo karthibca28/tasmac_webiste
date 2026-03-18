@@ -62,6 +62,6 @@ export class FormService {
   }
 
   getStockDetailsByTaluk(data: any) {
-    return this.http.post(`${this.baseUrl}rv-shop/get-shopListBy-DistrictId-TalukId`, data)
+    return this.http.post(`${this.baseUrl}/liquor/get-stockDetailsBy-DistrictId-talukId`, data)
   }
 }
