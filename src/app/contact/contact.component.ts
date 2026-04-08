@@ -12,6 +12,7 @@ export class ContactComponent {
 	infoItems: any[];
 	infoItems2: any[];
 	contactSections: any[];
+	email: string = 'tasmacrv2015@gmail.com'
 
 	ngOnInit(): void { 
 		this.infoItems = [

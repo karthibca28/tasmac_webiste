@@ -9,7 +9,6 @@ export class LoaderService {
   loading$ = this.loading.asObservable();
 
   show() {
-    console.log('true')
     this.loading.next(true);
   }
 
@@ -17,7 +16,7 @@ export class LoaderService {
     console.log('false')
     setTimeout(() => {
       this.loading.next(false);
-    },3000)
+    },2000)
   }
 
 }

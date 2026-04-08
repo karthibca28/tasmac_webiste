@@ -61,7 +61,7 @@
                                 <th>S.No.</th>
                                 <th>RV Shop No</th>
                                 <th>District Name</th>
-                                <!-- <th>Taluk Name</th> -->
+                                <th>Taluk Name</th>
                                 <th>View</th>
                             </tr>
                         </thead>
@@ -71,7 +71,7 @@
                                     <td>{{ i + 1 }}</td>
                                     <td>{{ shop.shopNumber }}</td>
                                     <td>{{ shop.districtName }}</td>
-                                    <!-- <td>{{ shop.talukaName }}</td> -->
+                                    <td>{{ shop.talukaName }}</td>
                                     <td>{{ expandedRow === i ? '▼' : '►' }}</td>
                                 </tr>
                                 <tr *ngIf="expandedRow === i">

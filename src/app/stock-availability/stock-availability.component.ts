@@ -76,6 +76,7 @@ export class StockAvailabilityComponent {
     this.formService.getAllStockDetails().subscribe((res: any) => {
       this.filteredStockDetails = res.data;
       this.stockDetails = res.data;
+      this.allStockDetails = res.data;
       this.loader.hide();
     }, (error: any) => {
       this.loader.hide();
@@ -166,6 +167,7 @@ export class StockAvailabilityComponent {
 
   filterByRvShop() {
     this.filteredStockDetails = this.allStockDetails.filter(f => f.shopNumber == this.selectedRvShopNo)
+    this.allStockDetails = this.filteredStockDetails
   }
 
   filterBrand() {
@@ -177,24 +179,45 @@ export class StockAvailabilityComponent {
         item => item.brandId === brandId
       )
     }));
+    this.allStockDetails = this.filteredStockDetails
     this.loader.hide();
   }
 
   filterProducts() {
     let searchData: any
     if (this.selectedBrand || this.selectedDistrict || this.selectedRvShopNo || this.selectedTaluk) {
-      searchData = this.filteredStockDetails
+      searchData = this.allStockDetails
     }
     else {
       searchData = this.stockDetails
     }
     const lowerCaseSearchTerm = this.searchTerm.toLowerCase();
-    this.filteredStockDetails = searchData.filter(shop => {
-      const matchesDistrict = shop.districtName?.toLowerCase().includes(lowerCaseSearchTerm) || false;
-      const matchesTaluk = shop.talukaName?.toLowerCase().includes(lowerCaseSearchTerm) || false;
-      const matchesShopNumber = shop.shopNumber.toString().includes(lowerCaseSearchTerm);
-      return matchesDistrict || matchesTaluk || matchesShopNumber;
-    });
+    this.filteredStockDetails = searchData
+      .map(shop => {
+        const filteredStockDetails = shop.Stock_details?.filter((item: any) => {
+          return (
+            item.brandName?.toLowerCase().includes(lowerCaseSearchTerm) ||
+            item.productName?.toLowerCase().includes(lowerCaseSearchTerm) ||
+            item.supplierName?.toLowerCase().includes(lowerCaseSearchTerm) ||
+            item.unitName?.toLowerCase().includes(lowerCaseSearchTerm) ||
+            item.packSize?.toString().includes(lowerCaseSearchTerm) ||
+            item.currentStock?.toString().includes(lowerCaseSearchTerm)
+          );
+        }) || [];
+
+        return {
+          ...shop,
+          Stock_details: filteredStockDetails
+        };
+      })
+      .filter(shop => {
+        const hasMatchingDetails = shop.Stock_details.length > 0;
+        const matchesDistrict = shop.districtName?.toLowerCase().includes(lowerCaseSearchTerm) || false;
+        const matchesTaluk = shop.talukaName?.toLowerCase().includes(lowerCaseSearchTerm) || false;
+        const matchesShopNumber = shop.shopNumber.toString().includes(lowerCaseSearchTerm);
+
+        return matchesDistrict || matchesTaluk || matchesShopNumber || hasMatchingDetails;
+      });
   }
 
   resetFilters() {
