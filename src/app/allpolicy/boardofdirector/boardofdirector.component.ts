@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-boardofdirector',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './boardofdirector.component.html',
   styleUrl: './boardofdirector.component.css'
 })
@@ -16,7 +16,7 @@ export class BoardofdirectorComponent {
       description: "The Chairman, TASMAC and Additional Chief Secretary to Government, Home, Prohibition and Excise Department, Secretariat, Chennai – 600 009."
     },
     {
-      name: "Thiru. T. Udhayachandran, IAS",
+      name: "Thiru. M.A. Siddique, IAS",
       description: "Additional Chief Secretary to Government, Finance Department, Secretariat, Chennai – 600 009."
     },
     {
@@ -28,7 +28,7 @@ export class BoardofdirectorComponent {
       description: "Director of Prohibition and Excise, Chepauk, Chennai – 600 005."
     },
     {
-      name: "Thiru. T. Christuraj, IAS",
+      name: "Thiru. k. Nanthakumar, IAS",
       description: "Managing Director, TASMAC Ltd., Egmore, Chennai – 600 008."
     },
     {

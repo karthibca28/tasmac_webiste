@@ -18,7 +18,7 @@ export class OrganizationComponent {
       description: "The Chairman, TASMAC and Additional Chief Secretary to Government, Home, Prohibition and Excise Department, Secretariat, Chennai – 600 009."
     },
     {
-      name: "Thiru. T. Udhayachandran, IAS",
+      name: "Thiru. M.A. Siddique, IAS",
       description: "Additional Chief Secretary to Government, Finance Department, Secretariat, Chennai – 600 009."
     },
     {
@@ -30,7 +30,7 @@ export class OrganizationComponent {
       description: "Director of Prohibition and Excise, Chepauk, Chennai – 600 005."
     },
     {
-      name: "Thiru. T. Christuraj, IAS",
+      name: "Thiru. k. Nanthakumar, IAS",
       description: "Managing Director, TASMAC Ltd., Egmore, Chennai – 600 008."
     },
     {
@@ -46,7 +46,7 @@ export class OrganizationComponent {
       image: 'assets/images/directors/logo.jpg'
     },
     {
-      name: 'Thiru. T. Udhayachandran, IAS',
+      name: 'Thiru. M.A. Siddique, IAS',
       position: 'Director',
       contact: 'Principal Secretary to Government, Finance Department, Secretariat, Chennai - 600009',
       image: 'assets/images/directors/logo.jpg'
